@@ -2,11 +2,15 @@ import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
 
-const inter = Inter({ subsets: ["latin"] });
+const inter = Inter({
+  subsets: ["latin"],
+  weight: ['300', '400', '500', '600', '700'],
+  variable: '--font-inter',
+});
 
 export const metadata: Metadata = {
-  title: "SiteSense - Subcontractor Management Platform",
-  description: "AI-powered subcontractor management and compliance for UK construction",
+  title: "SiteSense - AI-Powered Subcontractor Management",
+  description: "Reduce payment cycles from 83 to 30 days with AI-powered invoice validation and automated CIS compliance",
 };
 
 export default function RootLayout({
@@ -15,8 +19,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
-      <body className={inter.className}>{children}</body>
+    <html lang="en" className="scroll-smooth">
+      <body className={`${inter.variable} font-sans antialiased`}>{children}</body>
     </html>
   );
 }
