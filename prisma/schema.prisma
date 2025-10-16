@@ -1,0 +1,414 @@
+// Prisma Schema for SiteSense
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider  = "postgresql"
+  url       = env("DATABASE_URL")
+  directUrl = env("DIRECT_URL")
+}
+
+// ============================================
+// USER & AUTHENTICATION
+// ============================================
+
+model User {
+  id                String    @id @default(uuid())
+  email             String    @unique
+  passwordHash      String?
+  firstName         String?
+  lastName          String?
+  role              UserRole  @default(PROJECT_MANAGER)
+  companyId         String
+  phone             String?
+  isActive          Boolean   @default(true)
+  emailVerified     Boolean   @default(false)
+  twoFactorEnabled  Boolean   @default(false)
+  createdAt         DateTime  @default(now())
+  updatedAt         DateTime  @updatedAt
+
+  // Relations
+  company           Company   @relation(fields: [companyId], references: [id], onDelete: Cascade)
+
+  // Audit fields
+  invoicesSubmitted Invoice[] @relation("SubmittedBy")
+  invoicesReviewed  Invoice[] @relation("ReviewedBy")
+  paymentsCreated   PaymentRun[] @relation("CreatedBy")
+  auditLogs         AuditLog[]
+
+  @@index([companyId])
+  @@index([email])
+  @@map("users")
+}
+
+enum UserRole {
+  ADMIN
+  FINANCE
+  PROJECT_MANAGER
+  SUBCONTRACTOR
+}
+
+// ============================================
+// COMPANY
+// ============================================
+
+model Company {
+  id                  String   @id @default(uuid())
+  name                String
+  companyNumber       String?
+  vatNumber           String?
+  addressLine1        String?
+  addressLine2        String?
+  city                String?
+  postcode            String?
+  country             String   @default("GB")
+  phone               String?
+  email               String?
+  website             String?
+  subscriptionTier    SubscriptionTier @default(STARTER)
+  subscriptionStatus  SubscriptionStatus @default(TRIAL)
+  trialEndsAt         DateTime?
+  stripeCustomerId    String?
+  createdAt           DateTime @default(now())
+  updatedAt           DateTime @updatedAt
+
+  // Relations
+  users               User[]
+  subcontractors      Subcontractor[]
+  projects            Project[]
+  invoices            Invoice[]
+  paymentRuns         PaymentRun[]
+  integrations        Integration[]
+  auditLogs           AuditLog[]
+
+  @@index([subscriptionStatus])
+  @@map("companies")
+}
+
+enum SubscriptionTier {
+  STARTER
+  PROFESSIONAL
+  BUSINESS
+}
+
+enum SubscriptionStatus {
+  TRIAL
+  ACTIVE
+  CANCELLED
+  PAST_DUE
+}
+
+// ============================================
+// SUBCONTRACTOR
+// ============================================
+
+model Subcontractor {
+  id                        String    @id @default(uuid())
+  companyId                 String
+  companyName               String
+  contactName               String?
+  email                     String?
+  phone                     String?
+  utr                       String  // Unique Taxpayer Reference
+  cisStatus                 CISStatus?
+  cisVerifiedAt             DateTime?
+  cisVerificationExpiresAt  DateTime?
+  cisVerificationReference  String?
+  addressLine1              String?
+  addressLine2              String?
+  city                      String?
+  postcode                  String?
+  insuranceExpiresAt        DateTime?
+  insuranceDocumentUrl      String?
+  performanceScore          Float     @default(0) @db.DoublePrecision
+  totalPaid                 Float     @default(0) @db.DoublePrecision
+  totalInvoices             Int       @default(0)
+  onTimePercentage          Float     @default(0) @db.DoublePrecision
+  isActive                  Boolean   @default(true)
+  notes                     String?   @db.Text
+  createdAt                 DateTime  @default(now())
+  updatedAt                 DateTime  @updatedAt
+
+  // Relations
+  company                   Company   @relation(fields: [companyId], references: [id], onDelete: Cascade)
+  invoices                  Invoice[]
+  cisVerifications          CISVerification[]
+
+  @@index([companyId])
+  @@index([utr])
+  @@index([cisVerificationExpiresAt])
+  @@map("subcontractors")
+}
+
+enum CISStatus {
+  GROSS
+  STANDARD
+  HIGHER
+  NOT_VERIFIED
+}
+
+// ============================================
+// PROJECT
+// ============================================
+
+model Project {
+  id                      String   @id @default(uuid())
+  companyId               String
+  name                    String
+  description             String?  @db.Text
+  projectNumber           String?
+  addressLine1            String?
+  addressLine2            String?
+  city                    String?
+  postcode                String?
+  status                  ProjectStatus @default(ACTIVE)
+  budget                  Float?   @db.DoublePrecision
+  startDate               DateTime?
+  estimatedCompletionDate DateTime?
+  actualCompletionDate    DateTime?
+  createdBy               String?
+  createdAt               DateTime @default(now())
+  updatedAt               DateTime @updatedAt
+
+  // Relations
+  company                 Company  @relation(fields: [companyId], references: [id], onDelete: Cascade)
+  invoices                Invoice[]
+
+  @@index([companyId])
+  @@index([status])
+  @@map("projects")
+}
+
+enum ProjectStatus {
+  PLANNING
+  ACTIVE
+  ON_HOLD
+  COMPLETED
+}
+
+// ============================================
+// INVOICE
+// ============================================
+
+model Invoice {
+  id                String   @id @default(uuid())
+  companyId         String
+  subcontractorId   String
+  projectId         String?
+  invoiceNumber     String
+  invoiceDate       DateTime
+  dueDate           DateTime?
+  amount            Float    @db.DoublePrecision
+  cisDeduction      Float    @default(0) @db.DoublePrecision
+  netPayment        Float    @db.DoublePrecision
+  description       String?  @db.Text
+  status            InvoiceStatus @default(SUBMITTED)
+  paymentDate       DateTime?
+  paymentReference  String?
+  invoiceFileUrl    String?
+  validationStatus  ValidationStatus?
+  validationRiskScore String?
+  validationResult  Json?
+  submittedBy       String?
+  reviewedBy        String?
+  reviewedAt        DateTime?
+  createdAt         DateTime @default(now())
+  updatedAt         DateTime @updatedAt
+
+  // Relations
+  company           Company  @relation(fields: [companyId], references: [id], onDelete: Cascade)
+  subcontractor     Subcontractor @relation(fields: [subcontractorId], references: [id])
+  project           Project? @relation(fields: [projectId], references: [id], onDelete: SetNull)
+  submitter         User?    @relation("SubmittedBy", fields: [submittedBy], references: [id])
+  reviewer          User?    @relation("ReviewedBy", fields: [reviewedBy], references: [id])
+  documents         InvoiceDocument[]
+  paymentRuns       PaymentRunInvoice[]
+
+  @@unique([subcontractorId, invoiceNumber])
+  @@index([companyId])
+  @@index([subcontractorId])
+  @@index([projectId])
+  @@index([status])
+  @@index([invoiceNumber])
+  @@map("invoices")
+}
+
+enum InvoiceStatus {
+  SUBMITTED
+  UNDER_REVIEW
+  APPROVED
+  PAID
+  REJECTED
+}
+
+enum ValidationStatus {
+  PENDING
+  PASSED
+  REVIEW_REQUIRED
+  FAILED
+}
+
+// ============================================
+// INVOICE DOCUMENTS
+// ============================================
+
+model InvoiceDocument {
+  id           String   @id @default(uuid())
+  invoiceId    String
+  documentType DocumentType
+  fileName     String
+  fileUrl      String
+  fileSize     Int?
+  mimeType     String?
+  uploadedBy   String?
+  createdAt    DateTime @default(now())
+
+  // Relations
+  invoice      Invoice  @relation(fields: [invoiceId], references: [id], onDelete: Cascade)
+
+  @@index([invoiceId])
+  @@map("invoice_documents")
+}
+
+enum DocumentType {
+  INVOICE
+  TIMESHEET
+  PHOTO
+  SUPPORTING_DOC
+}
+
+// ============================================
+// PAYMENT RUNS
+// ============================================
+
+model PaymentRun {
+  id                String   @id @default(uuid())
+  companyId         String
+  name              String
+  scheduledDate     DateTime
+  status            PaymentRunStatus @default(DRAFT)
+  totalAmount       Float    @default(0) @db.DoublePrecision
+  totalCisDeduction Float    @default(0) @db.DoublePrecision
+  netPayment        Float    @default(0) @db.DoublePrecision
+  invoiceCount      Int      @default(0)
+  exportedAt        DateTime?
+  paidAt            DateTime?
+  createdBy         String?
+  createdAt         DateTime @default(now())
+  updatedAt         DateTime @updatedAt
+
+  // Relations
+  company           Company  @relation(fields: [companyId], references: [id], onDelete: Cascade)
+  creator           User?    @relation("CreatedBy", fields: [createdBy], references: [id])
+  invoices          PaymentRunInvoice[]
+
+  @@index([companyId])
+  @@index([status])
+  @@map("payment_runs")
+}
+
+enum PaymentRunStatus {
+  DRAFT
+  READY
+  EXPORTED
+  PAID
+}
+
+model PaymentRunInvoice {
+  paymentRunId String
+  invoiceId    String
+
+  // Relations
+  paymentRun   PaymentRun @relation(fields: [paymentRunId], references: [id], onDelete: Cascade)
+  invoice      Invoice    @relation(fields: [invoiceId], references: [id], onDelete: Cascade)
+
+  @@id([paymentRunId, invoiceId])
+  @@index([paymentRunId])
+  @@index([invoiceId])
+  @@map("payment_run_invoices")
+}
+
+// ============================================
+// CIS VERIFICATIONS
+// ============================================
+
+model CISVerification {
+  id                    String   @id @default(uuid())
+  subcontractorId       String
+  verificationDate      DateTime
+  verificationReference String?
+  utr                   String
+  cisStatus             CISStatus
+  deductionRate         Float?   @db.DoublePrecision
+  verificationResponse  Json?
+  verifiedBy            String?
+  expiresAt             DateTime?
+  createdAt             DateTime @default(now())
+
+  // Relations
+  subcontractor         Subcontractor @relation(fields: [subcontractorId], references: [id], onDelete: Cascade)
+
+  @@index([subcontractorId])
+  @@index([expiresAt])
+  @@map("cis_verifications")
+}
+
+// ============================================
+// INTEGRATIONS
+// ============================================
+
+model Integration {
+  id               String   @id @default(uuid())
+  companyId        String
+  provider         IntegrationProvider
+  accessToken      String?  @db.Text
+  refreshToken     String?  @db.Text
+  tokenExpiresAt   DateTime?
+  tenantId         String?
+  isActive         Boolean  @default(true)
+  settings         Json?
+  lastSyncAt       DateTime?
+  createdAt        DateTime @default(now())
+  updatedAt        DateTime @updatedAt
+
+  // Relations
+  company          Company  @relation(fields: [companyId], references: [id], onDelete: Cascade)
+
+  @@unique([companyId, provider])
+  @@index([companyId])
+  @@map("integrations")
+}
+
+enum IntegrationProvider {
+  HMRC
+  XERO
+  QUICKBOOKS
+}
+
+// ============================================
+// AUDIT LOG
+// ============================================
+
+model AuditLog {
+  id         String   @id @default(uuid())
+  companyId  String?
+  userId     String?
+  entityType String
+  entityId   String
+  action     String
+  oldValues  Json?
+  newValues  Json?
+  ipAddress  String?
+  userAgent  String?  @db.Text
+  createdAt  DateTime @default(now())
+
+  // Relations
+  company    Company? @relation(fields: [companyId], references: [id], onDelete: Cascade)
+  user       User?    @relation(fields: [userId], references: [id], onDelete: SetNull)
+
+  @@index([companyId])
+  @@index([entityType, entityId])
+  @@index([createdAt])
+  @@map("audit_logs")
+}
