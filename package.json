@@ -14,11 +14,13 @@
   },
   "dependencies": {
     "@anthropic-ai/sdk": "^0.66.0",
+    "@auth/prisma-adapter": "^2.11.0",
     "@hookform/resolvers": "^5.2.2",
     "@prisma/client": "^6.17.1",
     "bcryptjs": "^3.0.2",
     "clsx": "^2.1.1",
     "date-fns": "^4.1.0",
+    "jose": "^6.1.0",
     "nanoid": "^5.1.6",
     "next": "14.2.16",
     "next-auth": "5.0.0-beta.29",

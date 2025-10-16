@@ -1,3 +1,5 @@
+import Link from 'next/link';
+
 export default function Home() {
   return (
     <div className="min-h-screen bg-white">
@@ -28,12 +30,12 @@ export default function Home() {
 
             {/* CTA Buttons */}
             <div className="flex items-center space-x-3">
-              <button className="btn btn-ghost btn-thin hidden md:inline-flex">
+              <Link href="/login" className="btn btn-ghost btn-thin hidden md:inline-flex">
                 Sign In
-              </button>
-              <button className="btn btn-primary btn-thin">
+              </Link>
+              <Link href="/register" className="btn btn-primary btn-thin">
                 Get Started
-              </button>
+              </Link>
             </div>
           </div>
         </div>
@@ -64,12 +66,12 @@ export default function Home() {
 
             {/* CTA Buttons */}
             <div className="flex flex-col sm:flex-row items-center justify-center gap-4 animate-slide-up" style={{ animationDelay: '0.2s' }}>
-              <button className="btn btn-primary btn-lg w-full sm:w-auto">
+              <Link href="/register" className="btn btn-primary btn-lg w-full sm:w-auto">
                 Start Free Trial
-              </button>
-              <button className="btn btn-secondary btn-lg w-full sm:w-auto">
+              </Link>
+              <a href="#features" className="btn btn-secondary btn-lg w-full sm:w-auto">
                 Watch Demo
-              </button>
+              </a>
             </div>
 
             {/* Social Proof */}
@@ -197,12 +199,12 @@ export default function Home() {
             Join 50+ UK construction companies using SiteSense to automate compliance and get paid faster.
           </p>
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-            <button className="btn btn-primary btn-lg w-full sm:w-auto">
+            <Link href="/register" className="btn btn-primary btn-lg w-full sm:w-auto">
               Start 14-Day Free Trial
-            </button>
-            <button className="btn btn-secondary btn-lg w-full sm:w-auto">
+            </Link>
+            <a href="#features" className="btn btn-secondary btn-lg w-full sm:w-auto">
               Schedule a Demo
-            </button>
+            </a>
           </div>
           <p className="mt-6 text-sm text-neutral-500">
             No credit card required • Cancel anytime • Full support
