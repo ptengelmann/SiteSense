@@ -109,12 +109,17 @@ model Subcontractor {
 
   // Basic Details
   companyName               String
+  legalEntityType           LegalEntityType  // LIMITED_COMPANY, SOLE_TRADER, etc.
   companyNumber             String?   // Companies House number
   vatNumber                 String?
-  contactName               String?
-  email                     String?
-  phone                     String?
+  contactName               String    // REQUIRED for communications
+  email                     String    // REQUIRED for invoicing/communications
+  phone                     String    // REQUIRED for emergencies
+  website                   String?
+  numberOfEmployees         Int?
+  tradeSpecialties          String[]  // ["Electrician", "Plumber", "HVAC"]
   utr                       String    // Unique Taxpayer Reference
+  ir35Status                IR35Status?  // INSIDE, OUTSIDE, NOT_APPLICABLE
 
   // Address
   addressLine1              String?
@@ -123,6 +128,10 @@ model Subcontractor {
   postcode                  String?
   country                   String    @default("GB")
 
+  // Emergency Contact
+  emergencyContactName      String?
+  emergencyContactPhone     String?
+
   // CIS Compliance
   cisStatus                 CISStatus?
   cisVerifiedAt             DateTime?
@@ -130,13 +139,35 @@ model Subcontractor {
   cisVerificationReference  String?
   cisDeductionRate          Float?    @db.DoublePrecision // 0%, 20%, or 30%
 
+  // CSCS & Qualifications
+  cscsCardNumber            String?
+  cscsCardType              String?   // "Green CSCS", "Blue CSCS", "Gold CSCS", etc.
+  cscsCardExpiresAt         DateTime?
+
+  // Health & Safety Accreditations
+  chasAccredited            Boolean   @default(false)
+  chasExpiresAt             DateTime?
+  safeContractorAccredited  Boolean   @default(false)
+  safeContractorExpiresAt   DateTime?
+  constructionlineAccredited Boolean  @default(false)
+  constructionlineExpiresAt DateTime?
+  otherAccreditations       String[]  // ["NICEIC", "Gas Safe", etc.]
+
   // Insurance & Compliance
   publicLiabilityExpiresAt  DateTime?
   publicLiabilityAmount     Float?    @db.DoublePrecision
+  publicLiabilityPolicyNumber String?
+  publicLiabilityInsurer    String?
   publicLiabilityDocUrl     String?
+
   employersLiabilityExpiresAt DateTime?
+  employersLiabilityPolicyNumber String?
+  employersLiabilityInsurer String?
   employersLiabilityDocUrl  String?
+
   professionalIndemnityExpiresAt DateTime?
+  professionalIndemnityPolicyNumber String?
+  professionalIndemnityInsurer String?
   professionalIndemnityDocUrl String?
 
   // Payment Terms
@@ -184,10 +215,14 @@ model Subcontractor {
   company                   Company   @relation(fields: [companyId], references: [id], onDelete: Cascade)
   invoices                  Invoice[]
   cisVerifications          CISVerification[]
+  projectAssignments        ProjectSubcontractor[]
 
   @@index([companyId])
   @@index([utr])
+  @@index([legalEntityType])
   @@index([cisVerificationExpiresAt])
+  @@index([cscsCardExpiresAt])
+  @@index([chasExpiresAt])
   @@index([publicLiabilityExpiresAt])
   @@index([dataRetentionUntil])
   @@index([scheduledForDeletion])
@@ -201,6 +236,22 @@ enum CISStatus {
   NOT_VERIFIED
 }
 
+enum LegalEntityType {
+  LIMITED_COMPANY      // Ltd
+  SOLE_TRADER         // Self-employed individual
+  PARTNERSHIP         // Traditional partnership
+  LLP                 // Limited Liability Partnership
+  PLC                 // Public Limited Company
+  CHARITY             // Charitable organization
+  OTHER               // Other business structure
+}
+
+enum IR35Status {
+  OUTSIDE             // Outside IR35 - treated as self-employed
+  INSIDE              // Inside IR35 - treated as employee for tax
+  NOT_APPLICABLE      // Not relevant (e.g., limited companies)
+}
+
 // ============================================
 // PROJECT
 // ============================================
@@ -208,18 +259,77 @@ enum CISStatus {
 model Project {
   id                      String   @id @default(uuid())
   companyId               String
+
+  // Basic Details
   name                    String
   description             String?  @db.Text
-  projectNumber           String?
+  projectNumber           String?  @unique // Unique project reference
+  status                  ProjectStatus @default(PLANNING)
+
+  // Client Information
+  clientName              String?
+  clientCompany           String?
+  clientEmail             String?
+  clientPhone             String?
+
+  // Site Address
   addressLine1            String?
   addressLine2            String?
   city                    String?
   postcode                String?
-  status                  ProjectStatus @default(ACTIVE)
+  country                 String   @default("GB")
+  siteContactName         String?  // On-site contact
+  siteContactPhone        String?
+
+  // Project Type & Contract
+  projectType             ProjectType?  // NEW_BUILD, REFURBISHMENT, etc.
+  contractType            ContractType? // FIXED_PRICE, TIME_MATERIALS, etc.
+  contractValue           Float?   @db.DoublePrecision
+  retentionPercentage     Float    @default(5) @db.DoublePrecision // Typical 5% retention
+
+  // Budget & Cost Tracking
   budget                  Float?   @db.DoublePrecision
+  actualCost              Float    @default(0) @db.DoublePrecision
+  approvedVariations      Float    @default(0) @db.DoublePrecision
+  pendingVariations       Float    @default(0) @db.DoublePrecision
+
+  // Dates
   startDate               DateTime?
   estimatedCompletionDate DateTime?
   actualCompletionDate    DateTime?
+  handoverDate            DateTime?
+
+  // Health & Safety
+  principalContractor     String?  // CDM 2015 requirement
+  principalDesigner       String?  // CDM 2015 requirement
+  hsePlanRequired         Boolean  @default(true)
+  hsePlanApproved         Boolean  @default(false)
+  hsePlanApprovedDate     DateTime?
+  f10NotificationNumber   String?  // HSE F10 notification for notifiable projects
+  rampsRequired           Boolean  @default(true)  // Risk Assessments & Method Statements
+
+  // Planning & Building Control
+  planningPermissionRef   String?
+  planningPermissionDate  DateTime?
+  buildingControlRef      String?
+  buildingControlBody     String?  // Local Authority or Approved Inspector
+
+  // Insurance
+  contractWorksInsurance  Float?   @db.DoublePrecision
+  insurancePolicyNumber   String?
+  insuranceExpiryDate     DateTime?
+
+  // Performance Metrics
+  onSchedule              Boolean  @default(true)
+  daysDelay               Int      @default(0)
+  qualityScore            Float?   @db.DoublePrecision // 1-5 rating
+  clientSatisfaction      Float?   @db.DoublePrecision // 1-5 rating
+
+  // Status & Meta
+  isArchived              Boolean  @default(false)
+  archivedAt              DateTime?
+  notes                   String?  @db.Text
+  tags                    String[] // ["High Value", "Fast Track", "Complex"]
   createdBy               String?
   createdAt               DateTime @default(now())
   updatedAt               DateTime @updatedAt
@@ -227,17 +337,112 @@ model Project {
   // Relations
   company                 Company  @relation(fields: [companyId], references: [id], onDelete: Cascade)
   invoices                Invoice[]
+  projectSubcontractors   ProjectSubcontractor[]
 
   @@index([companyId])
   @@index([status])
+  @@index([projectNumber])
+  @@index([startDate])
+  @@index([estimatedCompletionDate])
   @@map("projects")
 }
 
 enum ProjectStatus {
-  PLANNING
-  ACTIVE
-  ON_HOLD
-  COMPLETED
+  PLANNING      // Pre-construction planning phase
+  ACTIVE        // Construction underway
+  ON_HOLD       // Temporarily paused
+  SNAGGING      // Final fixes and snagging
+  COMPLETED     // Handed over to client
+  CANCELLED     // Project cancelled
+}
+
+enum ProjectType {
+  NEW_BUILD           // New construction from ground up
+  REFURBISHMENT       // Major refurbishment
+  EXTENSION           // Building extension
+  CONVERSION          // Building conversion (e.g., loft, garage)
+  RENOVATION          // General renovation
+  FIT_OUT             // Interior fit-out
+  INFRASTRUCTURE      // Roads, utilities, etc.
+  DEMOLITION          // Demolition work
+  MAINTENANCE         // Planned maintenance
+  OTHER               // Other project type
+}
+
+enum ContractType {
+  FIXED_PRICE         // Lump sum fixed price
+  TIME_MATERIALS      // Time and materials
+  COST_PLUS           // Cost plus fee
+  MEASURE_TERM        // Measured term contract
+  FRAMEWORK           // Framework agreement
+  NEC                 // NEC contract
+  JCT                 // JCT contract
+  OTHER               // Other contract type
+}
+
+// ============================================
+// PROJECT SUBCONTRACTOR (Many-to-Many)
+// ============================================
+
+model ProjectSubcontractor {
+  id                String   @id @default(uuid())
+  projectId         String
+  subcontractorId   String
+
+  // Role & Scope
+  role              String?  // "Electrical Contractor", "Main Plumber", "HVAC Specialist"
+  scopeOfWork       String?  @db.Text
+  tradePackage      String?  // "First Fix Electrical", "Final Plumbing", etc.
+
+  // Commercial Terms
+  contractValue     Float?   @db.DoublePrecision
+  agreedRate        Float?   @db.DoublePrecision // Day rate or package rate
+  rateType          String?  @default("DAY_RATE") // DAY_RATE, FIXED_PRICE, MEASURED
+  paymentTerms      String?  // "30 days", "Stage payments"
+  retentionHeld     Float    @default(0) @db.DoublePrecision
+
+  // Schedule
+  startDate         DateTime?
+  endDate           DateTime?
+  actualStartDate   DateTime?
+  actualEndDate     DateTime?
+
+  // Status & Performance
+  status            ProjectSubcontractorStatus @default(ASSIGNED)
+  performanceRating Float?   @db.DoublePrecision // 1-5 rating
+  onSchedule        Boolean  @default(true)
+  qualityIssues     Int      @default(0)
+
+  // Health & Safety
+  rampsSubmitted    Boolean  @default(false)
+  rampsApproved     Boolean  @default(false)
+  inductionCompleted Boolean @default(false)
+  inductionDate     DateTime?
+
+  // Meta
+  notes             String?  @db.Text
+  assignedBy        String?  // User ID who assigned
+  assignedAt        DateTime @default(now())
+  updatedAt         DateTime @updatedAt
+
+  // Relations
+  project           Project       @relation(fields: [projectId], references: [id], onDelete: Cascade)
+  subcontractor     Subcontractor @relation(fields: [subcontractorId], references: [id], onDelete: Cascade)
+
+  @@unique([projectId, subcontractorId]) // Each subcontractor once per project
+  @@index([projectId])
+  @@index([subcontractorId])
+  @@index([status])
+  @@map("project_subcontractors")
+}
+
+enum ProjectSubcontractorStatus {
+  ASSIGNED          // Assigned to project
+  MOBILIZING        // Preparing to start
+  ACTIVE            // Currently working
+  DEMOBILIZED       // Finished and left site
+  SUSPENDED         // Temporarily stopped
+  REMOVED           // Removed from project
 }
 
 // ============================================
