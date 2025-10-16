@@ -80,7 +80,7 @@ export async function GET(
     // Update last data access for GDPR tracking
     await db.subcontractor.update({
       where: { id: params.id },
-      data: { lastDataAccess: new Date() },
+      data: { lastDataAccess: new Date() } as any,
     });
 
     // Audit log
@@ -152,7 +152,7 @@ export async function PUT(
         publicLiabilityExpiresAt: data.publicLiabilityExpiresAt ? new Date(data.publicLiabilityExpiresAt) : null,
         employersLiabilityExpiresAt: data.employersLiabilityExpiresAt ? new Date(data.employersLiabilityExpiresAt) : null,
         professionalIndemnityExpiresAt: data.professionalIndemnityExpiresAt ? new Date(data.professionalIndemnityExpiresAt) : null,
-      },
+      } as any,
     });
 
     // Audit log
@@ -230,7 +230,7 @@ export async function DELETE(
           scheduledForDeletion: true,
           deletionRequestedAt: new Date(),
           archivedAt: new Date(),
-        },
+        } as any,
       });
 
       // Audit log
