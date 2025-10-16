@@ -29,14 +29,14 @@ export async function GET() {
 
     const now = new Date();
     const overdue = invoices
-      .filter(inv => inv.status !== 'PAID' && new Date(inv.dueDate) < now)
+      .filter(inv => inv.status !== 'PAID' && inv.dueDate && new Date(inv.dueDate) < now)
       .map(inv => ({
         id: inv.id,
         invoiceNumber: inv.invoiceNumber,
         subcontractorName: inv.subcontractor.companyName,
         dueDate: inv.dueDate,
         amount: inv.amount,
-        daysOverdue: Math.floor((now.getTime() - new Date(inv.dueDate).getTime()) / (1000 * 60 * 60 * 24)),
+        daysOverdue: Math.floor((now.getTime() - new Date(inv.dueDate!).getTime()) / (1000 * 60 * 60 * 24)),
       }));
 
     return NextResponse.json({

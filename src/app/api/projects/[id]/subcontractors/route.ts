@@ -60,9 +60,9 @@ export async function POST(
     const validation = assignSubcontractorSchema.safeParse(body);
 
     if (!validation.success) {
-      const errorMessage = validation.error.errors?.[0]?.message || 'Validation failed';
+      const errorMessage = validation.error.issues?.[0]?.message || 'Validation failed';
       return NextResponse.json(
-        { error: errorMessage, errors: validation.error.errors },
+        { error: errorMessage, errors: validation.error.issues },
         { status: 400 }
       );
     }
@@ -150,7 +150,7 @@ export async function POST(
       userId: session.user.id,
       entityType: 'PROJECT_SUBCONTRACTOR',
       entityId: assignment.id,
-      action: 'ASSIGN',
+      action: 'CREATE',
       newValues: assignment,
       ipAddress: clientInfo.ipAddress,
       userAgent: clientInfo.userAgent,

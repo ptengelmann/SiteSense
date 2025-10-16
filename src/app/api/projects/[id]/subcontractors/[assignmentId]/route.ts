@@ -73,9 +73,9 @@ export async function PUT(
     const validation = updateAssignmentSchema.safeParse(body);
 
     if (!validation.success) {
-      const errorMessage = validation.error.errors?.[0]?.message || 'Validation failed';
+      const errorMessage = validation.error.issues?.[0]?.message || 'Validation failed';
       return NextResponse.json(
-        { error: errorMessage, errors: validation.error.errors },
+        { error: errorMessage, errors: validation.error.issues },
         { status: 400 }
       );
     }
@@ -199,7 +199,7 @@ export async function DELETE(
       userId: session.user.id,
       entityType: 'PROJECT_SUBCONTRACTOR',
       entityId: params.assignmentId,
-      action: 'REMOVE',
+      action: 'DELETE',
       oldValues: assignment,
       ipAddress: clientInfo.ipAddress,
       userAgent: clientInfo.userAgent,

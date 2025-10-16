@@ -177,7 +177,6 @@ export default function NewInvoicePage() {
               >
                 <option value="">Select subcontractor...</option>
                 {subcontractors
-                  .filter(s => s.isActive !== false)
                   .map((sub) => (
                     <option key={sub.id} value={sub.id}>
                       {sub.companyName}
@@ -217,7 +216,6 @@ export default function NewInvoicePage() {
               >
                 <option value="">No specific project</option>
                 {projects
-                  .filter(p => !p.isArchived)
                   .map((project) => (
                     <option key={project.id} value={project.id}>
                       {project.name}

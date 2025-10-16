@@ -1,6 +1,7 @@
 import { NextResponse } from 'next/server';
 import { auth } from '@/lib/auth';
 import { db } from '@/lib/db';
+import { DocumentCategory } from '@prisma/client';
 import { writeFile, mkdir } from 'fs/promises';
 import { join } from 'path';
 import { existsSync } from 'fs';
@@ -96,7 +97,7 @@ export async function POST(request: Request) {
         fileUrl,
         fileSize: file.size,
         mimeType: file.type,
-        category,
+        category: category as DocumentCategory,
         entityType,
         entityId,
         uploadedBy: session.user.id,

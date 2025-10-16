@@ -178,10 +178,10 @@ export async function POST(request: Request) {
     const validation = createProjectSchema.safeParse(body);
 
     if (!validation.success) {
-      const errorMessage = validation.error.errors?.[0]?.message || 'Validation failed';
-      console.error('Validation error:', validation.error.errors);
+      const errorMessage = validation.error.issues?.[0]?.message || 'Validation failed';
+      console.error('Validation error:', validation.error.issues);
       return NextResponse.json(
-        { error: errorMessage, errors: validation.error.errors },
+        { error: errorMessage, errors: validation.error.issues },
         { status: 400 }
       );
     }

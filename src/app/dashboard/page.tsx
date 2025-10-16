@@ -135,11 +135,11 @@ export default async function DashboardPage() {
   const activeSubcontractors = subcontractorsData.filter(s => s.isActive).length;
   const totalSubcontractors = subcontractorsData.length;
 
-  const activeProjects = projectsData.filter(p => p.status === 'IN_PROGRESS').length;
+  const activeProjects = projectsData.filter(p => p.status === 'ACTIVE').length;
   const projectsDelayed = projectsData.filter(p => !p.onSchedule).length;
 
   const pendingInvoices = invoicesData.filter(i =>
-    i.status === 'DRAFT' || i.status === 'SUBMITTED' || i.status === 'APPROVED'
+    i.status === 'SUBMITTED' || i.status === 'UNDER_REVIEW' || i.status === 'APPROVED'
   );
   const pendingInvoicesAmount = pendingInvoices.reduce((sum, inv) => sum + inv.amount, 0);
   const pendingInvoicesCount = pendingInvoices.length;
@@ -155,7 +155,7 @@ export default async function DashboardPage() {
   const paidThisMonthAmount = paidThisMonth.reduce((sum, inv) => sum + inv.netPayment, 0);
 
   const overdueInvoices = invoicesData.filter(i => {
-    if (i.status === 'PAID') return false;
+    if (i.status === 'PAID' || !i.dueDate) return false;
     const dueDate = new Date(i.dueDate);
     return dueDate < new Date();
   });

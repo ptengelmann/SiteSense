@@ -165,9 +165,9 @@ export async function PUT(
     const validation = updateProjectSchema.safeParse(body);
 
     if (!validation.success) {
-      const errorMessage = validation.error.errors?.[0]?.message || 'Validation failed';
+      const errorMessage = validation.error.issues?.[0]?.message || 'Validation failed';
       return NextResponse.json(
-        { error: errorMessage, errors: validation.error.errors },
+        { error: errorMessage, errors: validation.error.issues },
         { status: 400 }
       );
     }

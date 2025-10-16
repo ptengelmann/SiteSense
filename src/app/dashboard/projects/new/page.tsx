@@ -494,7 +494,7 @@ export default function NewProjectPage() {
 
                 <div className="card p-4 bg-amber-50 border-amber-200">
                   <p className="text-sm text-amber-800">
-                    <strong>CDM 2015 Requirements:</strong> For notifiable projects (>30 days or >500 person days), you must appoint a Principal Designer and Principal Contractor, and notify HSE using Form F10.
+                    <strong>CDM 2015 Requirements:</strong> For notifiable projects (&gt;30 days or &gt;500 person days), you must appoint a Principal Designer and Principal Contractor, and notify HSE using Form F10.
                   </p>
                 </div>
 
