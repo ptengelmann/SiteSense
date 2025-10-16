@@ -14,27 +14,59 @@ export default function NewSubcontractorPage() {
   const [formData, setFormData] = useState({
     // Basic Details
     companyName: '',
+    legalEntityType: 'LIMITED_COMPANY',
     companyNumber: '',
     vatNumber: '',
     contactName: '',
     email: '',
     phone: '',
+    website: '',
+    numberOfEmployees: '',
+    tradeSpecialties: [] as string[],
     utr: '',
+    ir35Status: '',
     addressLine1: '',
     addressLine2: '',
     city: '',
     postcode: '',
     country: 'GB',
 
+    // Emergency Contact
+    emergencyContactName: '',
+    emergencyContactPhone: '',
+
     // CIS
     cisStatus: 'NOT_VERIFIED',
     cisDeductionRate: 20,
 
+    // CSCS & Qualifications
+    cscsCardNumber: '',
+    cscsCardType: '',
+    cscsCardExpiresAt: '',
+
+    // Health & Safety Accreditations
+    chasAccredited: false,
+    chasExpiresAt: '',
+    safeContractorAccredited: false,
+    safeContractorExpiresAt: '',
+    constructionlineAccredited: false,
+    constructionlineExpiresAt: '',
+    otherAccreditations: [] as string[],
+
     // Insurance
     publicLiabilityExpiresAt: '',
     publicLiabilityAmount: '',
+    publicLiabilityPolicyNumber: '',
+    publicLiabilityInsurer: '',
+    publicLiabilityDocUrl: '',
     employersLiabilityExpiresAt: '',
+    employersLiabilityPolicyNumber: '',
+    employersLiabilityInsurer: '',
+    employersLiabilityDocUrl: '',
     professionalIndemnityExpiresAt: '',
+    professionalIndemnityPolicyNumber: '',
+    professionalIndemnityInsurer: '',
+    professionalIndemnityDocUrl: '',
 
     // Payment Terms
     paymentTermsDays: 30,
@@ -80,7 +112,7 @@ export default function NewSubcontractorPage() {
 
   const steps = [
     { number: 1, title: 'Basic Details', description: 'Company information and contact' },
-    { number: 2, title: 'CIS & Compliance', description: 'Tax and verification details' },
+    { number: 2, title: 'CIS & Compliance', description: 'Tax, CSCS, and H&S accreditations' },
     { number: 3, title: 'Insurance', description: 'Liability and certification' },
     { number: 4, title: 'Payment Terms', description: 'Bank and payment configuration' },
     { number: 5, title: 'GDPR Consent', description: 'Data processing agreement' },
@@ -106,10 +138,53 @@ export default function NewSubcontractorPage() {
     setLoading(true);
 
     try {
+      // Clean up data - convert empty strings to undefined for optional fields
+      const cleanedData = {
+        ...formData,
+        companyNumber: formData.companyNumber || undefined,
+        vatNumber: formData.vatNumber || undefined,
+        website: formData.website || undefined,
+        numberOfEmployees: formData.numberOfEmployees || undefined,
+        ir35Status: formData.ir35Status || undefined,
+        addressLine1: formData.addressLine1 || undefined,
+        addressLine2: formData.addressLine2 || undefined,
+        city: formData.city || undefined,
+        postcode: formData.postcode || undefined,
+        emergencyContactName: formData.emergencyContactName || undefined,
+        emergencyContactPhone: formData.emergencyContactPhone || undefined,
+        cisDeductionRate: formData.cisDeductionRate || undefined,
+        cscsCardNumber: formData.cscsCardNumber || undefined,
+        cscsCardType: formData.cscsCardType || undefined,
+        cscsCardExpiresAt: formData.cscsCardExpiresAt || undefined,
+        chasExpiresAt: formData.chasExpiresAt || undefined,
+        safeContractorExpiresAt: formData.safeContractorExpiresAt || undefined,
+        constructionlineExpiresAt: formData.constructionlineExpiresAt || undefined,
+        publicLiabilityExpiresAt: formData.publicLiabilityExpiresAt || undefined,
+        publicLiabilityAmount: formData.publicLiabilityAmount || undefined,
+        publicLiabilityPolicyNumber: formData.publicLiabilityPolicyNumber || undefined,
+        publicLiabilityInsurer: formData.publicLiabilityInsurer || undefined,
+        publicLiabilityDocUrl: formData.publicLiabilityDocUrl || undefined,
+        employersLiabilityExpiresAt: formData.employersLiabilityExpiresAt || undefined,
+        employersLiabilityPolicyNumber: formData.employersLiabilityPolicyNumber || undefined,
+        employersLiabilityInsurer: formData.employersLiabilityInsurer || undefined,
+        employersLiabilityDocUrl: formData.employersLiabilityDocUrl || undefined,
+        professionalIndemnityExpiresAt: formData.professionalIndemnityExpiresAt || undefined,
+        professionalIndemnityPolicyNumber: formData.professionalIndemnityPolicyNumber || undefined,
+        professionalIndemnityInsurer: formData.professionalIndemnityInsurer || undefined,
+        professionalIndemnityDocUrl: formData.professionalIndemnityDocUrl || undefined,
+        earlyPaymentDiscount: formData.earlyPaymentDiscount || undefined,
+        bankName: formData.bankName || undefined,
+        bankAccountName: formData.bankAccountName || undefined,
+        bankAccountNumber: formData.bankAccountNumber || undefined,
+        bankSortCode: formData.bankSortCode || undefined,
+        notes: formData.notes || undefined,
+        internalRating: formData.internalRating || undefined,
+      };
+
       const response = await fetch('/api/subcontractors', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(formData),
+        body: JSON.stringify(cleanedData),
       });
 
       const data = await response.json();
@@ -212,6 +287,29 @@ export default function NewSubcontractorPage() {
                   </div>
 
                   <div>
+                    <label htmlFor="legalEntityType" className="block text-sm font-medium text-neutral-700 mb-2">
+                      Legal Entity Type <span className="text-red-500">*</span>
+                    </label>
+                    <select
+                      id="legalEntityType"
+                      name="legalEntityType"
+                      value={formData.legalEntityType}
+                      onChange={handleChange}
+                      required
+                      className="input"
+                    >
+                      <option value="LIMITED_COMPANY">Limited Company (Ltd)</option>
+                      <option value="SOLE_TRADER">Sole Trader</option>
+                      <option value="PARTNERSHIP">Partnership</option>
+                      <option value="LLP">Limited Liability Partnership (LLP)</option>
+                      <option value="PLC">Public Limited Company (PLC)</option>
+                      <option value="CHARITY">Charity</option>
+                      <option value="OTHER">Other</option>
+                    </select>
+                    <p className="text-xs text-neutral-500 mt-1">Affects tax treatment and IR35 status</p>
+                  </div>
+
+                  <div>
                     <label htmlFor="utr" className="block text-sm font-medium text-neutral-700 mb-2">
                       UTR (Unique Taxpayer Reference) <span className="text-red-500">*</span>
                     </label>
@@ -261,8 +359,82 @@ export default function NewSubcontractorPage() {
                   </div>
 
                   <div>
+                    <label htmlFor="ir35Status" className="block text-sm font-medium text-neutral-700 mb-2">
+                      IR35 Status
+                    </label>
+                    <select
+                      id="ir35Status"
+                      name="ir35Status"
+                      value={formData.ir35Status}
+                      onChange={handleChange}
+                      className="input"
+                    >
+                      <option value="">Not Determined</option>
+                      <option value="OUTSIDE">Outside IR35 (Self-employed)</option>
+                      <option value="INSIDE">Inside IR35 (Treated as employee)</option>
+                      <option value="NOT_APPLICABLE">Not Applicable</option>
+                    </select>
+                    <p className="text-xs text-neutral-500 mt-1">Tax status for contractors</p>
+                  </div>
+
+                  <div>
+                    <label htmlFor="numberOfEmployees" className="block text-sm font-medium text-neutral-700 mb-2">
+                      Number of Employees
+                    </label>
+                    <input
+                      type="number"
+                      id="numberOfEmployees"
+                      name="numberOfEmployees"
+                      value={formData.numberOfEmployees}
+                      onChange={handleChange}
+                      min="0"
+                      className="input"
+                      placeholder="5"
+                    />
+                  </div>
+
+                  <div className="md:col-span-2">
+                    <label htmlFor="website" className="block text-sm font-medium text-neutral-700 mb-2">
+                      Website
+                    </label>
+                    <input
+                      type="url"
+                      id="website"
+                      name="website"
+                      value={formData.website}
+                      onChange={handleChange}
+                      className="input"
+                      placeholder="https://www.smithconstruction.co.uk"
+                    />
+                  </div>
+
+                  <div className="md:col-span-2">
+                    <label htmlFor="tradeSpecialties" className="block text-sm font-medium text-neutral-700 mb-2">
+                      Trade Specialties
+                    </label>
+                    <input
+                      type="text"
+                      id="tradeSpecialties"
+                      name="tradeSpecialties"
+                      value={formData.tradeSpecialties.join(', ')}
+                      onChange={(e) => {
+                        const trades = e.target.value.split(',').map(t => t.trim()).filter(t => t);
+                        setFormData(prev => ({ ...prev, tradeSpecialties: trades }));
+                      }}
+                      className="input"
+                      placeholder="Electrician, Plumber, HVAC, Carpentry"
+                    />
+                    <p className="text-xs text-neutral-500 mt-1">Separate multiple trades with commas</p>
+                  </div>
+                </div>
+              </div>
+
+              <div>
+                <h3 className="text-lg font-semibold text-neutral-900 mb-4">Primary Contact</h3>
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                  <div>
                     <label htmlFor="contactName" className="block text-sm font-medium text-neutral-700 mb-2">
-                      Primary Contact Name
+                      Contact Name <span className="text-red-500">*</span>
                     </label>
                     <input
                       type="text"
@@ -270,6 +442,7 @@ export default function NewSubcontractorPage() {
                       name="contactName"
                       value={formData.contactName}
                       onChange={handleChange}
+                      required
                       className="input"
                       placeholder="John Smith"
                     />
@@ -277,7 +450,7 @@ export default function NewSubcontractorPage() {
 
                   <div>
                     <label htmlFor="email" className="block text-sm font-medium text-neutral-700 mb-2">
-                      Email Address
+                      Email Address <span className="text-red-500">*</span>
                     </label>
                     <input
                       type="email"
@@ -285,6 +458,7 @@ export default function NewSubcontractorPage() {
                       name="email"
                       value={formData.email}
                       onChange={handleChange}
+                      required
                       className="input"
                       placeholder="john@smithconstruction.co.uk"
                     />
@@ -292,13 +466,49 @@ export default function NewSubcontractorPage() {
 
                   <div>
                     <label htmlFor="phone" className="block text-sm font-medium text-neutral-700 mb-2">
-                      Phone Number
+                      Phone Number <span className="text-red-500">*</span>
                     </label>
                     <input
                       type="tel"
                       id="phone"
                       name="phone"
                       value={formData.phone}
+                      onChange={handleChange}
+                      required
+                      className="input"
+                      placeholder="07123 456789"
+                    />
+                  </div>
+                </div>
+              </div>
+
+              <div>
+                <h3 className="text-lg font-semibold text-neutral-900 mb-4">Emergency Contact</h3>
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                  <div>
+                    <label htmlFor="emergencyContactName" className="block text-sm font-medium text-neutral-700 mb-2">
+                      Emergency Contact Name
+                    </label>
+                    <input
+                      type="text"
+                      id="emergencyContactName"
+                      name="emergencyContactName"
+                      value={formData.emergencyContactName}
+                      onChange={handleChange}
+                      className="input"
+                      placeholder="Jane Smith"
+                    />
+                  </div>
+
+                  <div>
+                    <label htmlFor="emergencyContactPhone" className="block text-sm font-medium text-neutral-700 mb-2">
+                      Emergency Contact Phone
+                    </label>
+                    <input
+                      type="tel"
+                      id="emergencyContactPhone"
+                      name="emergencyContactPhone"
+                      value={formData.emergencyContactPhone}
                       onChange={handleChange}
                       className="input"
                       placeholder="07123 456789"
@@ -377,6 +587,7 @@ export default function NewSubcontractorPage() {
           {/* Step 2: CIS & Compliance */}
           {currentStep === 2 && (
             <div className="space-y-6 animate-fade-in">
+              {/* CIS Section */}
               <div>
                 <h2 className="text-xl font-semibold text-neutral-900 mb-2">CIS Verification Status</h2>
                 <p className="text-neutral-600 mb-6">
@@ -440,6 +651,191 @@ export default function NewSubcontractorPage() {
                   </div>
                 </div>
               </div>
+
+              {/* CSCS Section */}
+              <div className="border-t pt-6">
+                <h2 className="text-xl font-semibold text-neutral-900 mb-2">CSCS Card & Qualifications</h2>
+                <p className="text-neutral-600 mb-6">
+                  Construction Skills Certification Scheme - required for most UK construction sites.
+                </p>
+
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+                  <div>
+                    <label htmlFor="cscsCardNumber" className="block text-sm font-medium text-neutral-700 mb-2">
+                      CSCS Card Number
+                    </label>
+                    <input
+                      type="text"
+                      id="cscsCardNumber"
+                      name="cscsCardNumber"
+                      value={formData.cscsCardNumber}
+                      onChange={handleChange}
+                      className="input"
+                      placeholder="1234567890123456"
+                    />
+                  </div>
+
+                  <div>
+                    <label htmlFor="cscsCardType" className="block text-sm font-medium text-neutral-700 mb-2">
+                      CSCS Card Type
+                    </label>
+                    <select
+                      id="cscsCardType"
+                      name="cscsCardType"
+                      value={formData.cscsCardType}
+                      onChange={handleChange}
+                      className="input"
+                    >
+                      <option value="">Not specified</option>
+                      <option value="Green CSCS">Green CSCS (Labourer)</option>
+                      <option value="Blue CSCS">Blue CSCS (Skilled Worker)</option>
+                      <option value="Gold CSCS">Gold CSCS (Advanced Craft)</option>
+                      <option value="Black CSCS">Black CSCS (Manager)</option>
+                      <option value="White CSCS">White CSCS (Related Occupation)</option>
+                    </select>
+                  </div>
+
+                  <div>
+                    <label htmlFor="cscsCardExpiresAt" className="block text-sm font-medium text-neutral-700 mb-2">
+                      CSCS Expiry Date
+                    </label>
+                    <input
+                      type="date"
+                      id="cscsCardExpiresAt"
+                      name="cscsCardExpiresAt"
+                      value={formData.cscsCardExpiresAt}
+                      onChange={handleChange}
+                      className="input"
+                    />
+                  </div>
+                </div>
+              </div>
+
+              {/* Health & Safety Accreditations */}
+              <div className="border-t pt-6">
+                <h2 className="text-xl font-semibold text-neutral-900 mb-2">Health & Safety Accreditations</h2>
+                <p className="text-neutral-600 mb-6">
+                  Track industry-standard health and safety certifications required by many contractors.
+                </p>
+
+                <div className="space-y-4">
+                  {/* CHAS */}
+                  <div className="p-4 bg-neutral-50 rounded-lg">
+                    <div className="flex items-center gap-3 mb-3">
+                      <input
+                        type="checkbox"
+                        id="chasAccredited"
+                        name="chasAccredited"
+                        checked={formData.chasAccredited}
+                        onChange={handleChange}
+                        className="w-5 h-5 text-primary-600 border-neutral-300 rounded focus:ring-primary-500"
+                      />
+                      <label htmlFor="chasAccredited" className="text-sm font-medium text-neutral-900 cursor-pointer">
+                        CHAS Accredited (Contractors Health and Safety Assessment Scheme)
+                      </label>
+                    </div>
+                    {formData.chasAccredited && (
+                      <div className="ml-8">
+                        <label htmlFor="chasExpiresAt" className="block text-sm font-medium text-neutral-700 mb-2">
+                          CHAS Expiry Date
+                        </label>
+                        <input
+                          type="date"
+                          id="chasExpiresAt"
+                          name="chasExpiresAt"
+                          value={formData.chasExpiresAt}
+                          onChange={handleChange}
+                          className="input max-w-xs"
+                        />
+                      </div>
+                    )}
+                  </div>
+
+                  {/* SafeContractor */}
+                  <div className="p-4 bg-neutral-50 rounded-lg">
+                    <div className="flex items-center gap-3 mb-3">
+                      <input
+                        type="checkbox"
+                        id="safeContractorAccredited"
+                        name="safeContractorAccredited"
+                        checked={formData.safeContractorAccredited}
+                        onChange={handleChange}
+                        className="w-5 h-5 text-primary-600 border-neutral-300 rounded focus:ring-primary-500"
+                      />
+                      <label htmlFor="safeContractorAccredited" className="text-sm font-medium text-neutral-900 cursor-pointer">
+                        SafeContractor Accredited
+                      </label>
+                    </div>
+                    {formData.safeContractorAccredited && (
+                      <div className="ml-8">
+                        <label htmlFor="safeContractorExpiresAt" className="block text-sm font-medium text-neutral-700 mb-2">
+                          SafeContractor Expiry Date
+                        </label>
+                        <input
+                          type="date"
+                          id="safeContractorExpiresAt"
+                          name="safeContractorExpiresAt"
+                          value={formData.safeContractorExpiresAt}
+                          onChange={handleChange}
+                          className="input max-w-xs"
+                        />
+                      </div>
+                    )}
+                  </div>
+
+                  {/* Constructionline */}
+                  <div className="p-4 bg-neutral-50 rounded-lg">
+                    <div className="flex items-center gap-3 mb-3">
+                      <input
+                        type="checkbox"
+                        id="constructionlineAccredited"
+                        name="constructionlineAccredited"
+                        checked={formData.constructionlineAccredited}
+                        onChange={handleChange}
+                        className="w-5 h-5 text-primary-600 border-neutral-300 rounded focus:ring-primary-500"
+                      />
+                      <label htmlFor="constructionlineAccredited" className="text-sm font-medium text-neutral-900 cursor-pointer">
+                        Constructionline Accredited
+                      </label>
+                    </div>
+                    {formData.constructionlineAccredited && (
+                      <div className="ml-8">
+                        <label htmlFor="constructionlineExpiresAt" className="block text-sm font-medium text-neutral-700 mb-2">
+                          Constructionline Expiry Date
+                        </label>
+                        <input
+                          type="date"
+                          id="constructionlineExpiresAt"
+                          name="constructionlineExpiresAt"
+                          value={formData.constructionlineExpiresAt}
+                          onChange={handleChange}
+                          className="input max-w-xs"
+                        />
+                      </div>
+                    )}
+                  </div>
+
+                  {/* Other Accreditations */}
+                  <div>
+                    <label htmlFor="otherAccreditations" className="block text-sm font-medium text-neutral-700 mb-2">
+                      Other Accreditations
+                    </label>
+                    <input
+                      type="text"
+                      id="otherAccreditations"
+                      name="otherAccreditations"
+                      value={formData.otherAccreditations.join(', ')}
+                      onChange={(e) => {
+                        const accreditations = e.target.value.split(',').map(a => a.trim()).filter(a => a);
+                        setFormData(prev => ({ ...prev, otherAccreditations: accreditations }));
+                      }}
+                      className="input"
+                      placeholder="NICEIC, Gas Safe, IPAF, PASMA"
+                    />
+                    <p className="text-xs text-neutral-500 mt-1">Separate multiple accreditations with commas (e.g., NICEIC, Gas Safe, IPAF)</p>
+                  </div>
+                </div>
+              </div>
             </div>
           )}
 
@@ -484,42 +880,172 @@ export default function NewSubcontractorPage() {
                           placeholder="5000000"
                         />
                       </div>
+                      <div>
+                        <label htmlFor="publicLiabilityPolicyNumber" className="block text-sm font-medium text-neutral-700 mb-2">
+                          Policy Number
+                        </label>
+                        <input
+                          type="text"
+                          id="publicLiabilityPolicyNumber"
+                          name="publicLiabilityPolicyNumber"
+                          value={formData.publicLiabilityPolicyNumber}
+                          onChange={handleChange}
+                          className="input"
+                          placeholder="PL-123456789"
+                        />
+                      </div>
+                      <div>
+                        <label htmlFor="publicLiabilityInsurer" className="block text-sm font-medium text-neutral-700 mb-2">
+                          Insurer
+                        </label>
+                        <input
+                          type="text"
+                          id="publicLiabilityInsurer"
+                          name="publicLiabilityInsurer"
+                          value={formData.publicLiabilityInsurer}
+                          onChange={handleChange}
+                          className="input"
+                          placeholder="Aviva, Zurich, AXA"
+                        />
+                      </div>
+                      <div className="md:col-span-2">
+                        <label htmlFor="publicLiabilityDocUrl" className="block text-sm font-medium text-neutral-700 mb-2">
+                          Certificate URL (optional)
+                        </label>
+                        <input
+                          type="url"
+                          id="publicLiabilityDocUrl"
+                          name="publicLiabilityDocUrl"
+                          value={formData.publicLiabilityDocUrl}
+                          onChange={handleChange}
+                          className="input"
+                          placeholder="https://..."
+                        />
+                      </div>
                     </div>
                   </div>
 
                   {/* Employers Liability */}
                   <div className="p-6 bg-neutral-50 rounded-lg">
                     <h3 className="font-semibold text-neutral-900 mb-4">Employers' Liability Insurance</h3>
-                    <div>
-                      <label htmlFor="employersLiabilityExpiresAt" className="block text-sm font-medium text-neutral-700 mb-2">
-                        Expiry Date
-                      </label>
-                      <input
-                        type="date"
-                        id="employersLiabilityExpiresAt"
-                        name="employersLiabilityExpiresAt"
-                        value={formData.employersLiabilityExpiresAt}
-                        onChange={handleChange}
-                        className="input"
-                      />
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                      <div>
+                        <label htmlFor="employersLiabilityExpiresAt" className="block text-sm font-medium text-neutral-700 mb-2">
+                          Expiry Date
+                        </label>
+                        <input
+                          type="date"
+                          id="employersLiabilityExpiresAt"
+                          name="employersLiabilityExpiresAt"
+                          value={formData.employersLiabilityExpiresAt}
+                          onChange={handleChange}
+                          className="input"
+                        />
+                      </div>
+                      <div>
+                        <label htmlFor="employersLiabilityPolicyNumber" className="block text-sm font-medium text-neutral-700 mb-2">
+                          Policy Number
+                        </label>
+                        <input
+                          type="text"
+                          id="employersLiabilityPolicyNumber"
+                          name="employersLiabilityPolicyNumber"
+                          value={formData.employersLiabilityPolicyNumber}
+                          onChange={handleChange}
+                          className="input"
+                          placeholder="EL-123456789"
+                        />
+                      </div>
+                      <div>
+                        <label htmlFor="employersLiabilityInsurer" className="block text-sm font-medium text-neutral-700 mb-2">
+                          Insurer
+                        </label>
+                        <input
+                          type="text"
+                          id="employersLiabilityInsurer"
+                          name="employersLiabilityInsurer"
+                          value={formData.employersLiabilityInsurer}
+                          onChange={handleChange}
+                          className="input"
+                          placeholder="Aviva, Zurich, AXA"
+                        />
+                      </div>
+                      <div className="md:col-span-2">
+                        <label htmlFor="employersLiabilityDocUrl" className="block text-sm font-medium text-neutral-700 mb-2">
+                          Certificate URL (optional)
+                        </label>
+                        <input
+                          type="url"
+                          id="employersLiabilityDocUrl"
+                          name="employersLiabilityDocUrl"
+                          value={formData.employersLiabilityDocUrl}
+                          onChange={handleChange}
+                          className="input"
+                          placeholder="https://..."
+                        />
+                      </div>
                     </div>
                   </div>
 
                   {/* Professional Indemnity */}
                   <div className="p-6 bg-neutral-50 rounded-lg">
                     <h3 className="font-semibold text-neutral-900 mb-4">Professional Indemnity Insurance</h3>
-                    <div>
-                      <label htmlFor="professionalIndemnityExpiresAt" className="block text-sm font-medium text-neutral-700 mb-2">
-                        Expiry Date
-                      </label>
-                      <input
-                        type="date"
-                        id="professionalIndemnityExpiresAt"
-                        name="professionalIndemnityExpiresAt"
-                        value={formData.professionalIndemnityExpiresAt}
-                        onChange={handleChange}
-                        className="input"
-                      />
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                      <div>
+                        <label htmlFor="professionalIndemnityExpiresAt" className="block text-sm font-medium text-neutral-700 mb-2">
+                          Expiry Date
+                        </label>
+                        <input
+                          type="date"
+                          id="professionalIndemnityExpiresAt"
+                          name="professionalIndemnityExpiresAt"
+                          value={formData.professionalIndemnityExpiresAt}
+                          onChange={handleChange}
+                          className="input"
+                        />
+                      </div>
+                      <div>
+                        <label htmlFor="professionalIndemnityPolicyNumber" className="block text-sm font-medium text-neutral-700 mb-2">
+                          Policy Number
+                        </label>
+                        <input
+                          type="text"
+                          id="professionalIndemnityPolicyNumber"
+                          name="professionalIndemnityPolicyNumber"
+                          value={formData.professionalIndemnityPolicyNumber}
+                          onChange={handleChange}
+                          className="input"
+                          placeholder="PI-123456789"
+                        />
+                      </div>
+                      <div>
+                        <label htmlFor="professionalIndemnityInsurer" className="block text-sm font-medium text-neutral-700 mb-2">
+                          Insurer
+                        </label>
+                        <input
+                          type="text"
+                          id="professionalIndemnityInsurer"
+                          name="professionalIndemnityInsurer"
+                          value={formData.professionalIndemnityInsurer}
+                          onChange={handleChange}
+                          className="input"
+                          placeholder="Aviva, Zurich, AXA"
+                        />
+                      </div>
+                      <div className="md:col-span-2">
+                        <label htmlFor="professionalIndemnityDocUrl" className="block text-sm font-medium text-neutral-700 mb-2">
+                          Certificate URL (optional)
+                        </label>
+                        <input
+                          type="url"
+                          id="professionalIndemnityDocUrl"
+                          name="professionalIndemnityDocUrl"
+                          value={formData.professionalIndemnityDocUrl}
+                          onChange={handleChange}
+                          className="input"
+                          placeholder="https://..."
+                        />
+                      </div>
                     </div>
                   </div>
                 </div>

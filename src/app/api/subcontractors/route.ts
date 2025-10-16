@@ -8,12 +8,21 @@ import { z } from 'zod';
 const createSubcontractorSchema = z.object({
   // Basic Details
   companyName: z.string().min(1, 'Company name is required'),
+  legalEntityType: z.enum(['LIMITED_COMPANY', 'SOLE_TRADER', 'PARTNERSHIP', 'LLP', 'PLC', 'CHARITY', 'OTHER']),
   companyNumber: z.string().optional(),
   vatNumber: z.string().optional(),
-  contactName: z.string().optional(),
-  email: z.string().email('Invalid email').optional().or(z.literal('')),
-  phone: z.string().optional(),
+  contactName: z.string().min(1, 'Contact name is required'),
+  email: z.string().email('Invalid email').min(1, 'Email is required'),
+  phone: z.string().min(1, 'Phone is required'),
+  website: z.string().optional(),
+  numberOfEmployees: z.number().optional(),
+  tradeSpecialties: z.array(z.string()).default([]),
   utr: z.string().min(10, 'Valid UTR required'),
+  ir35Status: z.enum(['OUTSIDE', 'INSIDE', 'NOT_APPLICABLE']).optional(),
+
+  // Emergency Contact
+  emergencyContactName: z.string().optional(),
+  emergencyContactPhone: z.string().optional(),
 
   // Address
   addressLine1: z.string().optional(),
@@ -26,11 +35,34 @@ const createSubcontractorSchema = z.object({
   cisStatus: z.enum(['GROSS', 'STANDARD', 'HIGHER', 'NOT_VERIFIED']).optional(),
   cisDeductionRate: z.number().min(0).max(30).optional(),
 
+  // CSCS & Qualifications
+  cscsCardNumber: z.string().optional(),
+  cscsCardType: z.string().optional(),
+  cscsCardExpiresAt: z.string().optional(),
+
+  // Health & Safety Accreditations
+  chasAccredited: z.boolean().default(false),
+  chasExpiresAt: z.string().optional(),
+  safeContractorAccredited: z.boolean().default(false),
+  safeContractorExpiresAt: z.string().optional(),
+  constructionlineAccredited: z.boolean().default(false),
+  constructionlineExpiresAt: z.string().optional(),
+  otherAccreditations: z.array(z.string()).default([]),
+
   // Insurance
   publicLiabilityExpiresAt: z.string().optional(),
   publicLiabilityAmount: z.number().optional(),
+  publicLiabilityPolicyNumber: z.string().optional(),
+  publicLiabilityInsurer: z.string().optional(),
+  publicLiabilityDocUrl: z.string().optional(),
   employersLiabilityExpiresAt: z.string().optional(),
+  employersLiabilityPolicyNumber: z.string().optional(),
+  employersLiabilityInsurer: z.string().optional(),
+  employersLiabilityDocUrl: z.string().optional(),
   professionalIndemnityExpiresAt: z.string().optional(),
+  professionalIndemnityPolicyNumber: z.string().optional(),
+  professionalIndemnityInsurer: z.string().optional(),
+  professionalIndemnityDocUrl: z.string().optional(),
 
   // Payment Terms
   paymentTermsDays: z.number().default(30),
@@ -147,8 +179,10 @@ export async function POST(request: Request) {
     const validation = createSubcontractorSchema.safeParse(body);
 
     if (!validation.success) {
+      const errorMessage = validation.error.errors?.[0]?.message || 'Validation failed';
+      console.error('Validation error:', validation.error.errors);
       return NextResponse.json(
-        { error: validation.error.errors[0].message },
+        { error: errorMessage, errors: validation.error.errors },
         { status: 400 }
       );
     }
@@ -164,12 +198,19 @@ export async function POST(request: Request) {
       data: {
         companyId: session.user.companyId,
         companyName: data.companyName,
+        legalEntityType: data.legalEntityType,
         companyNumber: data.companyNumber,
         vatNumber: data.vatNumber,
         contactName: data.contactName,
-        email: data.email || null,
+        email: data.email,
         phone: data.phone,
+        website: data.website,
+        numberOfEmployees: data.numberOfEmployees,
+        tradeSpecialties: data.tradeSpecialties,
         utr: data.utr,
+        ir35Status: data.ir35Status,
+        emergencyContactName: data.emergencyContactName,
+        emergencyContactPhone: data.emergencyContactPhone,
         addressLine1: data.addressLine1,
         addressLine2: data.addressLine2,
         city: data.city,
@@ -177,10 +218,29 @@ export async function POST(request: Request) {
         country: data.country,
         cisStatus: data.cisStatus,
         cisDeductionRate: data.cisDeductionRate,
+        cscsCardNumber: data.cscsCardNumber,
+        cscsCardType: data.cscsCardType,
+        cscsCardExpiresAt: data.cscsCardExpiresAt ? new Date(data.cscsCardExpiresAt) : null,
+        chasAccredited: data.chasAccredited,
+        chasExpiresAt: data.chasExpiresAt ? new Date(data.chasExpiresAt) : null,
+        safeContractorAccredited: data.safeContractorAccredited,
+        safeContractorExpiresAt: data.safeContractorExpiresAt ? new Date(data.safeContractorExpiresAt) : null,
+        constructionlineAccredited: data.constructionlineAccredited,
+        constructionlineExpiresAt: data.constructionlineExpiresAt ? new Date(data.constructionlineExpiresAt) : null,
+        otherAccreditations: data.otherAccreditations,
         publicLiabilityExpiresAt: data.publicLiabilityExpiresAt ? new Date(data.publicLiabilityExpiresAt) : null,
         publicLiabilityAmount: data.publicLiabilityAmount,
+        publicLiabilityPolicyNumber: data.publicLiabilityPolicyNumber,
+        publicLiabilityInsurer: data.publicLiabilityInsurer,
+        publicLiabilityDocUrl: data.publicLiabilityDocUrl,
         employersLiabilityExpiresAt: data.employersLiabilityExpiresAt ? new Date(data.employersLiabilityExpiresAt) : null,
+        employersLiabilityPolicyNumber: data.employersLiabilityPolicyNumber,
+        employersLiabilityInsurer: data.employersLiabilityInsurer,
+        employersLiabilityDocUrl: data.employersLiabilityDocUrl,
         professionalIndemnityExpiresAt: data.professionalIndemnityExpiresAt ? new Date(data.professionalIndemnityExpiresAt) : null,
+        professionalIndemnityPolicyNumber: data.professionalIndemnityPolicyNumber,
+        professionalIndemnityInsurer: data.professionalIndemnityInsurer,
+        professionalIndemnityDocUrl: data.professionalIndemnityDocUrl,
         paymentTermsDays: data.paymentTermsDays,
         retentionPercentage: data.retentionPercentage,
         earlyPaymentDiscount: data.earlyPaymentDiscount,
