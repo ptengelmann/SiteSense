@@ -78,7 +78,7 @@ export default async function DashboardPage() {
               </svg>
               Add Subcontractor
             </Link>
-            <button className="btn btn-primary btn-md justify-start">
+            <Link href="/dashboard/invoices/new" className="btn btn-primary btn-md justify-start">
               <svg
                 className="w-5 h-5 mr-2"
                 fill="none"
@@ -93,8 +93,8 @@ export default async function DashboardPage() {
                 />
               </svg>
               Create Invoice
-            </button>
-            <button className="btn btn-primary btn-md justify-start">
+            </Link>
+            <Link href="/dashboard/projects/new" className="btn btn-primary btn-md justify-start">
               <svg
                 className="w-5 h-5 mr-2"
                 fill="none"
@@ -109,7 +109,7 @@ export default async function DashboardPage() {
                 />
               </svg>
               New Project
-            </button>
+            </Link>
           </div>
         </div>
 
