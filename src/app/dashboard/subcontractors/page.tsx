@@ -1,6 +1,7 @@
 import { auth } from '@/lib/auth';
 import { redirect } from 'next/navigation';
 import Link from 'next/link';
+import DashboardLayout from '@/components/dashboard/DashboardLayout';
 
 export default async function SubcontractorsPage() {
   const session = await auth();
@@ -10,7 +11,8 @@ export default async function SubcontractorsPage() {
   }
 
   return (
-    <div className="space-y-6">
+    <DashboardLayout>
+      <div className="space-y-6">
       {/* Header */}
       <div className="flex items-center justify-between">
         <div>
@@ -115,5 +117,6 @@ export default async function SubcontractorsPage() {
         </div>
       </div>
     </div>
+    </DashboardLayout>
   );
 }

@@ -3,6 +3,7 @@
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
 import Link from 'next/link';
+import DashboardLayout from '@/components/dashboard/DashboardLayout';
 
 export default function NewSubcontractorPage() {
   const router = useRouter();
@@ -126,7 +127,8 @@ export default function NewSubcontractorPage() {
   };
 
   return (
-    <div className="max-w-4xl mx-auto space-y-6">
+    <DashboardLayout>
+      <div className="space-y-6">
       {/* Header */}
       <div className="flex items-center gap-4">
         <Link
@@ -842,6 +844,7 @@ export default function NewSubcontractorPage() {
           </div>
         </div>
       </form>
-    </div>
+      </div>
+    </DashboardLayout>
   );
 }

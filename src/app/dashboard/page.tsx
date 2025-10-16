@@ -61,7 +61,7 @@ export default async function DashboardPage() {
             Quick Actions
           </h2>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-            <button className="btn btn-primary btn-md justify-start">
+            <Link href="/dashboard/subcontractors/new" className="btn btn-primary btn-md justify-start">
               <svg
                 className="w-5 h-5 mr-2"
                 fill="none"
@@ -76,7 +76,7 @@ export default async function DashboardPage() {
                 />
               </svg>
               Add Subcontractor
-            </button>
+            </Link>
             <button className="btn btn-primary btn-md justify-start">
               <svg
                 className="w-5 h-5 mr-2"
