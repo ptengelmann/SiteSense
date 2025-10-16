@@ -106,27 +106,77 @@ enum SubscriptionStatus {
 model Subcontractor {
   id                        String    @id @default(uuid())
   companyId                 String
+
+  // Basic Details
   companyName               String
+  companyNumber             String?   // Companies House number
+  vatNumber                 String?
   contactName               String?
   email                     String?
   phone                     String?
-  utr                       String  // Unique Taxpayer Reference
-  cisStatus                 CISStatus?
-  cisVerifiedAt             DateTime?
-  cisVerificationExpiresAt  DateTime?
-  cisVerificationReference  String?
+  utr                       String    // Unique Taxpayer Reference
+
+  // Address
   addressLine1              String?
   addressLine2              String?
   city                      String?
   postcode                  String?
-  insuranceExpiresAt        DateTime?
-  insuranceDocumentUrl      String?
+  country                   String    @default("GB")
+
+  // CIS Compliance
+  cisStatus                 CISStatus?
+  cisVerifiedAt             DateTime?
+  cisVerificationExpiresAt  DateTime?
+  cisVerificationReference  String?
+  cisDeductionRate          Float?    @db.DoublePrecision // 0%, 20%, or 30%
+
+  // Insurance & Compliance
+  publicLiabilityExpiresAt  DateTime?
+  publicLiabilityAmount     Float?    @db.DoublePrecision
+  publicLiabilityDocUrl     String?
+  employersLiabilityExpiresAt DateTime?
+  employersLiabilityDocUrl  String?
+  professionalIndemnityExpiresAt DateTime?
+  professionalIndemnityDocUrl String?
+
+  // Payment Terms
+  paymentTermsDays          Int       @default(30) // 30, 60, 90 days
+  retentionPercentage       Float     @default(0) @db.DoublePrecision // 0-10%
+  earlyPaymentDiscount      Float?    @db.DoublePrecision
+
+  // Bank Details (encrypted in production)
+  bankName                  String?
+  bankAccountName           String?
+  bankAccountNumber         String?   // Last 4 digits only for display
+  bankSortCode              String?
+
+  // Performance Metrics
   performanceScore          Float     @default(0) @db.DoublePrecision
+  riskScore                 String?   // GREEN, AMBER, RED
   totalPaid                 Float     @default(0) @db.DoublePrecision
   totalInvoices             Int       @default(0)
-  onTimePercentage          Float     @default(0) @db.DoublePrecision
+  onTimeDeliveryRate        Float     @default(0) @db.DoublePrecision
+  invoiceAccuracyRate       Float     @default(0) @db.DoublePrecision
+  disputeCount              Int       @default(0)
+  averageResponseTime       Int?      // hours
+
+  // GDPR Compliance
+  dataConsentGiven          Boolean   @default(false)
+  dataConsentDate           DateTime?
+  dataProcessingPurpose     String?   @db.Text // "CIS verification, payment processing"
+  dataRetentionUntil        DateTime? // 7 years after last transaction per HMRC
+  lastDataAccess            DateTime?
+  gdprDataExportedAt        DateTime?
+  scheduledForDeletion      Boolean   @default(false)
+  deletionRequestedAt       DateTime?
+  legalBasisForProcessing   String?   @default("Contract") // Contract, Legal Obligation, Legitimate Interest
+
+  // Status & Meta
   isActive                  Boolean   @default(true)
+  archivedAt                DateTime?
   notes                     String?   @db.Text
+  internalRating            Int?      // 1-5 stars
+  tags                      String[]  // ["Preferred", "High Value", "Specialist"]
   createdAt                 DateTime  @default(now())
   updatedAt                 DateTime  @updatedAt
 
@@ -138,6 +188,9 @@ model Subcontractor {
   @@index([companyId])
   @@index([utr])
   @@index([cisVerificationExpiresAt])
+  @@index([publicLiabilityExpiresAt])
+  @@index([dataRetentionUntil])
+  @@index([scheduledForDeletion])
   @@map("subcontractors")
 }
 
