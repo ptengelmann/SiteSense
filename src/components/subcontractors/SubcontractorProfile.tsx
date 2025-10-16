@@ -3,6 +3,7 @@
 import { useState } from 'react';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
+import EntityDocuments from '@/components/documents/EntityDocuments';
 
 interface SubcontractorProfileProps {
   subcontractor: any;
@@ -501,13 +502,19 @@ export default function SubcontractorProfile({ subcontractor }: SubcontractorPro
 
           {/* Documents Tab */}
           {activeTab === 'documents' && (
-            <div className="text-center py-12">
-              <svg className="w-12 h-12 mx-auto text-neutral-300 mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M7 21h10a2 2 0 002-2V9.414a1 1 0 00-.293-.707l-5.414-5.414A1 1 0 0012.586 3H7a2 2 0 00-2 2v14a2 2 0 002 2z" />
-              </svg>
-              <p className="text-neutral-600 mb-4">Document management coming soon</p>
-              <p className="text-sm text-neutral-500">Upload insurance certificates, CIS verifications, and other documents</p>
-            </div>
+            <EntityDocuments
+              entityType="Subcontractor"
+              entityId={subcontractor.id}
+              allowedCategories={[
+                'INSURANCE_CERTIFICATE',
+                'CIS_CERTIFICATE',
+                'QUALIFICATION',
+                'HEALTH_SAFETY',
+                'PHOTO',
+                'CONTRACT',
+                'OTHER',
+              ]}
+            />
           )}
 
           {/* CIS History Tab */}

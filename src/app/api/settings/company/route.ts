@@ -6,7 +6,6 @@ import { z } from 'zod';
 const companySchema = z.object({
   name: z.string().min(1, 'Company name is required'),
   vatNumber: z.string().optional(),
-  cisRegistrationNumber: z.string().optional(),
   companyNumber: z.string().optional(),
   addressLine1: z.string().optional(),
   addressLine2: z.string().optional(),
@@ -29,7 +28,6 @@ export async function GET() {
       select: {
         name: true,
         vatNumber: true,
-        cisRegistrationNumber: true,
         companyNumber: true,
         addressLine1: true,
         addressLine2: true,
@@ -70,7 +68,6 @@ export async function PUT(request: Request) {
       data: {
         name: validatedData.name,
         vatNumber: validatedData.vatNumber || null,
-        cisRegistrationNumber: validatedData.cisRegistrationNumber || null,
         companyNumber: validatedData.companyNumber || null,
         addressLine1: validatedData.addressLine1 || null,
         addressLine2: validatedData.addressLine2 || null,

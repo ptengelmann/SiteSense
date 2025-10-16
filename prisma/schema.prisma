@@ -54,24 +54,25 @@ enum UserRole {
 // ============================================
 
 model Company {
-  id                  String   @id @default(uuid())
-  name                String
-  companyNumber       String?
-  vatNumber           String?
-  addressLine1        String?
-  addressLine2        String?
-  city                String?
-  postcode            String?
-  country             String   @default("GB")
-  phone               String?
-  email               String?
-  website             String?
-  subscriptionTier    SubscriptionTier @default(STARTER)
-  subscriptionStatus  SubscriptionStatus @default(TRIAL)
-  trialEndsAt         DateTime?
-  stripeCustomerId    String?
-  createdAt           DateTime @default(now())
-  updatedAt           DateTime @updatedAt
+  id                    String   @id @default(uuid())
+  name                  String
+  companyNumber         String?
+  vatNumber             String?
+  cisRegistrationNumber String?
+  addressLine1          String?
+  addressLine2          String?
+  city                  String?
+  postcode              String?
+  country               String   @default("GB")
+  phone                 String?
+  email                 String?
+  website               String?
+  subscriptionTier      SubscriptionTier @default(STARTER)
+  subscriptionStatus    SubscriptionStatus @default(TRIAL)
+  trialEndsAt           DateTime?
+  stripeCustomerId      String?
+  createdAt             DateTime @default(now())
+  updatedAt             DateTime @updatedAt
 
   // Relations
   users               User[]
@@ -80,6 +81,7 @@ model Company {
   invoices            Invoice[]
   paymentRuns         PaymentRun[]
   integrations        Integration[]
+  documents           Document[]
   auditLogs           AuditLog[]
 
   @@index([subscriptionStatus])
@@ -642,6 +644,60 @@ enum IntegrationProvider {
   HMRC
   XERO
   QUICKBOOKS
+}
+
+// ============================================
+// DOCUMENTS (General Document Management)
+// ============================================
+
+model Document {
+  id           String   @id @default(uuid())
+  companyId    String
+
+  // Document Details
+  title        String
+  description  String?  @db.Text
+  fileName     String
+  fileUrl      String
+  fileSize     Int?     // in bytes
+  mimeType     String?
+  category     DocumentCategory
+
+  // Entity Relationship (polymorphic)
+  entityType   String?  // "Subcontractor", "Project", "Invoice", etc.
+  entityId     String?  // ID of the related entity
+
+  // Metadata
+  uploadedBy   String?
+  tags         String[]
+  isArchived   Boolean  @default(false)
+  archivedAt   DateTime?
+  expiresAt    DateTime? // For time-sensitive documents like certificates
+
+  // Timestamps
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+
+  // Relations
+  company      Company  @relation(fields: [companyId], references: [id], onDelete: Cascade)
+
+  @@index([companyId])
+  @@index([entityType, entityId])
+  @@index([category])
+  @@index([expiresAt])
+  @@map("documents")
+}
+
+enum DocumentCategory {
+  INVOICE
+  CONTRACT
+  INSURANCE_CERTIFICATE
+  CIS_CERTIFICATE
+  QUALIFICATION
+  HEALTH_SAFETY
+  PHOTO
+  REPORT
+  OTHER
 }
 
 // ============================================

@@ -14,7 +14,6 @@ export default function SettingsPage() {
   const [companyData, setCompanyData] = useState({
     name: '',
     vatNumber: '',
-    cisRegistrationNumber: '',
     companyNumber: '',
     addressLine1: '',
     addressLine2: '',
@@ -204,15 +203,6 @@ export default function SettingsPage() {
                         onChange={(e) => setCompanyData({ ...companyData, vatNumber: e.target.value })}
                         className="input"
                         placeholder="GB123456789"
-                      />
-                    </div>
-                    <div>
-                      <label className="label">CIS Registration Number</label>
-                      <input
-                        type="text"
-                        value={companyData.cisRegistrationNumber}
-                        onChange={(e) => setCompanyData({ ...companyData, cisRegistrationNumber: e.target.value })}
-                        className="input"
                       />
                     </div>
                   </div>

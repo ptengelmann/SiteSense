@@ -4,6 +4,7 @@ import { notFound } from 'next/navigation';
 import Link from 'next/link';
 import DashboardLayout from '@/components/dashboard/DashboardLayout';
 import InvoiceActions from '@/components/invoices/InvoiceActions';
+import EntityDocuments from '@/components/documents/EntityDocuments';
 import { db } from '@/lib/db';
 
 export default async function InvoiceDetailPage({ params }: { params: { id: string } }) {
@@ -313,6 +314,15 @@ export default async function InvoiceDetailPage({ params }: { params: { id: stri
                   </div>
                 )}
               </div>
+            </div>
+
+            {/* Documents */}
+            <div className="card p-6">
+              <EntityDocuments
+                entityType="Invoice"
+                entityId={invoice.id}
+                allowedCategories={['INVOICE', 'CONTRACT', 'PHOTO', 'OTHER']}
+              />
             </div>
           </div>
 
