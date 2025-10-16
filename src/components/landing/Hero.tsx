@@ -8,20 +8,20 @@ export default function Hero() {
           {/* Badge */}
           <div className="inline-flex items-center space-x-2 px-4 py-1.5 rounded-full bg-primary-50 border border-primary-100 mb-8 animate-fade-in">
             <div className="w-2 h-2 rounded-full bg-primary-500 animate-pulse"></div>
-            <span className="text-sm text-primary-700 font-medium">AI-Powered Construction Management</span>
+            <span className="text-sm text-primary-700 font-medium">AI-Powered CIS Compliance</span>
           </div>
 
           {/* Heading */}
           <h1 className="text-5xl lg:text-6xl font-bold text-neutral-900 mb-6 animate-slide-up">
-            Reduce Payment Cycles
+            Cut Invoice Processing
             <br />
-            <span className="text-primary-600">from 83 to 30 days</span>
+            <span className="text-primary-600">from 3 hours to 20 minutes</span>
           </h1>
 
           {/* Subheading */}
           <p className="text-xl text-neutral-600 mb-10 max-w-2xl mx-auto leading-relaxed animate-slide-up" style={{ animationDelay: '0.1s' }}>
-            AI-powered invoice validation and automated CIS compliance for UK construction companies.
-            Save 10+ hours per week on subcontractor management.
+            The only AI-powered CIS compliance platform built for UK main contractors.
+            Catch invoice fraud, automate CIS calculations, and slash admin time by 80%.
           </p>
 
           {/* CTA Buttons */}

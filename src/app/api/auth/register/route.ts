@@ -1,7 +1,9 @@
 import { NextResponse } from 'next/server';
 import { hash } from 'bcryptjs';
+import { nanoid } from 'nanoid';
 import { db } from '@/lib/db';
 import { z } from 'zod';
+import { sendWelcomeEmail } from '@/lib/email/send';
 
 const registerSchema = z.object({
   firstName: z.string().min(1, 'First name is required'),
@@ -41,6 +43,10 @@ export async function POST(request: Request) {
     // Hash password
     const passwordHash = await hash(password, 10);
 
+    // Generate email verification token (24-hour expiry)
+    const verificationToken = nanoid(32);
+    const verificationExpires = new Date(Date.now() + 24 * 60 * 60 * 1000);
+
     // Create company and user in a transaction
     const result = await db.$transaction(async (tx) => {
       // Create company
@@ -64,6 +70,8 @@ export async function POST(request: Request) {
           role: 'ADMIN', // First user is always admin
           companyId: company.id,
           emailVerified: false,
+          emailVerificationToken: verificationToken,
+          emailVerificationExpires: verificationExpires,
           isActive: true,
         },
       });
@@ -71,9 +79,21 @@ export async function POST(request: Request) {
       return { user, company };
     });
 
+    // Send welcome email with verification link (don't await - send async)
+    // If this fails, the user can still log in and we'll send a "resend verification" option
+    sendWelcomeEmail({
+      to: email,
+      firstName,
+      companyName,
+      verificationToken,
+    }).catch((error) => {
+      console.error('Failed to send welcome email:', error);
+      // Log but don't fail registration - user can resend verification email later
+    });
+
     return NextResponse.json({
       success: true,
-      message: 'Account created successfully',
+      message: 'Account created successfully! Please check your email to verify your account.',
       user: {
         id: result.user.id,
         email: result.user.email,
