@@ -8,7 +8,7 @@
 1. Go to https://resend.com
 2. Sign up with your email
 3. Go to API Keys: https://resend.com/api-keys
-4. Create new API key, copy it
+4. Create new API key, copy it   
 5. Add to `.env.local`:
    ```
    RESEND_API_KEY="re_your_key_here"

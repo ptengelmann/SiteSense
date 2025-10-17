@@ -180,3 +180,91 @@ export async function analyzeInvoice(
     throw new Error('Failed to analyze invoice. Please try again.');
   }
 }
+
+/**
+ * Convenience function to analyze invoice with automatic history lookup
+ * Used by email webhook and manual invoice upload
+ */
+export async function analyzeInvoiceWithAI(
+  pdfBase64: string,
+  context: {
+    subcontractorId: string;
+    subcontractorName: string;
+    projectId?: string;
+  }
+): Promise<{
+  invoiceNumber: string;
+  invoiceDate: Date;
+  dueDate: Date | null;
+  totalAmount: number;
+  vat: number | null;
+  lineItems: any[];
+  riskScore: number;
+  riskLevel: 'LOW' | 'MEDIUM' | 'HIGH';
+  fraudChecks: Array<{
+    type: string;
+    severity: string;
+    issue: string;
+    recommendation: string;
+  }>;
+  confidence: number;
+}> {
+  const { db } = await import('@/lib/db');
+
+  // Build subcontractor history
+  const invoices = await db.invoice.findMany({
+    where: { subcontractorId: context.subcontractorId },
+    select: {
+      amount: true,
+      invoiceNumber: true,
+      invoiceDate: true,
+    },
+    orderBy: { invoiceDate: 'desc' },
+    take: 20,
+  });
+
+  const history: SubcontractorHistory = {
+    totalInvoices: invoices.length,
+    averageAmount: invoices.length > 0
+      ? invoices.reduce((sum, inv) => sum + inv.amount, 0) / invoices.length
+      : 0,
+    lastInvoiceDate: invoices[0]?.invoiceDate?.toISOString() || null,
+    invoiceFrequency: invoices.length > 1 ? 'Regular' : 'First invoice',
+    previousInvoiceNumbers: invoices.map(inv => inv.invoiceNumber),
+  };
+
+  // Get project budget if projectId provided
+  let projectBudget: number | undefined;
+  if (context.projectId) {
+    const project = await db.project.findUnique({
+      where: { id: context.projectId },
+      select: { budget: true, actualCost: true },
+    });
+
+    if (project) {
+      projectBudget = project.budget - (project.actualCost || 0);
+    }
+  }
+
+  // Run AI analysis
+  const result = await analyzeInvoice(pdfBase64, history, projectBudget);
+
+  // Transform to simplified format
+  return {
+    invoiceNumber: result.extractedData.invoiceNumber,
+    invoiceDate: new Date(result.extractedData.date),
+    dueDate: result.extractedData.dueDate ? new Date(result.extractedData.dueDate) : null,
+    totalAmount: result.extractedData.amount,
+    vat: result.extractedData.vat || null,
+    lineItems: result.extractedData.lineItems,
+    riskScore: result.fraudAnalysis.riskScore,
+    riskLevel: result.fraudAnalysis.riskLevel,
+    fraudChecks: result.fraudAnalysis.flags.map(flag => ({
+      type: flag.type,
+      severity: flag.severity,
+      issue: flag.reason,
+      recommendation: flag.recommendation,
+    })),
+    confidence: result.extractedData.confidence,
+  };
+}

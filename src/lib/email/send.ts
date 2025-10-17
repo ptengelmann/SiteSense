@@ -194,3 +194,37 @@ export async function sendEmail({
     throw error;
   }
 }
+
+// Simple notification email (plain text with optional HTML)
+export async function sendEmailNotification({
+  to,
+  subject,
+  text,
+  html,
+}: {
+  to: string;
+  subject: string;
+  text: string;
+  html?: string;
+}) {
+  try {
+    const { data, error } = await resend.emails.send({
+      from: FROM_EMAIL,
+      to,
+      subject,
+      text,
+      html: html || text.replace(/\n/g, '<br>'), // Simple HTML fallback
+    });
+
+    if (error) {
+      console.error('Failed to send notification:', error);
+      throw new Error(`Failed to send notification: ${error.message}`);
+    }
+
+    console.log('Notification sent successfully:', data?.id);
+    return data;
+  } catch (error) {
+    console.error('Error sending notification:', error);
+    throw error;
+  }
+}
