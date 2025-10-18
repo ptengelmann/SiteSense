@@ -5,9 +5,9 @@ export default function CTA() {
     <section className="py-20 bg-gradient-blue-subtle">
       <div className="max-w-4xl mx-auto px-6 lg:px-8 text-center">
         {/* Badge */}
-        <div className="inline-flex items-center space-x-2 px-4 py-1.5 rounded-full bg-primary-100 border border-primary-200 mb-6">
-          <div className="w-2 h-2 rounded-full bg-primary-500 animate-pulse"></div>
-          <span className="text-sm text-primary-700 font-medium">Ready to get started?</span>
+        <div className="inline-flex items-center space-x-2 px-3 py-1.5 rounded-full bg-primary-50 border border-primary-200 mb-6">
+          <div className="w-1.5 h-1.5 rounded-full bg-primary-500 animate-pulse"></div>
+          <span className="text-xs font-medium text-primary-700 tracking-wide uppercase">Ready to get started?</span>
         </div>
 
         {/* Heading */}

@@ -8,9 +8,9 @@ export default function Hero() {
           {/* Left Column - Content */}
           <div className="max-w-2xl">
             {/* Badge */}
-            <div className="inline-flex items-center space-x-2 px-4 py-1.5 rounded-full bg-primary-50 border border-primary-100 mb-8 animate-fade-in">
-              <div className="w-2 h-2 rounded-full bg-primary-500 animate-pulse"></div>
-              <span className="text-sm text-primary-700 font-medium">AI-Powered Invoice Processing</span>
+            <div className="inline-flex items-center space-x-2 px-3 py-1.5 rounded-full bg-primary-50 border border-primary-200 mb-8 animate-fade-in">
+              <div className="w-1.5 h-1.5 rounded-full bg-primary-500 animate-pulse"></div>
+              <span className="text-xs font-medium text-primary-700 tracking-wide uppercase">AI-Powered Invoice Processing</span>
             </div>
 
             {/* Heading */}
@@ -29,18 +29,18 @@ export default function Hero() {
             </p>
 
             {/* Stats Row */}
-            <div className="grid grid-cols-3 gap-4 mb-8 animate-fade-in" style={{ animationDelay: '0.2s' }}>
-              <div className="text-center p-4 bg-primary-50 rounded-xl border border-primary-100">
-                <div className="text-3xl font-bold text-primary-600">95%</div>
-                <div className="text-sm text-neutral-600 mt-1">AI Accuracy</div>
+            <div className="grid grid-cols-3 gap-3 mb-8 animate-fade-in" style={{ animationDelay: '0.2s' }}>
+              <div className="text-center p-3 bg-white rounded-lg border border-neutral-200">
+                <div className="text-2xl font-semibold text-primary-600">95%</div>
+                <div className="text-xs text-neutral-500 mt-0.5">AI Accuracy</div>
               </div>
-              <div className="text-center p-4 bg-primary-50 rounded-xl border border-primary-100">
-                <div className="text-3xl font-bold text-primary-600">70%</div>
-                <div className="text-sm text-neutral-600 mt-1">Auto-Approved</div>
+              <div className="text-center p-3 bg-white rounded-lg border border-neutral-200">
+                <div className="text-2xl font-semibold text-primary-600">70%</div>
+                <div className="text-xs text-neutral-500 mt-0.5">Auto-Approved</div>
               </div>
-              <div className="text-center p-4 bg-primary-50 rounded-xl border border-primary-100">
-                <div className="text-3xl font-bold text-primary-600">£50k</div>
-                <div className="text-sm text-neutral-600 mt-1">Saved/Year</div>
+              <div className="text-center p-3 bg-white rounded-lg border border-neutral-200">
+                <div className="text-2xl font-semibold text-primary-600">£50k</div>
+                <div className="text-xs text-neutral-500 mt-0.5">Saved/Year</div>
               </div>
             </div>
 
@@ -73,22 +73,22 @@ export default function Hero() {
             {/* Dashboard Preview */}
             <div className="relative">
               {/* Main Card */}
-              <div className="bg-white rounded-2xl shadow-2xl border border-neutral-200 p-6">
+              <div className="bg-white rounded-xl shadow-lg border border-neutral-200 p-5">
                 {/* Invoice Header */}
-                <div className="flex items-center justify-between mb-6">
+                <div className="flex items-center justify-between mb-5">
                   <div className="flex items-center gap-3">
-                    <div className="w-12 h-12 rounded-xl gradient-blue flex items-center justify-center">
-                      <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <div className="w-10 h-10 rounded-lg gradient-red flex items-center justify-center">
+                      <svg className="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
                       </svg>
                     </div>
                     <div>
-                      <div className="font-semibold text-neutral-900">Invoice #2025-042</div>
-                      <div className="text-sm text-neutral-500">ABC Electrical Ltd</div>
+                      <div className="font-medium text-neutral-900 text-sm">Invoice #2025-042</div>
+                      <div className="text-xs text-neutral-500">ABC Electrical Ltd</div>
                     </div>
                   </div>
-                  <div className="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium bg-green-100 text-green-800 border border-green-200">
-                    <div className="w-1.5 h-1.5 rounded-full bg-green-500 mr-2"></div>
+                  <div className="inline-flex items-center px-2.5 py-1 rounded-full text-xs font-medium bg-green-50 text-green-700 border border-green-200">
+                    <div className="w-1 h-1 rounded-full bg-green-500 mr-1.5"></div>
                     Auto-Approved
                   </div>
                 </div>
@@ -129,14 +129,14 @@ export default function Hero() {
               </div>
 
               {/* Floating Stats */}
-              <div className="absolute -right-4 top-1/4 bg-white rounded-xl shadow-xl border border-neutral-200 p-4 transform rotate-3">
-                <div className="text-xs text-neutral-500 mb-1">Processing Time</div>
-                <div className="text-2xl font-bold text-primary-600">28s</div>
+              <div className="absolute -right-4 top-1/4 bg-white rounded-lg shadow-lg border border-neutral-200 p-3 transform rotate-2">
+                <div className="text-xs text-neutral-500 mb-0.5">Processing Time</div>
+                <div className="text-xl font-semibold text-primary-600">28s</div>
               </div>
 
-              <div className="absolute -left-4 bottom-1/4 bg-white rounded-xl shadow-xl border border-neutral-200 p-4 transform -rotate-3">
-                <div className="text-xs text-neutral-500 mb-1">Time Saved</div>
-                <div className="text-2xl font-bold text-green-600">9m 32s</div>
+              <div className="absolute -left-4 bottom-1/4 bg-white rounded-lg shadow-lg border border-neutral-200 p-3 transform -rotate-2">
+                <div className="text-xs text-neutral-500 mb-0.5">Time Saved</div>
+                <div className="text-xl font-semibold text-green-600">9m 32s</div>
               </div>
             </div>
           </div>

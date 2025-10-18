@@ -9,11 +9,11 @@ export default function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
           {/* Brand Column */}
           <div className="col-span-1 md:col-span-1">
-            <Link href="/" className="flex items-center space-x-2 mb-4">
-              <div className="w-8 h-8 rounded-lg gradient-blue flex items-center justify-center">
-                <span className="text-white font-bold text-sm">S</span>
+            <Link href="/" className="flex items-center space-x-2.5 mb-4">
+              <div className="w-7 h-7 rounded-lg gradient-red flex items-center justify-center">
+                <span className="text-white font-semibold text-sm">S</span>
               </div>
-              <span className="text-lg font-semibold text-neutral-900">SiteSense</span>
+              <span className="text-lg font-medium text-neutral-900">SiteSense</span>
             </Link>
             <p className="text-sm text-neutral-600 mb-4">
               AI-powered subcontractor payment automation for UK construction.
