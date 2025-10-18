@@ -241,7 +241,7 @@ export async function analyzeInvoiceWithAI(
       select: { budget: true, actualCost: true },
     });
 
-    if (project) {
+    if (project && project.budget) {
       projectBudget = project.budget - (project.actualCost || 0);
     }
   }

@@ -150,23 +150,13 @@ export async function POST(request: NextRequest) {
         subcontractorId: subcontractor.id,
         companyId: subcontractor.companyId,
 
-        // Store AI analysis
-        aiAnalysisData: aiResult as any,
-        aiRiskScore: aiResult.riskScore,
-        aiProcessedAt: new Date(),
+        // Store AI analysis results
+        validationStatus: aiResult.riskScore < 30 ? 'PASSED' : aiResult.riskScore < 60 ? 'REVIEW_REQUIRED' : 'FAILED',
+        validationRiskScore: aiResult.riskLevel,
+        validationResult: aiResult as any,
 
         // Store email metadata
-        notes: `Auto-imported from email sent by ${from}\nSubject: ${subject}`,
-
-        // Create audit log
-        auditLogs: {
-          create: {
-            action: initialStatus === 'APPROVED' ? 'AUTO_APPROVED' : 'AUTO_CREATED',
-            performedById: subcontractor.company.users[0]?.email || 'system',
-            details: `Email-to-invoice: ${pdfFilename}. Risk: ${aiResult.riskScore}/100`,
-            timestamp: new Date(),
-          },
-        },
+        description: `Auto-imported from email sent by ${from}\nSubject: ${subject}`,
       },
       include: {
         subcontractor: {
