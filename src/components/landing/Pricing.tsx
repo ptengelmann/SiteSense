@@ -42,11 +42,11 @@ export default function Pricing() {
           {plans.map((plan, index) => (
             <div
               key={index}
-              className="relative rounded-xl border border-primary-200 shadow-lg bg-white p-6"
+              className="relative rounded-2xl border-2 border-primary-500 shadow-2xl bg-white p-8"
             >
               {/* Early Access Badge */}
-              <div className="absolute -top-3 left-1/2 transform -translate-x-1/2">
-                <span className="inline-flex items-center px-3 py-1 rounded-full bg-primary-600 text-white text-xs font-medium shadow-md">
+              <div className="absolute -top-4 left-1/2 transform -translate-x-1/2">
+                <span className="inline-flex items-center px-4 py-1.5 rounded-full bg-primary-500 text-white text-sm font-medium shadow-lg">
                   Early Access
                 </span>
               </div>

@@ -7,15 +7,15 @@ export default function Navbar() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   return (
-    <nav className="fixed top-0 left-0 right-0 z-50 bg-white/90 backdrop-blur-md border-b border-neutral-200">
+    <nav className="fixed top-0 left-0 right-0 z-50 bg-white/80 backdrop-blur-md border-b border-neutral-100">
       <div className="max-w-7xl mx-auto px-6 lg:px-8">
-        <div className="flex items-center justify-between h-14">
+        <div className="flex items-center justify-between h-16">
           {/* Logo */}
-          <Link href="/" className="flex items-center space-x-2.5">
-            <div className="w-7 h-7 rounded-lg gradient-red flex items-center justify-center">
-              <span className="text-white font-semibold text-sm">S</span>
+          <Link href="/" className="flex items-center space-x-2">
+            <div className="w-8 h-8 rounded-lg gradient-blue flex items-center justify-center">
+              <span className="text-white font-bold text-sm">S</span>
             </div>
-            <span className="text-lg font-medium text-neutral-900">SiteSense</span>
+            <span className="text-xl font-semibold text-neutral-900">SiteSense</span>
           </Link>
 
           {/* Desktop Navigation */}
