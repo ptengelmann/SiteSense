@@ -7,7 +7,7 @@ export default function Features() {
         </svg>
       ),
       title: 'AI Invoice OCR',
-      description: 'Claude AI extracts invoice numbers, dates, amounts, and line items with 95% accuracy. No manual typing.',
+      description: 'our AI extracts invoice numbers, dates, amounts, and line items with 95% accuracy. No manual typing.',
       stats: '95% accuracy',
       available: true,
     },

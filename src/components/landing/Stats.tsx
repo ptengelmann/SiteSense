@@ -18,7 +18,7 @@ export default function Stats() {
     {
       number: '95%',
       label: 'AI extraction accuracy',
-      description: 'Claude AI powered invoice OCR',
+      description: 'our AI powered invoice OCR',
     },
   ];
 

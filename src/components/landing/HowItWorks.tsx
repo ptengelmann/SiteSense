@@ -81,7 +81,7 @@ export default function HowItWorks() {
               {/* Content */}
               <h3 className="text-xl font-bold text-neutral-900 mb-3">AI Analyzes & Validates</h3>
               <p className="text-neutral-600 leading-relaxed mb-4">
-                Claude AI extracts data, detects fraud, calculates CIS, and scores risk in 30 seconds.
+                our AI extracts data, detects fraud, calculates CIS, and scores risk in 30 seconds.
               </p>
 
               {/* Feature Pills */}
