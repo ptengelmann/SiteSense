@@ -285,7 +285,7 @@ export default function HowItWorksPage() {
           </p>
           <div className="flex items-center justify-center gap-4">
             <Link href="/register" className="btn btn-primary btn-lg">
-              Start Free Trial
+              Join Early Access
             </Link>
             <Link href="/features" className="btn btn-secondary btn-lg">
               See All Features

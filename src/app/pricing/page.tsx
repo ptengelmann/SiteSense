@@ -29,28 +29,28 @@ export default function PricingPage() {
 
   const faqs = [
     {
-      question: 'Is this ready for production use?',
-      answer: "We're in early access. Core features (invoice OCR, fraud detection, CIS calculations, payment runs) are working and tested. Some advanced features are still being built. You'll get free access to new features as they launch.",
+      question: 'Is this really free?',
+      answer: "Yes! During early access, SiteSense is 100% free. We're focused on building the best product with real user feedback. When we launch paid plans in the future, early access users will get special pricing.",
     },
     {
-      question: 'What happens after the 14-day trial?',
-      answer: 'After your trial ends, you can subscribe to continue. No credit card required for the trial. All your data is preserved.',
+      question: 'Is this ready for production use?',
+      answer: "Core features (invoice OCR, fraud detection, CIS calculations, payment runs) are working and tested. Some advanced features are still being built. You'll get access to new features as they launch.",
     },
     {
       question: 'Are there any usage limits?',
-      answer: "Not yet. During early access, there are no hard limits on subcontractors or invoices. We're focused on building the product, not restricting usage. Fair use policy applies.",
+      answer: "No hard limits during early access. You can add unlimited subcontractors and process unlimited invoices. Fair use policy applies - we're here to support real construction businesses, not stress test the servers.",
     },
     {
-      question: 'Do you offer annual billing?',
-      answer: 'Yes! Pay annually and save 15% (2 months free). Contact us for annual pricing.',
+      question: 'What happens when you start charging?',
+      answer: "Early access users will be grandfathered in with special lifetime pricing. We'll notify you well in advance (at least 60 days) before any charges. You can keep using the free tier or upgrade to access advanced features.",
     },
     {
       question: 'What if I need features that are coming soon?',
-      answer: "Contact us! If you need a specific feature urgently, we can prioritize development or build a custom solution. Early customers help shape our roadmap.",
+      answer: "Contact us! Early customers help shape our roadmap. If you need a specific feature urgently, we can prioritize development. Your feedback directly influences what we build next.",
     },
     {
-      question: 'What payment methods do you accept?',
-      answer: 'We accept all major credit/debit cards and Direct Debit for UK businesses.',
+      question: 'How can I help as an early user?',
+      answer: "Use it daily, report bugs, suggest improvements, and tell us what features matter most. The more feedback you provide, the better the product becomes. Early users are building this with us.",
     },
   ];
 
@@ -62,20 +62,20 @@ export default function PricingPage() {
       <section className="pt-32 pb-20 px-6 lg:px-8 bg-gradient-blue-subtle">
         <div className="max-w-4xl mx-auto text-center">
           <span className="inline-block px-4 py-1.5 rounded-full bg-primary-100 text-primary-700 text-sm font-medium mb-6">
-            Early Access Pricing
+            Free Early Access
           </span>
           <h1 className="text-4xl lg:text-5xl font-bold text-neutral-900 mb-6">
-            Simple, honest pricing
+            Free during early access
           </h1>
           <p className="text-xl text-neutral-600 leading-relaxed mb-8">
-            One price. All core features included. No usage limits during early access.
+            Join now and get lifetime access to core features. Help us build the future of construction payments.
           </p>
           <div className="flex flex-wrap items-center justify-center gap-6 text-sm text-neutral-600">
             <div className="flex items-center gap-2">
               <svg className="w-5 h-5 text-green-500" fill="currentColor" viewBox="0 0 20 20">
                 <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
               </svg>
-              <span>14-day free trial</span>
+              <span>100% free during beta</span>
             </div>
             <div className="flex items-center gap-2">
               <svg className="w-5 h-5 text-green-500" fill="currentColor" viewBox="0 0 20 20">
@@ -87,7 +87,7 @@ export default function PricingPage() {
               <svg className="w-5 h-5 text-green-500" fill="currentColor" viewBox="0 0 20 20">
                 <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
               </svg>
-              <span>Cancel anytime</span>
+              <span>Shape the product</span>
             </div>
           </div>
         </div>
@@ -106,17 +106,16 @@ export default function PricingPage() {
 
             {/* Plan Name */}
             <div className="text-center mb-8 mt-4">
-              <h3 className="text-3xl font-bold text-neutral-900 mb-2">SiteSense</h3>
+              <h3 className="text-3xl font-bold text-neutral-900 mb-2">SiteSense Early Access</h3>
               <p className="text-neutral-600">For UK construction companies</p>
             </div>
 
             {/* Price */}
             <div className="text-center mb-8">
               <div className="flex items-baseline justify-center mb-2">
-                <span className="text-6xl font-bold text-neutral-900">£199</span>
-                <span className="text-neutral-600 ml-2">/month</span>
+                <span className="text-6xl font-bold text-green-600">FREE</span>
               </div>
-              <p className="text-sm text-neutral-500">Billed monthly • No contracts</p>
+              <p className="text-sm text-neutral-500">During early access • Help us build the product</p>
             </div>
 
             {/* CTA Button */}
@@ -124,7 +123,7 @@ export default function PricingPage() {
               href="/register"
               className="block w-full text-center py-4 px-6 rounded-xl font-semibold transition-all mb-8 bg-primary-500 text-white hover:bg-primary-600 text-lg"
             >
-              Start 14-Day Free Trial
+              Join Early Access
             </Link>
 
             {/* What's Included */}
@@ -186,10 +185,10 @@ export default function PricingPage() {
           <div className="mt-12 text-center card p-8 bg-gradient-blue-subtle border-2 border-primary-200">
             <h3 className="text-2xl font-bold text-neutral-900 mb-4">Need something custom?</h3>
             <p className="text-neutral-600 mb-6">
-              Processing 500+ invoices/month? Need on-premise deployment? Want features we haven&apos;t built yet?
+              Processing 500+ invoices/month? Need on-premise deployment? Want features prioritized?
             </p>
             <Link href="/contact" className="btn btn-primary btn-lg">
-              Contact Us for Custom Pricing
+              Contact Us About Enterprise
             </Link>
           </div>
         </div>
@@ -231,10 +230,10 @@ export default function PricingPage() {
             Ready to automate your subcontractor payments?
           </h2>
           <p className="text-lg text-neutral-600 mb-8">
-            Join UK contractors saving hours every week on invoice processing.
+            Join UK contractors saving hours every week on invoice processing. Free during early access.
           </p>
           <Link href="/register" className="btn btn-primary btn-lg">
-            Start 14-Day Free Trial
+            Join Early Access
             <svg className="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
             </svg>

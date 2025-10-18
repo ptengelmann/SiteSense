@@ -49,13 +49,13 @@ export async function POST(request: Request) {
 
     // Create company and user in a transaction
     const result = await db.$transaction(async (tx) => {
-      // Create company
+      // Create company (free early access - no trial period)
       const company = await tx.company.create({
         data: {
           name: companyName,
           subscriptionTier: 'STARTER',
-          subscriptionStatus: 'TRIAL',
-          trialEndsAt: new Date(Date.now() + 14 * 24 * 60 * 60 * 1000), // 14 days trial
+          subscriptionStatus: 'ACTIVE',
+          // No trialEndsAt - early access is free
         },
       });
 
