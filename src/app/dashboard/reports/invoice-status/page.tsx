@@ -26,7 +26,7 @@ export default function InvoiceStatusPage() {
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
             </svg>
           </Link>
-          <h1 className="text-3xl font-bold text-neutral-900">Invoice Status Report</h1>
+          <h1 className="text-3xl text-neutral-900 tracking-tight">Invoice Status Report</h1>
         </div>
 
         {isLoading ? (
@@ -34,31 +34,31 @@ export default function InvoiceStatusPage() {
         ) : data ? (
           <>
             <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
-              <div className="card p-6">
-                <p className="text-sm text-neutral-600">Draft</p>
-                <p className="text-2xl font-bold text-neutral-900 mt-1">{data.byStatus.DRAFT || 0}</p>
+              <div className="rounded-lg p-6 bg-white border border-neutral-200">
+                <p className="text-sm text-neutral-600 font-light">Draft</p>
+                <p className="text-2xl text-neutral-900 mt-1 tracking-tight">{data.byStatus.DRAFT || 0}</p>
                 <p className="text-sm text-neutral-600 mt-2">{formatCurrency(data.amountByStatus.DRAFT || 0)}</p>
               </div>
-              <div className="card p-6">
-                <p className="text-sm text-neutral-600">Approved</p>
-                <p className="text-2xl font-bold text-green-600 mt-1">{data.byStatus.APPROVED || 0}</p>
+              <div className="rounded-lg p-6 bg-white border border-neutral-200">
+                <p className="text-sm text-neutral-600 font-light">Approved</p>
+                <p className="text-2xl text-green-600 mt-1 tracking-tight">{data.byStatus.APPROVED || 0}</p>
                 <p className="text-sm text-neutral-600 mt-2">{formatCurrency(data.amountByStatus.APPROVED || 0)}</p>
               </div>
-              <div className="card p-6">
-                <p className="text-sm text-neutral-600">Paid</p>
-                <p className="text-2xl font-bold text-blue-600 mt-1">{data.byStatus.PAID || 0}</p>
+              <div className="rounded-lg p-6 bg-white border border-neutral-200">
+                <p className="text-sm text-neutral-600 font-light">Paid</p>
+                <p className="text-2xl text-blue-600 mt-1 tracking-tight">{data.byStatus.PAID || 0}</p>
                 <p className="text-sm text-neutral-600 mt-2">{formatCurrency(data.amountByStatus.PAID || 0)}</p>
               </div>
-              <div className="card p-6">
-                <p className="text-sm text-neutral-600">Overdue</p>
-                <p className="text-2xl font-bold text-red-600 mt-1">{data.overdue.count}</p>
+              <div className="rounded-lg p-6 bg-white border border-neutral-200">
+                <p className="text-sm text-neutral-600 font-light">Overdue</p>
+                <p className="text-2xl text-red-600 mt-1 tracking-tight">{data.overdue.count}</p>
                 <p className="text-sm text-neutral-600 mt-2">{formatCurrency(data.overdue.amount)}</p>
               </div>
             </div>
 
             {data.overdue.count > 0 && (
-              <div className="card p-6">
-                <h2 className="text-lg font-semibold text-red-600 mb-4">Overdue Invoices</h2>
+              <div className="rounded-lg p-6 bg-white border border-neutral-200">
+                <h2 className="text-lg text-red-600 mb-4 tracking-tight">Overdue Invoices</h2>
                 <table className="table">
                   <thead>
                     <tr>

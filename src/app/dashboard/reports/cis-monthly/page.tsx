@@ -136,8 +136,8 @@ export default function CISMonthlyReportPage() {
               </svg>
             </Link>
             <div>
-              <h1 className="text-3xl font-bold text-neutral-900">CIS Monthly Return</h1>
-              <p className="text-neutral-600 mt-1">
+              <h1 className="text-3xl text-neutral-900 tracking-tight">CIS Monthly Return</h1>
+              <p className="text-neutral-600 mt-1 font-light">
                 Report for {getMonthName(selectedMonth)} {selectedYear}
               </p>
             </div>
@@ -145,7 +145,7 @@ export default function CISMonthlyReportPage() {
         </div>
 
         {/* Filters & Actions */}
-        <div className="card p-6">
+        <div className="rounded-lg p-6 bg-white border border-neutral-200">
           <div className="flex flex-col md:flex-row gap-4 items-start md:items-center justify-between">
             <div className="flex flex-col md:flex-row gap-4 items-start md:items-center">
               <div>
@@ -171,7 +171,7 @@ export default function CISMonthlyReportPage() {
               <button
                 onClick={fetchReport}
                 disabled={isLoading}
-                className="btn btn-secondary btn-sm"
+                className="btn btn-secondary btn-thin"
               >
                 <svg className="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" />
@@ -181,7 +181,7 @@ export default function CISMonthlyReportPage() {
               <button
                 onClick={exportToCSV}
                 disabled={isLoading || reportData.length === 0}
-                className="btn btn-primary btn-sm"
+                className="btn btn-primary btn-thin"
               >
                 <svg className="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M9 19l3 3m0 0l3-3m-3 3V10" />
@@ -193,7 +193,7 @@ export default function CISMonthlyReportPage() {
         </div>
 
         {/* Info Banner */}
-        <div className="card p-4 bg-amber-50 border border-amber-200">
+        <div className="rounded-lg p-4 bg-amber-50 border border-amber-200">
           <div className="flex items-start gap-3">
             <svg className="w-5 h-5 text-amber-600 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
@@ -214,28 +214,28 @@ export default function CISMonthlyReportPage() {
         {/* Summary Cards */}
         {reportData.length > 0 && (
           <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
-            <div className="card p-6">
-              <p className="text-sm text-neutral-600">Total Gross Payment</p>
-              <p className="text-2xl font-bold text-neutral-900 mt-1">{formatCurrency(totalGross)}</p>
+            <div className="rounded-lg p-6 bg-white border border-neutral-200">
+              <p className="text-sm text-neutral-600 font-light">Total Gross Payment</p>
+              <p className="text-2xl text-neutral-900 mt-1 tracking-tight">{formatCurrency(totalGross)}</p>
             </div>
-            <div className="card p-6">
-              <p className="text-sm text-neutral-600">Total CIS Deduction</p>
-              <p className="text-2xl font-bold text-red-600 mt-1">{formatCurrency(totalCIS)}</p>
+            <div className="rounded-lg p-6 bg-white border border-neutral-200">
+              <p className="text-sm text-neutral-600 font-light">Total CIS Deduction</p>
+              <p className="text-2xl text-red-600 mt-1 tracking-tight">{formatCurrency(totalCIS)}</p>
             </div>
-            <div className="card p-6">
-              <p className="text-sm text-neutral-600">Total Net Payment</p>
-              <p className="text-2xl font-bold text-green-600 mt-1">{formatCurrency(totalNet)}</p>
+            <div className="rounded-lg p-6 bg-white border border-neutral-200">
+              <p className="text-sm text-neutral-600 font-light">Total Net Payment</p>
+              <p className="text-2xl text-green-600 mt-1 tracking-tight">{formatCurrency(totalNet)}</p>
             </div>
-            <div className="card p-6">
-              <p className="text-sm text-neutral-600">Total Invoices</p>
-              <p className="text-2xl font-bold text-neutral-900 mt-1">{totalInvoices}</p>
+            <div className="rounded-lg p-6 bg-white border border-neutral-200">
+              <p className="text-sm text-neutral-600 font-light">Total Invoices</p>
+              <p className="text-2xl text-neutral-900 mt-1 tracking-tight">{totalInvoices}</p>
             </div>
           </div>
         )}
 
         {/* Report Table */}
-        <div className="card p-6">
-          <h2 className="text-lg font-semibold text-neutral-900 mb-4">Subcontractor Breakdown</h2>
+        <div className="rounded-lg p-6 bg-white border border-neutral-200">
+          <h2 className="text-lg text-neutral-900 mb-4 tracking-tight">Subcontractor Breakdown</h2>
 
           {isLoading ? (
             <div className="text-center py-12">

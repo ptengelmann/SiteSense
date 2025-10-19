@@ -66,21 +66,21 @@ export default async function ReportsPage() {
       <div className="space-y-6">
         {/* Header */}
         <div>
-          <h1 className="text-3xl font-bold text-neutral-900">Reports</h1>
-          <p className="text-neutral-600 mt-1">
+          <h1 className="text-3xl text-neutral-900 tracking-tight">Reports</h1>
+          <p className="text-neutral-600 mt-1 font-light">
             Generate business insights and compliance reports
           </p>
         </div>
 
         {/* Info Card */}
-        <div className="card p-6 bg-blue-50 border border-blue-200">
+        <div className="rounded-lg p-6 bg-blue-50 border border-blue-200">
           <div className="flex items-start gap-3">
             <svg className="w-6 h-6 text-blue-600 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
             </svg>
             <div>
-              <h3 className="font-semibold text-neutral-900">Reporting Features</h3>
-              <p className="text-sm text-neutral-700 mt-1">
+              <h3 className="text-neutral-900 tracking-tight">Reporting Features</h3>
+              <p className="text-sm text-neutral-700 mt-1 font-light">
                 All reports can be exported to CSV format for further analysis or HMRC submission.
                 Select a report type below to get started.
               </p>
@@ -94,20 +94,20 @@ export default async function ReportsPage() {
             <Link
               key={report.id}
               href={report.href}
-              className="card p-6 hover:shadow-lg transition-shadow"
+              className="rounded-lg p-6 bg-white border border-neutral-200 hover:shadow-lg transition-shadow"
             >
               <div className="flex items-start gap-4">
                 <div className={`w-16 h-16 rounded-lg ${report.color} flex items-center justify-center flex-shrink-0`}>
                   {report.icon}
                 </div>
                 <div className="flex-1">
-                  <h3 className="text-lg font-semibold text-neutral-900 mb-2">
+                  <h3 className="text-lg text-neutral-900 mb-2 tracking-tight">
                     {report.name}
                   </h3>
-                  <p className="text-sm text-neutral-600 mb-4">
+                  <p className="text-sm text-neutral-600 mb-4 font-light">
                     {report.description}
                   </p>
-                  <div className="flex items-center text-primary-600 text-sm font-medium">
+                  <div className="flex items-center text-primary-600 text-sm">
                     Generate Report
                     <svg className="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
@@ -120,8 +120,8 @@ export default async function ReportsPage() {
         </div>
 
         {/* Quick Stats */}
-        <div className="card p-6">
-          <h2 className="text-lg font-semibold text-neutral-900 mb-4">Report Tips</h2>
+        <div className="rounded-lg p-6 bg-white border border-neutral-200">
+          <h2 className="text-lg text-neutral-900 mb-4 tracking-tight">Report Tips</h2>
           <div className="space-y-3 text-sm text-neutral-700">
             <div className="flex items-start gap-2">
               <svg className="w-5 h-5 text-primary-600 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">

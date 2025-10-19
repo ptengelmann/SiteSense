@@ -38,12 +38,12 @@ export default function SubcontractorPerformancePage() {
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
               </svg>
             </Link>
-            <h1 className="text-3xl font-bold text-neutral-900">Subcontractor Performance</h1>
+            <h1 className="text-3xl text-neutral-900 tracking-tight">Subcontractor Performance</h1>
           </div>
-          <button onClick={exportCSV} disabled={data.length === 0} className="btn btn-primary">Export CSV</button>
+          <button onClick={exportCSV} disabled={data.length === 0} className="btn btn-primary btn-thin">Export CSV</button>
         </div>
 
-        <div className="card p-6">
+        <div className="rounded-lg p-6 bg-white border border-neutral-200">
           {isLoading ? <div className="text-center py-12">Loading...</div> : data.length > 0 ? (
             <table className="table">
               <thead>

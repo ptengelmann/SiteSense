@@ -79,13 +79,13 @@ export default function PaymentHistoryPage() {
               </svg>
             </Link>
             <div>
-              <h1 className="text-3xl font-bold text-neutral-900">Payment History</h1>
-              <p className="text-neutral-600 mt-1">All payments to subcontractors</p>
+              <h1 className="text-3xl text-neutral-900 tracking-tight">Payment History</h1>
+              <p className="text-neutral-600 mt-1 font-light">All payments to subcontractors</p>
             </div>
           </div>
         </div>
 
-        <div className="card p-6">
+        <div className="rounded-lg p-6 bg-white border border-neutral-200">
           <div className="flex flex-col md:flex-row gap-4 items-start md:items-end justify-between">
             <div className="flex gap-4">
               <div>
@@ -107,17 +107,17 @@ export default function PaymentHistoryPage() {
                 />
               </div>
             </div>
-            <button onClick={exportCSV} disabled={data.length === 0} className="btn btn-primary btn-sm">
+            <button onClick={exportCSV} disabled={data.length === 0} className="btn btn-primary btn-thin">
               Export CSV
             </button>
           </div>
         </div>
 
-        <div className="card p-6">
+        <div className="rounded-lg p-6 bg-white border border-neutral-200">
           <div className="flex justify-between items-center mb-4">
-            <h2 className="text-lg font-semibold">Payment Records</h2>
+            <h2 className="text-lg tracking-tight">Payment Records</h2>
             <div className="text-sm text-neutral-600">
-              Total: <span className="font-bold text-green-600">{formatCurrency(total)}</span>
+              Total: <span className="font-medium text-green-600">{formatCurrency(total)}</span>
             </div>
           </div>
 
