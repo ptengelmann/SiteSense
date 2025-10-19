@@ -127,7 +127,7 @@ export default function NewPaymentRunPage() {
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
               </svg>
             </Link>
-            <h1 className="text-3xl font-bold text-neutral-900">New Payment Run</h1>
+            <h1 className="text-3xl text-neutral-900 tracking-tight">New Payment Run</h1>
           </div>
           <p className="text-neutral-600">Select approved invoices to process for payment</p>
         </div>
@@ -138,7 +138,7 @@ export default function NewPaymentRunPage() {
               <div className="p-3 bg-red-50 border border-red-200 rounded text-red-700 text-sm">{error}</div>
             )}
 
-            <div className="card p-6">
+            <div className="rounded-lg p-6 bg-white border border-neutral-200">
               <h2 className="text-lg font-semibold text-neutral-900 mb-4">Payment Run Details</h2>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 <div>
@@ -164,7 +164,7 @@ export default function NewPaymentRunPage() {
               </div>
             </div>
 
-            <div className="card p-6">
+            <div className="rounded-lg p-6 bg-white border border-neutral-200">
               <div className="flex items-center justify-between mb-4">
                 <h2 className="text-lg font-semibold text-neutral-900">
                   Select Invoices ({approvedInvoices.length} approved)
@@ -227,7 +227,7 @@ export default function NewPaymentRunPage() {
             </div>
 
             {selectedInvoiceIds.size > 0 && (
-              <div className="card p-6 bg-primary-50 border border-primary-200">
+              <div className="rounded-lg p-6 bg-primary-50 border border-primary-200">
                 <h3 className="font-semibold text-neutral-900 mb-3">Payment Summary</h3>
                 <div className="space-y-2 text-sm">
                   <div className="flex justify-between">

@@ -90,7 +90,7 @@ export default async function PaymentRunDetailPage({ params }: { params: { id: s
               </svg>
             </Link>
             <div>
-              <h1 className="text-3xl font-bold text-neutral-900">{paymentRun.name}</h1>
+              <h1 className="text-3xl text-neutral-900 tracking-tight">{paymentRun.name}</h1>
               <p className="text-neutral-600 mt-1">Scheduled for {formatDate(paymentRun.scheduledDate)}</p>
             </div>
           </div>
@@ -99,7 +99,7 @@ export default async function PaymentRunDetailPage({ params }: { params: { id: s
 
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
           <div className="lg:col-span-2 space-y-6">
-            <div className="card p-6">
+            <div className="rounded-lg p-6 bg-white border border-neutral-200">
               <h2 className="text-lg font-semibold text-neutral-900 mb-4">Payment Summary</h2>
               <div className="space-y-3">
                 <div className="flex justify-between">
@@ -117,7 +117,7 @@ export default async function PaymentRunDetailPage({ params }: { params: { id: s
               </div>
             </div>
 
-            <div className="card p-6">
+            <div className="rounded-lg p-6 bg-white border border-neutral-200">
               <h2 className="text-lg font-semibold text-neutral-900 mb-4">
                 Invoices ({paymentRun.invoiceCount})
               </h2>
@@ -186,7 +186,7 @@ export default async function PaymentRunDetailPage({ params }: { params: { id: s
               </div>
             </div>
 
-            <div className="card p-6">
+            <div className="rounded-lg p-6 bg-white border border-neutral-200">
               <h2 className="text-lg font-semibold text-neutral-900 mb-4">Audit Trail</h2>
               <div className="space-y-3 text-sm">
                 <div className="flex justify-between py-2 border-b border-neutral-100">
