@@ -139,7 +139,7 @@ export default function NewPaymentRunPage() {
             )}
 
             <div className="rounded-lg p-6 bg-white border border-neutral-200">
-              <h2 className="text-lg font-semibold text-neutral-900 mb-4">Payment Run Details</h2>
+              <h2 className="text-lg text-neutral-900 mb-4 tracking-tight">Payment Run Details</h2>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 <div>
                   <label className="label">Payment Run Name <span className="text-red-500">*</span></label>
@@ -166,10 +166,10 @@ export default function NewPaymentRunPage() {
 
             <div className="rounded-lg p-6 bg-white border border-neutral-200">
               <div className="flex items-center justify-between mb-4">
-                <h2 className="text-lg font-semibold text-neutral-900">
+                <h2 className="text-lg text-neutral-900 tracking-tight">
                   Select Invoices ({approvedInvoices.length} approved)
                 </h2>
-                <button type="button" onClick={selectAll} className="btn btn-secondary btn-sm">
+                <button type="button" onClick={selectAll} className="btn btn-secondary btn-thin">
                   {selectedInvoiceIds.size === approvedInvoices.length ? 'Deselect All' : 'Select All'}
                 </button>
               </div>
@@ -228,7 +228,7 @@ export default function NewPaymentRunPage() {
 
             {selectedInvoiceIds.size > 0 && (
               <div className="rounded-lg p-6 bg-primary-50 border border-primary-200">
-                <h3 className="font-semibold text-neutral-900 mb-3">Payment Summary</h3>
+                <h3 className="text-neutral-900 mb-3 tracking-tight">Payment Summary</h3>
                 <div className="space-y-2 text-sm">
                   <div className="flex justify-between">
                     <span>Selected Invoices:</span>
@@ -251,10 +251,10 @@ export default function NewPaymentRunPage() {
             )}
 
             <div className="flex justify-end gap-3">
-              <Link href="/dashboard/payment-runs" className="btn btn-secondary">
+              <Link href="/dashboard/payment-runs" className="btn btn-secondary btn-thin">
                 Cancel
               </Link>
-              <button type="submit" className="btn btn-primary" disabled={isLoading || selectedInvoiceIds.size === 0}>
+              <button type="submit" className="btn btn-primary btn-thin" disabled={isLoading || selectedInvoiceIds.size === 0}>
                 {isLoading ? 'Creating...' : 'Create Payment Run'}
               </button>
             </div>
