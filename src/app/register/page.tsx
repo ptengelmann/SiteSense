@@ -76,21 +76,21 @@ export default function RegisterPage() {
   return (
     <>
       <Navbar />
-      <div className="min-h-screen bg-gradient-blue-subtle flex items-center justify-center px-6 py-12 pt-24">
+      <div className="min-h-screen bg-primary-50 flex items-center justify-center px-6 py-12 pt-24">
         <div className="w-full max-w-2xl">
           {/* Header */}
           <div className="text-center mb-8">
-            <h1 className="text-3xl font-bold text-neutral-900">Create your account</h1>
-            <p className="text-neutral-600 mt-2">Start your 14-day free trial, no credit card required</p>
+            <h1 className="text-3xl text-neutral-900 mb-3 tracking-tight">Create your account</h1>
+            <p className="text-neutral-600 font-light">Start free early access, no credit card required</p>
           </div>
 
           {/* Register Card */}
-          <div className="card p-8">
-            <form onSubmit={handleSubmit} className="space-y-6">
+          <div className="rounded-lg p-8 bg-white border border-neutral-200">
+            <form onSubmit={handleSubmit} className="space-y-5">
               {/* Name Fields */}
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 <div>
-                  <label htmlFor="firstName" className="block text-sm font-medium text-neutral-700 mb-2">
+                  <label htmlFor="firstName" className="block text-sm text-neutral-700 mb-2 font-light">
                     First name
                   </label>
                   <input
@@ -106,7 +106,7 @@ export default function RegisterPage() {
                   />
                 </div>
                 <div>
-                  <label htmlFor="lastName" className="block text-sm font-medium text-neutral-700 mb-2">
+                  <label htmlFor="lastName" className="block text-sm text-neutral-700 mb-2 font-light">
                     Last name
                   </label>
                   <input
@@ -125,7 +125,7 @@ export default function RegisterPage() {
 
               {/* Company Name */}
               <div>
-                <label htmlFor="companyName" className="block text-sm font-medium text-neutral-700 mb-2">
+                <label htmlFor="companyName" className="block text-sm text-neutral-700 mb-2 font-light">
                   Company name
                 </label>
                 <input
@@ -143,7 +143,7 @@ export default function RegisterPage() {
 
               {/* Email */}
               <div>
-                <label htmlFor="email" className="block text-sm font-medium text-neutral-700 mb-2">
+                <label htmlFor="email" className="block text-sm text-neutral-700 mb-2 font-light">
                   Email address
                 </label>
                 <input
@@ -161,7 +161,7 @@ export default function RegisterPage() {
 
               {/* Phone (Optional) */}
               <div>
-                <label htmlFor="phone" className="block text-sm font-medium text-neutral-700 mb-2">
+                <label htmlFor="phone" className="block text-sm text-neutral-700 mb-2 font-light">
                   Phone number <span className="text-neutral-400">(optional)</span>
                 </label>
                 <input
@@ -179,7 +179,7 @@ export default function RegisterPage() {
               {/* Password Fields */}
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 <div>
-                  <label htmlFor="password" className="block text-sm font-medium text-neutral-700 mb-2">
+                  <label htmlFor="password" className="block text-sm text-neutral-700 mb-2 font-light">
                     Password
                   </label>
                   <input
@@ -195,7 +195,7 @@ export default function RegisterPage() {
                   />
                 </div>
                 <div>
-                  <label htmlFor="confirmPassword" className="block text-sm font-medium text-neutral-700 mb-2">
+                  <label htmlFor="confirmPassword" className="block text-sm text-neutral-700 mb-2 font-light">
                     Confirm password
                   </label>
                   <input
@@ -214,7 +214,7 @@ export default function RegisterPage() {
 
               {/* Error Message */}
               {error && (
-                <div className="bg-red-50 border border-red-200 text-red-700 px-4 py-3 rounded-lg text-sm">
+                <div className="bg-red-50 border border-red-200 text-red-700 px-4 py-3 rounded-lg text-sm font-light">
                   {error}
                 </div>
               )}
@@ -223,7 +223,7 @@ export default function RegisterPage() {
               <button
                 type="submit"
                 disabled={loading}
-                className="btn btn-primary btn-md w-full"
+                className="btn btn-primary btn-md w-full justify-center"
               >
                 {loading ? 'Creating account...' : 'Create account'}
               </button>
@@ -235,24 +235,24 @@ export default function RegisterPage() {
                 <div className="w-full border-t border-neutral-200"></div>
               </div>
               <div className="relative flex justify-center text-sm">
-                <span className="bg-white px-4 text-neutral-500">Already have an account?</span>
+                <span className="bg-white px-4 text-neutral-500 font-light">Already have an account?</span>
               </div>
             </div>
 
             {/* Login Link */}
-            <Link href="/login" className="btn btn-secondary btn-md w-full">
+            <Link href="/login" className="btn btn-secondary btn-md w-full justify-center">
               Sign in instead
             </Link>
           </div>
 
           {/* Terms */}
-          <p className="text-center text-sm text-neutral-500 mt-8">
+          <p className="text-center text-sm text-neutral-500 mt-8 font-light">
             By creating an account, you agree to our{' '}
-            <Link href="/terms" className="text-primary-600 hover:text-primary-700">
+            <Link href="/terms" className="text-primary-500 hover:text-primary-600">
               Terms of Service
             </Link>{' '}
             and{' '}
-            <Link href="/privacy" className="text-primary-600 hover:text-primary-700">
+            <Link href="/privacy" className="text-primary-500 hover:text-primary-600">
               Privacy Policy
             </Link>
           </p>

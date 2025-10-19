@@ -92,20 +92,20 @@ function LoginContent() {
   return (
     <>
       <Navbar />
-      <div className="min-h-screen bg-gradient-blue-subtle flex items-center justify-center px-6 pt-16">
+      <div className="min-h-screen bg-primary-50 flex items-center justify-center px-6 pt-16">
         <div className="w-full max-w-md">
           {/* Header */}
           <div className="text-center mb-8">
-            <h1 className="text-3xl font-bold text-neutral-900">Welcome back</h1>
-            <p className="text-neutral-600 mt-2">Sign in to your account to continue</p>
+            <h1 className="text-3xl text-neutral-900 mb-3 tracking-tight">Welcome back</h1>
+            <p className="text-neutral-600 font-light">Sign in to your account to continue</p>
           </div>
 
           {/* Login Card */}
-          <div className="card p-8">
-            <form onSubmit={handleSubmit} className="space-y-6">
+          <div className="rounded-lg p-8 bg-white border border-neutral-200">
+            <form onSubmit={handleSubmit} className="space-y-5">
               {/* Email */}
               <div>
-                <label htmlFor="email" className="block text-sm font-medium text-neutral-700 mb-2">
+                <label htmlFor="email" className="block text-sm text-neutral-700 mb-2 font-light">
                   Email address
                 </label>
                 <input
@@ -123,12 +123,12 @@ function LoginContent() {
               {/* Password */}
               <div>
                 <div className="flex items-center justify-between mb-2">
-                  <label htmlFor="password" className="block text-sm font-medium text-neutral-700">
+                  <label htmlFor="password" className="block text-sm text-neutral-700 font-light">
                     Password
                   </label>
                   <Link
                     href="/forgot-password"
-                    className="text-sm text-primary-600 hover:text-primary-700 transition-colors"
+                    className="text-sm text-primary-500 hover:text-primary-600 transition-colors font-light"
                   >
                     Forgot password?
                   </Link>
@@ -147,21 +147,21 @@ function LoginContent() {
 
               {/* Success Message */}
               {success && (
-                <div className="bg-green-50 border border-green-200 text-green-700 px-4 py-3 rounded-lg text-sm">
+                <div className="bg-primary-50 border border-primary-200 text-neutral-700 px-4 py-3 rounded-lg text-sm font-light">
                   {success}
                 </div>
               )}
 
               {/* Error Message */}
               {error && (
-                <div className="bg-red-50 border border-red-200 text-red-700 px-4 py-3 rounded-lg text-sm">
+                <div className="bg-red-50 border border-red-200 text-red-700 px-4 py-3 rounded-lg text-sm font-light">
                   {error}
                   {showResend && (
                     <button
                       type="button"
                       onClick={handleResendVerification}
                       disabled={resendLoading}
-                      className="block mt-2 text-sm font-medium text-red-800 hover:text-red-900 underline"
+                      className="block mt-2 text-sm text-red-800 hover:text-red-900 underline font-light"
                     >
                       {resendLoading ? 'Sending...' : 'Resend verification email'}
                     </button>
@@ -173,7 +173,7 @@ function LoginContent() {
               <button
                 type="submit"
                 disabled={loading}
-                className="btn btn-primary btn-md w-full"
+                className="btn btn-primary btn-md w-full justify-center"
               >
                 {loading ? 'Signing in...' : 'Sign in'}
               </button>
@@ -185,24 +185,24 @@ function LoginContent() {
                 <div className="w-full border-t border-neutral-200"></div>
               </div>
               <div className="relative flex justify-center text-sm">
-                <span className="bg-white px-4 text-neutral-500">New to SiteSense?</span>
+                <span className="bg-white px-4 text-neutral-500 font-light">New to SiteSense?</span>
               </div>
             </div>
 
             {/* Register Link */}
-            <Link href="/register" className="btn btn-secondary btn-md w-full">
+            <Link href="/register" className="btn btn-secondary btn-md w-full justify-center">
               Create an account
             </Link>
           </div>
 
           {/* Terms */}
-          <p className="text-center text-sm text-neutral-500 mt-8">
+          <p className="text-center text-sm text-neutral-500 mt-8 font-light">
             By signing in, you agree to our{' '}
-            <Link href="/terms" className="text-primary-600 hover:text-primary-700">
+            <Link href="/terms" className="text-primary-500 hover:text-primary-600">
               Terms of Service
             </Link>{' '}
             and{' '}
-            <Link href="/privacy" className="text-primary-600 hover:text-primary-700">
+            <Link href="/privacy" className="text-primary-500 hover:text-primary-600">
               Privacy Policy
             </Link>
           </p>
@@ -216,8 +216,8 @@ function LoginContent() {
 export default function LoginPage() {
   return (
     <Suspense fallback={
-      <div className="min-h-screen bg-gradient-blue-subtle flex items-center justify-center">
-        <div className="animate-spin rounded-full h-16 w-16 border-4 border-primary-200 border-t-primary-600"></div>
+      <div className="min-h-screen bg-primary-50 flex items-center justify-center">
+        <div className="animate-spin rounded-full h-16 w-16 border-4 border-primary-200 border-t-primary-500"></div>
       </div>
     }>
       <LoginContent />
