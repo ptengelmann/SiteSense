@@ -8,12 +8,12 @@ export default function PrivacyPage() {
 
       <div className="pt-32 pb-20 px-6 lg:px-8">
         <div className="max-w-4xl mx-auto">
-          <h1 className="text-4xl font-bold text-neutral-900 mb-4">Privacy Policy</h1>
-          <p className="text-neutral-600 mb-12">Last updated: January 2025</p>
+          <h1 className="text-4xl text-neutral-900 mb-4 tracking-tight">Privacy Policy</h1>
+          <p className="text-neutral-600 mb-12 font-light">Last updated: January 2025</p>
 
           <div className="prose prose-lg max-w-none">
             <section className="mb-12">
-              <h2 className="text-2xl font-bold text-neutral-900 mb-4">1. Introduction</h2>
+              <h2 className="text-2xl text-neutral-900 mb-4 tracking-tight">1. Introduction</h2>
               <p className="text-neutral-700 leading-relaxed mb-4">
                 SiteSense ("we", "our", or "us") is committed to protecting your privacy. This Privacy Policy explains how we collect, use, disclose, and safeguard your information when you use our invoice processing and payment automation platform.
               </p>
@@ -23,9 +23,9 @@ export default function PrivacyPage() {
             </section>
 
             <section className="mb-12">
-              <h2 className="text-2xl font-bold text-neutral-900 mb-4">2. Information We Collect</h2>
+              <h2 className="text-2xl text-neutral-900 mb-4 tracking-tight">2. Information We Collect</h2>
 
-              <h3 className="text-xl font-semibold text-neutral-900 mb-3">2.1 Information You Provide</h3>
+              <h3 className="text-xl text-neutral-900 mb-3 tracking-tight">2.1 Information You Provide</h3>
               <ul className="list-disc pl-6 mb-6 space-y-2 text-neutral-700">
                 <li><strong>Account Information:</strong> Name, email address, company name, phone number</li>
                 <li><strong>Payment Information:</strong> Bank account details, CIS numbers, UTR numbers</li>
@@ -33,7 +33,7 @@ export default function PrivacyPage() {
                 <li><strong>Business Information:</strong> Company registration details, VAT numbers</li>
               </ul>
 
-              <h3 className="text-xl font-semibold text-neutral-900 mb-3">2.2 Automatically Collected Information</h3>
+              <h3 className="text-xl text-neutral-900 mb-3 tracking-tight">2.2 Automatically Collected Information</h3>
               <ul className="list-disc pl-6 mb-4 space-y-2 text-neutral-700">
                 <li>IP address and device information</li>
                 <li>Browser type and version</li>
@@ -43,7 +43,7 @@ export default function PrivacyPage() {
             </section>
 
             <section className="mb-12">
-              <h2 className="text-2xl font-bold text-neutral-900 mb-4">3. How We Use Your Information</h2>
+              <h2 className="text-2xl text-neutral-900 mb-4 tracking-tight">3. How We Use Your Information</h2>
               <ul className="list-disc pl-6 space-y-2 text-neutral-700">
                 <li>Process invoices using AI-powered OCR and fraud detection</li>
                 <li>Manage CIS compliance and tax calculations</li>
@@ -56,7 +56,7 @@ export default function PrivacyPage() {
             </section>
 
             <section className="mb-12">
-              <h2 className="text-2xl font-bold text-neutral-900 mb-4">4. Data Security</h2>
+              <h2 className="text-2xl text-neutral-900 mb-4 tracking-tight">4. Data Security</h2>
               <p className="text-neutral-700 leading-relaxed mb-4">
                 We implement industry-standard security measures to protect your data:
               </p>
@@ -70,7 +70,7 @@ export default function PrivacyPage() {
             </section>
 
             <section className="mb-12">
-              <h2 className="text-2xl font-bold text-neutral-900 mb-4">5. Data Sharing</h2>
+              <h2 className="text-2xl text-neutral-900 mb-4 tracking-tight">5. Data Sharing</h2>
               <p className="text-neutral-700 leading-relaxed mb-4">
                 We do not sell your data. We may share information with:
               </p>
@@ -83,7 +83,7 @@ export default function PrivacyPage() {
             </section>
 
             <section className="mb-12">
-              <h2 className="text-2xl font-bold text-neutral-900 mb-4">6. Data Retention</h2>
+              <h2 className="text-2xl text-neutral-900 mb-4 tracking-tight">6. Data Retention</h2>
               <p className="text-neutral-700 leading-relaxed mb-4">
                 We retain your data as follows:
               </p>
@@ -95,7 +95,7 @@ export default function PrivacyPage() {
             </section>
 
             <section className="mb-12">
-              <h2 className="text-2xl font-bold text-neutral-900 mb-4">7. Your Rights (GDPR)</h2>
+              <h2 className="text-2xl text-neutral-900 mb-4 tracking-tight">7. Your Rights (GDPR)</h2>
               <p className="text-neutral-700 leading-relaxed mb-4">
                 Under GDPR, you have the right to:
               </p>
@@ -113,7 +113,7 @@ export default function PrivacyPage() {
             </section>
 
             <section className="mb-12">
-              <h2 className="text-2xl font-bold text-neutral-900 mb-4">8. Cookies</h2>
+              <h2 className="text-2xl text-neutral-900 mb-4 tracking-tight">8. Cookies</h2>
               <p className="text-neutral-700 leading-relaxed mb-4">
                 We use cookies for:
               </p>
@@ -127,28 +127,28 @@ export default function PrivacyPage() {
             </section>
 
             <section className="mb-12">
-              <h2 className="text-2xl font-bold text-neutral-900 mb-4">9. International Transfers</h2>
+              <h2 className="text-2xl text-neutral-900 mb-4 tracking-tight">9. International Transfers</h2>
               <p className="text-neutral-700 leading-relaxed">
                 Your data is primarily stored in UK/EU data centers. If we transfer data outside the EU, we ensure appropriate safeguards are in place (e.g., Standard Contractual Clauses).
               </p>
             </section>
 
             <section className="mb-12">
-              <h2 className="text-2xl font-bold text-neutral-900 mb-4">10. Children's Privacy</h2>
+              <h2 className="text-2xl text-neutral-900 mb-4 tracking-tight">10. Children's Privacy</h2>
               <p className="text-neutral-700 leading-relaxed">
                 SiteSense is not intended for individuals under 18. We do not knowingly collect data from children.
               </p>
             </section>
 
             <section className="mb-12">
-              <h2 className="text-2xl font-bold text-neutral-900 mb-4">11. Changes to This Policy</h2>
+              <h2 className="text-2xl text-neutral-900 mb-4 tracking-tight">11. Changes to This Policy</h2>
               <p className="text-neutral-700 leading-relaxed">
                 We may update this Privacy Policy from time to time. We will notify you of significant changes via email or platform notification. Continued use after changes constitutes acceptance.
               </p>
             </section>
 
             <section>
-              <h2 className="text-2xl font-bold text-neutral-900 mb-4">12. Contact Us</h2>
+              <h2 className="text-2xl text-neutral-900 mb-4 tracking-tight">12. Contact Us</h2>
               <p className="text-neutral-700 leading-relaxed mb-4">
                 For questions about this Privacy Policy or your data:
               </p>

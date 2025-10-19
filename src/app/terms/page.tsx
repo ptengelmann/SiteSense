@@ -8,19 +8,19 @@ export default function TermsPage() {
 
       <div className="pt-32 pb-20 px-6 lg:px-8">
         <div className="max-w-4xl mx-auto">
-          <h1 className="text-4xl font-bold text-neutral-900 mb-4">Terms of Service</h1>
-          <p className="text-neutral-600 mb-12">Last updated: January 2025</p>
+          <h1 className="text-4xl text-neutral-900 mb-4 tracking-tight">Terms of Service</h1>
+          <p className="text-neutral-600 mb-12 font-light">Last updated: January 2025</p>
 
           <div className="prose prose-lg max-w-none">
             <section className="mb-12">
-              <h2 className="text-2xl font-bold text-neutral-900 mb-4">1. Agreement to Terms</h2>
+              <h2 className="text-2xl text-neutral-900 mb-4 tracking-tight">1. Agreement to Terms</h2>
               <p className="text-neutral-700 leading-relaxed">
                 By accessing or using SiteSense ("Service", "Platform"), you agree to be bound by these Terms of Service ("Terms"). If you disagree with any part of these terms, you may not access the Service.
               </p>
             </section>
 
             <section className="mb-12">
-              <h2 className="text-2xl font-bold text-neutral-900 mb-4">2. Description of Service</h2>
+              <h2 className="text-2xl text-neutral-900 mb-4 tracking-tight">2. Description of Service</h2>
               <p className="text-neutral-700 leading-relaxed mb-4">
                 SiteSense provides AI-powered invoice processing, fraud detection, CIS compliance automation, and payment management tools for UK construction companies.
               </p>
@@ -38,7 +38,7 @@ export default function TermsPage() {
             </section>
 
             <section className="mb-12">
-              <h2 className="text-2xl font-bold text-neutral-900 mb-4">3. Account Registration</h2>
+              <h2 className="text-2xl text-neutral-900 mb-4 tracking-tight">3. Account Registration</h2>
               <p className="text-neutral-700 leading-relaxed mb-4">
                 To use the Service, you must:
               </p>
@@ -55,26 +55,26 @@ export default function TermsPage() {
             </section>
 
             <section className="mb-12">
-              <h2 className="text-2xl font-bold text-neutral-900 mb-4">4. Pricing and Payment</h2>
+              <h2 className="text-2xl text-neutral-900 mb-4 tracking-tight">4. Pricing and Payment</h2>
 
-              <h3 className="text-xl font-semibold text-neutral-900 mb-3">4.1 Subscription Fees</h3>
+              <h3 className="text-xl text-neutral-900 mb-3 tracking-tight">4.1 Subscription Fees</h3>
               <p className="text-neutral-700 leading-relaxed mb-4">
                 Pricing is available at <a href="/#pricing" className="text-primary-600 hover:underline">sitesense.co.uk/#pricing</a>. Fees are billed monthly or annually in advance. All fees are non-refundable except as required by law.
               </p>
 
-              <h3 className="text-xl font-semibold text-neutral-900 mb-3">4.2 Free Trial</h3>
+              <h3 className="text-xl text-neutral-900 mb-3 tracking-tight">4.2 Free Trial</h3>
               <p className="text-neutral-700 leading-relaxed mb-4">
                 We offer a 14-day free trial. No credit card required. After the trial, you must subscribe to continue using the Service.
               </p>
 
-              <h3 className="text-xl font-semibold text-neutral-900 mb-3">4.3 Price Changes</h3>
+              <h3 className="text-xl text-neutral-900 mb-3 tracking-tight">4.3 Price Changes</h3>
               <p className="text-neutral-700 leading-relaxed">
                 We may change our pricing with 30 days' notice. Continued use after price changes constitutes acceptance.
               </p>
             </section>
 
             <section className="mb-12">
-              <h2 className="text-2xl font-bold text-neutral-900 mb-4">5. Acceptable Use</h2>
+              <h2 className="text-2xl text-neutral-900 mb-4 tracking-tight">5. Acceptable Use</h2>
               <p className="text-neutral-700 leading-relaxed mb-4">
                 You agree NOT to:
               </p>
@@ -91,21 +91,21 @@ export default function TermsPage() {
             </section>
 
             <section className="mb-12">
-              <h2 className="text-2xl font-bold text-neutral-900 mb-4">6. Data Ownership and Licensing</h2>
+              <h2 className="text-2xl text-neutral-900 mb-4 tracking-tight">6. Data Ownership and Licensing</h2>
 
-              <h3 className="text-xl font-semibold text-neutral-900 mb-3">6.1 Your Data</h3>
+              <h3 className="text-xl text-neutral-900 mb-3 tracking-tight">6.1 Your Data</h3>
               <p className="text-neutral-700 leading-relaxed mb-4">
                 You retain all rights to data you upload (invoices, subcontractor details, etc.). You grant us a license to process this data solely to provide the Service.
               </p>
 
-              <h3 className="text-xl font-semibold text-neutral-900 mb-3">6.2 Our IP</h3>
+              <h3 className="text-xl text-neutral-900 mb-3 tracking-tight">6.2 Our IP</h3>
               <p className="text-neutral-700 leading-relaxed">
                 SiteSense retains all rights to the Platform, software, algorithms, and branding. You may not copy, modify, or distribute our intellectual property.
               </p>
             </section>
 
             <section className="mb-12">
-              <h2 className="text-2xl font-bold text-neutral-900 mb-4">7. Service Level Agreement (SLA)</h2>
+              <h2 className="text-2xl text-neutral-900 mb-4 tracking-tight">7. Service Level Agreement (SLA)</h2>
               <p className="text-neutral-700 leading-relaxed mb-4">
                 We target 99.5% uptime. We do not guarantee uninterrupted service and are not liable for downtime, except as follows:
               </p>
@@ -117,14 +117,14 @@ export default function TermsPage() {
             </section>
 
             <section className="mb-12">
-              <h2 className="text-2xl font-bold text-neutral-900 mb-4">8. Data Accuracy</h2>
+              <h2 className="text-2xl text-neutral-900 mb-4 tracking-tight">8. Data Accuracy</h2>
               <p className="text-neutral-700 leading-relaxed">
                 While our AI achieves 95% accuracy, <strong>YOU are responsible for verifying all extracted data, CIS calculations, and payment amounts</strong>. We are not liable for errors in AI-extracted data. Always review invoices before approval.
               </p>
             </section>
 
             <section className="mb-12">
-              <h2 className="text-2xl font-bold text-neutral-900 mb-4">9. Limitation of Liability</h2>
+              <h2 className="text-2xl text-neutral-900 mb-4 tracking-tight">9. Limitation of Liability</h2>
               <p className="text-neutral-700 leading-relaxed mb-4">
                 TO THE MAXIMUM EXTENT PERMITTED BY LAW:
               </p>
@@ -137,14 +137,14 @@ export default function TermsPage() {
             </section>
 
             <section className="mb-12">
-              <h2 className="text-2xl font-bold text-neutral-900 mb-4">10. Termination</h2>
+              <h2 className="text-2xl text-neutral-900 mb-4 tracking-tight">10. Termination</h2>
 
-              <h3 className="text-xl font-semibold text-neutral-900 mb-3">10.1 By You</h3>
+              <h3 className="text-xl text-neutral-900 mb-3 tracking-tight">10.1 By You</h3>
               <p className="text-neutral-700 leading-relaxed mb-4">
                 You may cancel your subscription anytime from your account settings. No refunds for partial months.
               </p>
 
-              <h3 className="text-xl font-semibold text-neutral-900 mb-3">10.2 By Us</h3>
+              <h3 className="text-xl text-neutral-900 mb-3 tracking-tight">10.2 By Us</h3>
               <p className="text-neutral-700 leading-relaxed mb-4">
                 We may suspend or terminate your account if you:
               </p>
@@ -155,14 +155,14 @@ export default function TermsPage() {
                 <li>Pose a security risk</li>
               </ul>
 
-              <h3 className="text-xl font-semibold text-neutral-900 mb-3">10.3 Effect of Termination</h3>
+              <h3 className="text-xl text-neutral-900 mb-3 tracking-tight">10.3 Effect of Termination</h3>
               <p className="text-neutral-700 leading-relaxed">
                 Upon termination, your access ends immediately. You may export your data for 30 days. After 30 days, we may delete your data (except where required by law to retain for 7 years for CIS records).
               </p>
             </section>
 
             <section className="mb-12">
-              <h2 className="text-2xl font-bold text-neutral-900 mb-4">11. Warranties and Disclaimers</h2>
+              <h2 className="text-2xl text-neutral-900 mb-4 tracking-tight">11. Warranties and Disclaimers</h2>
               <p className="text-neutral-700 leading-relaxed mb-4">
                 THE SERVICE IS PROVIDED "AS IS" WITHOUT WARRANTIES OF ANY KIND. WE DISCLAIM ALL WARRANTIES, EXPRESS OR IMPLIED, INCLUDING MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE.
               </p>
@@ -172,28 +172,28 @@ export default function TermsPage() {
             </section>
 
             <section className="mb-12">
-              <h2 className="text-2xl font-bold text-neutral-900 mb-4">12. Indemnification</h2>
+              <h2 className="text-2xl text-neutral-900 mb-4 tracking-tight">12. Indemnification</h2>
               <p className="text-neutral-700 leading-relaxed">
                 You agree to indemnify SiteSense from claims arising from your use of the Service, violation of these Terms, or violation of any third-party rights.
               </p>
             </section>
 
             <section className="mb-12">
-              <h2 className="text-2xl font-bold text-neutral-900 mb-4">13. Governing Law</h2>
+              <h2 className="text-2xl text-neutral-900 mb-4 tracking-tight">13. Governing Law</h2>
               <p className="text-neutral-700 leading-relaxed">
                 These Terms are governed by the laws of England and Wales. Disputes will be resolved in UK courts.
               </p>
             </section>
 
             <section className="mb-12">
-              <h2 className="text-2xl font-bold text-neutral-900 mb-4">14. Changes to Terms</h2>
+              <h2 className="text-2xl text-neutral-900 mb-4 tracking-tight">14. Changes to Terms</h2>
               <p className="text-neutral-700 leading-relaxed">
                 We may update these Terms from time to time. Material changes will be notified via email 30 days in advance. Continued use after changes constitutes acceptance.
               </p>
             </section>
 
             <section>
-              <h2 className="text-2xl font-bold text-neutral-900 mb-4">15. Contact Us</h2>
+              <h2 className="text-2xl text-neutral-900 mb-4 tracking-tight">15. Contact Us</h2>
               <p className="text-neutral-700 leading-relaxed mb-4">
                 For questions about these Terms:
               </p>
