@@ -147,22 +147,23 @@ export default function FeaturesPage() {
       <Navbar />
 
       {/* Hero */}
-      <section className="pt-32 pb-20 px-6 lg:px-8 bg-gradient-blue-subtle">
+      <section className="pt-32 pb-16 px-6 lg:px-8 bg-primary-50">
         <div className="max-w-4xl mx-auto text-center">
-          <span className="inline-block px-4 py-1.5 rounded-full bg-primary-100 text-primary-700 text-sm font-medium mb-6">
-            Features
-          </span>
-          <h1 className="text-4xl lg:text-5xl font-bold text-neutral-900 mb-6">
+          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-primary-200 bg-primary-100 mb-4">
+            <div className="w-1 h-1 rounded-full bg-primary-500"></div>
+            <span className="text-xs text-primary-700 tracking-wide">FEATURES</span>
+          </div>
+          <h1 className="text-4xl lg:text-5xl text-neutral-900 mb-4 tracking-tight">
             Everything you need to automate subcontractor payments
           </h1>
-          <p className="text-xl text-neutral-600 leading-relaxed mb-8">
+          <p className="text-lg text-neutral-600 mb-8 font-light">
             From AI invoice processing to HMRC compliance - all in one platform built specifically for UK construction.
           </p>
-          <div className="flex items-center justify-center gap-4">
-            <Link href="/register" className="btn btn-primary btn-lg">
+          <div className="flex items-center justify-center gap-3">
+            <Link href="/register" className="btn btn-primary btn-md">
               Join Early Access
             </Link>
-            <Link href="/pricing" className="btn btn-secondary btn-lg">
+            <Link href="/pricing" className="btn btn-secondary btn-md">
               See Pricing
             </Link>
           </div>
@@ -170,9 +171,9 @@ export default function FeaturesPage() {
       </section>
 
       {/* Features Grid */}
-      <section className="py-20">
-        <div className="max-w-7xl mx-auto px-6 lg:px-8">
-          <div className="space-y-16">
+      <section className="py-16">
+        <div className="max-w-6xl mx-auto px-6 lg:px-8">
+          <div className="space-y-20">
             {features.map((feature, index) => (
               <div
                 key={index}
@@ -182,43 +183,39 @@ export default function FeaturesPage() {
               >
                 {/* Content */}
                 <div className={index % 2 === 1 ? 'md:order-2' : ''}>
-                  <div className="w-16 h-16 rounded-2xl gradient-blue flex items-center justify-center mb-6">
+                  <div className="w-12 h-12 rounded-md gradient-red flex items-center justify-center mb-4">
                     {feature.icon}
                   </div>
-                  <h3 className="text-3xl font-bold text-neutral-900 mb-4">{feature.title}</h3>
-                  <p className="text-lg text-neutral-600 mb-6 leading-relaxed">{feature.description}</p>
+                  <h3 className="text-2xl text-neutral-900 mb-3 tracking-tight">{feature.title}</h3>
+                  <p className="text-base text-neutral-600 mb-6 font-light leading-relaxed">{feature.description}</p>
 
                   {/* Benefits List */}
-                  <ul className="space-y-3 mb-6">
+                  <ul className="space-y-2.5 mb-6">
                     {feature.benefits.map((benefit, i) => (
-                      <li key={i} className="flex items-start gap-3">
-                        <svg className="w-5 h-5 text-green-500 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
-                          <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
-                        </svg>
-                        <span className="text-neutral-700">{benefit}</span>
+                      <li key={i} className="flex items-start gap-2.5">
+                        <div className="w-1.5 h-1.5 rounded-full bg-primary-500 flex-shrink-0 mt-1.5"></div>
+                        <span className="text-sm text-neutral-700 font-light">{benefit}</span>
                       </li>
                     ))}
                   </ul>
 
                   {/* Stats Badge */}
-                  <div className="inline-flex items-center px-4 py-2 rounded-full bg-primary-50 text-primary-700 font-semibold border border-primary-200">
-                    <svg className="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 20 20">
-                      <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
-                    </svg>
+                  <div className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-primary-50 text-primary-700 text-xs border border-primary-200">
+                    <div className="w-1 h-1 rounded-full bg-primary-500"></div>
                     {feature.stats}
                   </div>
                 </div>
 
                 {/* Visual */}
                 <div className={index % 2 === 1 ? 'md:order-1' : ''}>
-                  <div className="card p-8 bg-gradient-blue-subtle border border-primary-100">
-                    <div className="aspect-video bg-white rounded-xl flex items-center justify-center border-2 border-neutral-200">
-                      <div className="text-center p-8">
-                        <div className="w-20 h-20 rounded-2xl gradient-blue flex items-center justify-center mx-auto mb-4">
+                  <div className="bg-white rounded-lg p-6 border border-neutral-200">
+                    <div className="aspect-video bg-neutral-50 rounded-lg flex items-center justify-center border border-neutral-200">
+                      <div className="text-center p-6">
+                        <div className="w-16 h-16 rounded-md gradient-red flex items-center justify-center mx-auto mb-4">
                           {feature.icon}
                         </div>
-                        <div className="text-2xl font-bold text-neutral-900 mb-2">{feature.title}</div>
-                        <div className="text-primary-600 font-semibold">{feature.stats}</div>
+                        <div className="text-lg text-neutral-900 mb-1">{feature.title}</div>
+                        <div className="text-sm text-primary-500">{feature.stats}</div>
                       </div>
                     </div>
                   </div>
@@ -230,17 +227,17 @@ export default function FeaturesPage() {
       </section>
 
       {/* CTA */}
-      <section className="py-20 bg-gradient-blue-subtle">
+      <section className="py-16 bg-primary-50">
         <div className="max-w-4xl mx-auto px-6 lg:px-8 text-center">
-          <h2 className="text-3xl font-bold text-neutral-900 mb-6">
+          <h2 className="text-3xl lg:text-4xl text-neutral-900 mb-4 tracking-tight">
             Ready to save £50k/year in admin costs?
           </h2>
-          <p className="text-lg text-neutral-600 mb-8">
+          <p className="text-lg text-neutral-600 mb-8 font-light">
             Start your 14-day free trial. No credit card required.
           </p>
-          <Link href="/register" className="btn btn-primary btn-lg">
+          <Link href="/register" className="btn btn-primary btn-md">
             Join Early Access
-            <svg className="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <svg className="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
             </svg>
           </Link>
