@@ -114,7 +114,7 @@ export default async function InvoiceDetailPage({ params }: { params: { id: stri
               </svg>
             </Link>
             <div>
-              <h1 className="text-3xl font-bold text-neutral-900">Invoice {invoice.invoiceNumber}</h1>
+              <h1 className="text-3xl text-neutral-900 tracking-tight">Invoice {invoice.invoiceNumber}</h1>
               <p className="text-neutral-600 mt-1">
                 Submitted {formatDate(invoice.invoiceDate)}
               </p>
@@ -129,8 +129,8 @@ export default async function InvoiceDetailPage({ params }: { params: { id: stri
           {/* Main Content */}
           <div className="lg:col-span-2 space-y-6">
             {/* Invoice Details Card */}
-            <div className="card p-6">
-              <h2 className="text-lg font-semibold text-neutral-900 mb-4">Invoice Details</h2>
+            <div className="rounded-lg p-6 bg-white border border-neutral-200">
+              <h2 className="text-lg text-neutral-900 mb-4 tracking-tight">Invoice Details</h2>
 
               <div className="grid grid-cols-2 gap-4 text-sm">
                 <div>
@@ -167,8 +167,8 @@ export default async function InvoiceDetailPage({ params }: { params: { id: stri
             </div>
 
             {/* Subcontractor Card */}
-            <div className="card p-6">
-              <h2 className="text-lg font-semibold text-neutral-900 mb-4">Subcontractor</h2>
+            <div className="rounded-lg p-6 bg-white border border-neutral-200">
+              <h2 className="text-lg text-neutral-900 mb-4 tracking-tight">Subcontractor</h2>
 
               <div>
                 <h3 className="font-medium text-neutral-900 text-lg">
@@ -237,8 +237,8 @@ export default async function InvoiceDetailPage({ params }: { params: { id: stri
 
             {/* Project Card */}
             {invoice.project && (
-              <div className="card p-6">
-                <h2 className="text-lg font-semibold text-neutral-900 mb-4">Project</h2>
+              <div className="rounded-lg p-6 bg-white border border-neutral-200">
+                <h2 className="text-lg text-neutral-900 mb-4 tracking-tight">Project</h2>
 
                 <div>
                   <h3 className="font-medium text-neutral-900 text-lg">
@@ -270,8 +270,8 @@ export default async function InvoiceDetailPage({ params }: { params: { id: stri
             )}
 
             {/* Audit Trail */}
-            <div className="card p-6">
-              <h2 className="text-lg font-semibold text-neutral-900 mb-4">Audit Trail</h2>
+            <div className="rounded-lg p-6 bg-white border border-neutral-200">
+              <h2 className="text-lg text-neutral-900 mb-4 tracking-tight">Audit Trail</h2>
 
               <div className="space-y-3 text-sm">
                 <div className="flex justify-between py-2 border-b border-neutral-100">
@@ -317,7 +317,7 @@ export default async function InvoiceDetailPage({ params }: { params: { id: stri
             </div>
 
             {/* Documents */}
-            <div className="card p-6">
+            <div className="rounded-lg p-6 bg-white border border-neutral-200">
               <EntityDocuments
                 entityType="Invoice"
                 entityId={invoice.id}
@@ -329,8 +329,8 @@ export default async function InvoiceDetailPage({ params }: { params: { id: stri
           {/* Sidebar */}
           <div className="space-y-6">
             {/* Payment Summary Card */}
-            <div className="card p-6">
-              <h2 className="text-lg font-semibold text-neutral-900 mb-4">Payment Summary</h2>
+            <div className="rounded-lg p-6 bg-white border border-neutral-200">
+              <h2 className="text-lg text-neutral-900 mb-4 tracking-tight">Payment Summary</h2>
 
               <div className="space-y-3">
                 <div className="flex justify-between text-sm">

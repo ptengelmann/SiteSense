@@ -253,15 +253,15 @@ export default function NewInvoicePage() {
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
               </svg>
             </Link>
-            <h1 className="text-3xl font-bold text-neutral-900">Submit Invoice</h1>
+            <h1 className="text-3xl text-neutral-900 tracking-tight">Submit Invoice</h1>
           </div>
-          <p className="text-neutral-600">
+          <p className="text-neutral-600 font-light">
             Create a new invoice with automatic CIS deduction calculation
           </p>
         </div>
 
         <form onSubmit={handleSubmit}>
-          <div className="card p-6 space-y-6">
+          <div className="rounded-lg p-6 space-y-6 bg-white border border-neutral-200">
             {error && (
               <div className="p-3 bg-red-50 border border-red-200 rounded text-red-700 text-sm">
                 {error}
@@ -277,8 +277,8 @@ export default function NewInvoicePage() {
                   </svg>
                 </div>
                 <div className="flex-1">
-                  <h3 className="font-semibold text-lg text-neutral-900">AI Invoice Scanner</h3>
-                  <p className="text-sm text-neutral-600 mt-1">
+                  <h3 className="text-lg text-neutral-900 tracking-tight">AI Invoice Scanner</h3>
+                  <p className="text-sm text-neutral-600 mt-1 font-light">
                     Upload an invoice PDF to automatically extract data and detect potential fraud
                   </p>
                 </div>
@@ -315,7 +315,7 @@ export default function NewInvoicePage() {
                   type="button"
                   onClick={handleScanInvoice}
                   disabled={!uploadedFile || !formData.subcontractorId || isScanning}
-                  className="w-full btn btn-primary disabled:opacity-50 disabled:cursor-not-allowed"
+                  className="w-full btn btn-primary btn-thin disabled:opacity-50 disabled:cursor-not-allowed"
                 >
                   {isScanning ? (
                     <>
@@ -618,13 +618,13 @@ export default function NewInvoicePage() {
             <div className="flex justify-end gap-3 pt-4 border-t border-neutral-200">
               <Link
                 href="/dashboard/invoices"
-                className="btn btn-secondary"
+                className="btn btn-secondary btn-thin"
               >
                 Cancel
               </Link>
               <button
                 type="submit"
-                className="btn btn-primary"
+                className="btn btn-primary btn-thin"
                 disabled={isLoading}
               >
                 {isLoading ? 'Submitting...' : 'Submit Invoice'}
