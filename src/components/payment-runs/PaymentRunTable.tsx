@@ -87,7 +87,7 @@ export default function PaymentRunTable({ initialData }: PaymentRunTableProps) {
   };
 
   return (
-    <div className="card p-6">
+    <div className="rounded-lg p-6 bg-white border border-neutral-200">
       {/* Filters */}
       <div className="flex flex-col md:flex-row gap-4 mb-6">
         <div className="flex gap-2">
