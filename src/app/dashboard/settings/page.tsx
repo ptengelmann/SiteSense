@@ -122,8 +122,8 @@ export default function SettingsPage() {
       <div className="space-y-6">
         {/* Header */}
         <div>
-          <h1 className="text-3xl font-bold text-neutral-900">Settings</h1>
-          <p className="text-neutral-600 mt-1">
+          <h1 className="text-3xl text-neutral-900 tracking-tight">Settings</h1>
+          <p className="text-neutral-600 mt-1 font-light">
             Manage your company profile and account settings
           </p>
         </div>
@@ -142,12 +142,12 @@ export default function SettingsPage() {
         )}
 
         {/* Tabs */}
-        <div className="card">
+        <div className="rounded-lg bg-white border border-neutral-200">
           <div className="border-b border-neutral-200">
             <div className="flex gap-4 px-6">
               <button
                 onClick={() => setActiveTab('company')}
-                className={`py-4 px-2 border-b-2 font-medium transition-colors ${
+                className={`py-4 px-2 border-b-2 transition-colors ${
                   activeTab === 'company'
                     ? 'border-primary-600 text-primary-600'
                     : 'border-transparent text-neutral-600 hover:text-neutral-900'
@@ -157,7 +157,7 @@ export default function SettingsPage() {
               </button>
               <button
                 onClick={() => setActiveTab('profile')}
-                className={`py-4 px-2 border-b-2 font-medium transition-colors ${
+                className={`py-4 px-2 border-b-2 transition-colors ${
                   activeTab === 'profile'
                     ? 'border-primary-600 text-primary-600'
                     : 'border-transparent text-neutral-600 hover:text-neutral-900'
@@ -173,7 +173,7 @@ export default function SettingsPage() {
             {activeTab === 'company' && (
               <form onSubmit={saveCompanySettings} className="space-y-6">
                 <div>
-                  <h3 className="text-lg font-semibold text-neutral-900 mb-4">Company Information</h3>
+                  <h3 className="text-lg text-neutral-900 mb-4 tracking-tight">Company Information</h3>
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                     <div>
                       <label className="label">Company Name <span className="text-red-500">*</span></label>
@@ -209,7 +209,7 @@ export default function SettingsPage() {
                 </div>
 
                 <div>
-                  <h3 className="text-lg font-semibold text-neutral-900 mb-4">Address</h3>
+                  <h3 className="text-lg text-neutral-900 mb-4 tracking-tight">Address</h3>
                   <div className="grid grid-cols-1 gap-4">
                     <div>
                       <label className="label">Address Line 1</label>
@@ -253,7 +253,7 @@ export default function SettingsPage() {
                 </div>
 
                 <div>
-                  <h3 className="text-lg font-semibold text-neutral-900 mb-4">Contact Information</h3>
+                  <h3 className="text-lg text-neutral-900 mb-4 tracking-tight">Contact Information</h3>
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                     <div>
                       <label className="label">Phone Number</label>
@@ -277,7 +277,7 @@ export default function SettingsPage() {
                 </div>
 
                 <div className="flex justify-end pt-4">
-                  <button type="submit" disabled={isSaving} className="btn btn-primary">
+                  <button type="submit" disabled={isSaving} className="btn btn-primary btn-thin">
                     {isSaving ? 'Saving...' : 'Save Company Settings'}
                   </button>
                 </div>
@@ -288,7 +288,7 @@ export default function SettingsPage() {
             {activeTab === 'profile' && (
               <form onSubmit={saveProfileSettings} className="space-y-6">
                 <div>
-                  <h3 className="text-lg font-semibold text-neutral-900 mb-4">Personal Information</h3>
+                  <h3 className="text-lg text-neutral-900 mb-4 tracking-tight">Personal Information</h3>
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                     <div>
                       <label className="label">First Name <span className="text-red-500">*</span></label>
@@ -314,7 +314,7 @@ export default function SettingsPage() {
                 </div>
 
                 <div>
-                  <h3 className="text-lg font-semibold text-neutral-900 mb-4">Account Details</h3>
+                  <h3 className="text-lg text-neutral-900 mb-4 tracking-tight">Account Details</h3>
                   <div className="grid grid-cols-1 gap-4">
                     <div>
                       <label className="label">Email Address <span className="text-red-500">*</span></label>
@@ -332,20 +332,20 @@ export default function SettingsPage() {
                   </div>
                 </div>
 
-                <div className="card p-4 bg-blue-50 border border-blue-200">
+                <div className="rounded-lg p-4 bg-blue-50 border border-blue-200">
                   <div className="flex items-start gap-3">
                     <svg className="w-5 h-5 text-blue-600 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
                     </svg>
                     <div className="text-sm text-neutral-700">
                       <p className="font-medium">Password Reset</p>
-                      <p className="mt-1">To change your password, please contact support or use the "Forgot Password" link on the login page.</p>
+                      <p className="mt-1 font-light">To change your password, please contact support or use the "Forgot Password" link on the login page.</p>
                     </div>
                   </div>
                 </div>
 
                 <div className="flex justify-end pt-4">
-                  <button type="submit" disabled={isSaving} className="btn btn-primary">
+                  <button type="submit" disabled={isSaving} className="btn btn-primary btn-thin">
                     {isSaving ? 'Saving...' : 'Save Profile Settings'}
                   </button>
                 </div>
