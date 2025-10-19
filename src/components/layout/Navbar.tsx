@@ -12,7 +12,7 @@ export default function Navbar() {
         <div className="flex items-center justify-between h-14">
           {/* Logo */}
           <Link href="/" className="flex items-center gap-2">
-            <div className="w-6 h-6 rounded-md bg-gradient-red flex items-center justify-center">
+            <div className="w-6 h-6 rounded-md gradient-red flex items-center justify-center">
               <span className="text-white text-xs">S</span>
             </div>
             <span className="text-base text-neutral-900">SiteSense</span>
