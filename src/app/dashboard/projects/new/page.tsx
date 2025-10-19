@@ -144,33 +144,33 @@ export default function NewProjectPage() {
           <div className="flex items-center justify-between">
             {steps.map((step, index) => (
               <div key={step.number} className="flex items-center flex-1">
-                <div className="flex items-center">
+                <div className="flex flex-col items-center flex-1">
                   <div
-                    className={`w-10 h-10 rounded-full flex items-center justify-center font-medium ${
-                      currentStep >= step.number
+                    className={`w-10 h-10 rounded-full flex items-center justify-center font-medium transition-all ${
+                      step.number === currentStep
                         ? 'bg-primary-600 text-white'
-                        : 'bg-neutral-200 text-neutral-600'
+                        : step.number < currentStep
+                        ? 'bg-green-600 text-white'
+                        : 'bg-neutral-100 text-neutral-400'
                     }`}
                   >
-                    {step.number}
+                    {step.number < currentStep ? (
+                      <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                      </svg>
+                    ) : (
+                      step.number
+                    )}
                   </div>
-                  <div className="ml-3">
-                    <div
-                      className={`text-sm font-light ${
-                        currentStep >= step.number ? 'text-neutral-900' : 'text-neutral-500'
-                      }`}
-                    >
+                  <div className="text-center mt-2 hidden md:block">
+                    <p className={`text-sm font-light ${step.number === currentStep ? 'text-primary-600' : 'text-neutral-600'}`}>
                       {step.title}
-                    </div>
-                    <div className="text-xs text-neutral-500 font-light">{step.description}</div>
+                    </p>
+                    <p className="text-xs text-neutral-500 font-light">{step.description}</p>
                   </div>
                 </div>
                 {index < steps.length - 1 && (
-                  <div
-                    className={`flex-1 h-0.5 mx-4 ${
-                      currentStep > step.number ? 'bg-primary-600' : 'bg-neutral-200'
-                    }`}
-                  />
+                  <div className={`h-0.5 flex-1 ${step.number < currentStep ? 'bg-green-600' : 'bg-neutral-200'}`} />
                 )}
               </div>
             ))}
