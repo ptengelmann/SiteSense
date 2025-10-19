@@ -211,16 +211,16 @@ export default function DocumentsPage() {
         {/* Header */}
         <div className="flex justify-between items-start">
           <div>
-            <h1 className="text-3xl font-bold text-neutral-900">Documents</h1>
-            <p className="text-neutral-600 mt-1">
+            <h1 className="text-3xl text-neutral-900 tracking-tight">Documents</h1>
+            <p className="text-neutral-600 mt-1 font-light">
               Manage your company documents and files
             </p>
           </div>
           <button
             onClick={() => setShowUploadModal(true)}
-            className="btn btn-primary"
+            className="btn btn-primary btn-thin"
           >
-            <svg className="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <svg className="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 4v16m8-8H4" />
             </svg>
             Upload Document
@@ -241,7 +241,7 @@ export default function DocumentsPage() {
         )}
 
         {/* Filters */}
-        <div className="card p-4">
+        <div className="rounded-lg p-4 bg-white border border-neutral-200">
           <div className="flex flex-col md:flex-row gap-4">
             <div className="flex-1">
               <input
@@ -269,7 +269,7 @@ export default function DocumentsPage() {
 
         {/* Documents Grid */}
         {filteredDocuments.length === 0 ? (
-          <div className="card p-12 text-center">
+          <div className="rounded-lg p-12 bg-white border border-neutral-200 text-center">
             <svg
               className="w-16 h-16 mx-auto text-neutral-400 mb-4"
               fill="none"
@@ -283,8 +283,8 @@ export default function DocumentsPage() {
                 d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"
               />
             </svg>
-            <h3 className="text-lg font-semibold text-neutral-900 mb-2">No documents found</h3>
-            <p className="text-neutral-600">
+            <h3 className="text-lg text-neutral-900 mb-2 tracking-tight">No documents found</h3>
+            <p className="text-neutral-600 font-light">
               {searchQuery || selectedCategory !== 'all'
                 ? 'Try adjusting your filters'
                 : 'Upload your first document to get started'}
@@ -293,7 +293,7 @@ export default function DocumentsPage() {
         ) : (
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
             {filteredDocuments.map(doc => (
-              <div key={doc.id} className="card p-4 hover:shadow-lg transition-shadow">
+              <div key={doc.id} className="rounded-lg p-4 bg-white border border-neutral-200 hover:shadow-lg transition-shadow">
                 <div className="flex items-start justify-between mb-3">
                   <div className="text-4xl">{getFileIcon(doc.mimeType)}</div>
                   <div className="flex gap-2">
@@ -319,7 +319,7 @@ export default function DocumentsPage() {
                   </div>
                 </div>
 
-                <h3 className="font-semibold text-neutral-900 mb-1 truncate" title={doc.title}>
+                <h3 className="text-neutral-900 mb-1 truncate tracking-tight" title={doc.title}>
                   {doc.title}
                 </h3>
                 <p className="text-sm text-neutral-600 mb-2 truncate" title={doc.fileName}>
@@ -363,7 +363,7 @@ export default function DocumentsPage() {
             <div className="bg-white rounded-lg max-w-2xl w-full max-h-[90vh] overflow-y-auto">
               <div className="p-6">
                 <div className="flex justify-between items-center mb-6">
-                  <h2 className="text-2xl font-bold text-neutral-900">Upload Document</h2>
+                  <h2 className="text-2xl text-neutral-900 tracking-tight">Upload Document</h2>
                   <button
                     onClick={() => {
                       setShowUploadModal(false);
@@ -467,7 +467,7 @@ export default function DocumentsPage() {
                         setShowUploadModal(false);
                         resetUploadForm();
                       }}
-                      className="btn btn-outline"
+                      className="btn btn-outline btn-thin"
                       disabled={isUploading}
                     >
                       Cancel
@@ -475,7 +475,7 @@ export default function DocumentsPage() {
                     <button
                       type="submit"
                       disabled={isUploading}
-                      className="btn btn-primary"
+                      className="btn btn-primary btn-thin"
                     >
                       {isUploading ? 'Uploading...' : 'Upload'}
                     </button>

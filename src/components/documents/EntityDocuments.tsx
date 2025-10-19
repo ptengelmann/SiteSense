@@ -183,8 +183,8 @@ export default function EntityDocuments({
   return (
     <div className="space-y-4">
       <div className="flex justify-between items-center">
-        <h3 className="text-lg font-semibold text-neutral-900">Documents</h3>
-        <button onClick={() => setShowUploadModal(true)} className="btn btn-sm btn-outline">
+        <h3 className="text-lg text-neutral-900 tracking-tight">Documents</h3>
+        <button onClick={() => setShowUploadModal(true)} className="btn btn-thin btn-outline">
           <svg className="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 4v16m8-8H4" />
           </svg>
@@ -250,7 +250,7 @@ export default function EntityDocuments({
                 </div>
               </div>
 
-              <h4 className="font-medium text-neutral-900 text-sm mb-1 truncate" title={doc.title}>
+              <h4 className="text-neutral-900 text-sm mb-1 truncate tracking-tight" title={doc.title}>
                 {doc.title}
               </h4>
               <p className="text-xs text-neutral-600 mb-2 truncate" title={doc.fileName}>
@@ -293,7 +293,7 @@ export default function EntityDocuments({
           <div className="bg-white rounded-lg max-w-lg w-full max-h-[90vh] overflow-y-auto">
             <div className="p-6">
               <div className="flex justify-between items-center mb-4">
-                <h3 className="text-xl font-bold text-neutral-900">Upload Document</h3>
+                <h3 className="text-xl text-neutral-900 tracking-tight">Upload Document</h3>
                 <button
                   onClick={() => {
                     setShowUploadModal(false);
@@ -383,7 +383,7 @@ export default function EntityDocuments({
                       setShowUploadModal(false);
                       resetUploadForm();
                     }}
-                    className="btn btn-outline btn-sm"
+                    className="btn btn-outline btn-thin"
                     disabled={isUploading}
                   >
                     Cancel
@@ -391,7 +391,7 @@ export default function EntityDocuments({
                   <button
                     type="submit"
                     disabled={isUploading}
-                    className="btn btn-primary btn-sm"
+                    className="btn btn-primary btn-thin"
                   >
                     {isUploading ? 'Uploading...' : 'Upload'}
                   </button>
