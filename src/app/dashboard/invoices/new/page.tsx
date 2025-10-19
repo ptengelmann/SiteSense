@@ -277,9 +277,12 @@ export default function NewInvoicePage() {
                   </svg>
                 </div>
                 <div className="flex-1">
-                  <h3 className="text-lg text-neutral-900 tracking-tight">AI Invoice Scanner</h3>
-                  <p className="text-sm text-neutral-600 mt-1 font-light">
-                    Upload an invoice PDF to automatically extract data and detect potential fraud
+                  <div className="flex items-center gap-2 mb-1">
+                    <h3 className="text-lg text-neutral-900 tracking-tight">AI Invoice Scanner</h3>
+                    <span className="px-2 py-0.5 text-xs font-medium bg-primary-600 text-white rounded">Optional</span>
+                  </div>
+                  <p className="text-sm text-neutral-600 font-light">
+                    Upload an invoice PDF to automatically extract data and detect fraud. The form below will be auto-filled, or you can skip this and enter details manually.
                   </p>
                 </div>
               </div>
@@ -435,6 +438,14 @@ export default function NewInvoicePage() {
                 </div>
               </div>
             )}
+
+            {/* Form Section Divider */}
+            <div className="pt-6 border-t border-neutral-200">
+              <h3 className="text-base font-medium text-neutral-900 mb-1">Invoice Details</h3>
+              <p className="text-sm text-neutral-600 font-light mb-4">
+                {aiResult ? 'Review and adjust the auto-filled information below' : 'Enter the invoice details manually'}
+              </p>
+            </div>
 
             {/* Subcontractor Selection */}
             <div>
