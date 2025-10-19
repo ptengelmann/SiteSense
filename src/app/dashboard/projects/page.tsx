@@ -70,16 +70,16 @@ export default async function ProjectsPage() {
         {/* Header */}
         <div className="flex items-center justify-between">
           <div>
-            <h1 className="text-3xl font-bold text-neutral-900">Projects</h1>
-            <p className="text-neutral-600 mt-1">
+            <h1 className="text-3xl text-neutral-900 tracking-tight">Projects</h1>
+            <p className="text-neutral-600 mt-1 font-light">
               Manage construction projects with compliance tracking and subcontractor assignments
             </p>
           </div>
           <Link
             href="/dashboard/projects/new"
-            className="btn btn-primary btn-md"
+            className="btn btn-primary btn-thin"
           >
-            <svg className="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <svg className="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 4v16m8-8H4" />
             </svg>
             New Project
@@ -90,11 +90,11 @@ export default async function ProjectsPage() {
           <>
             {/* Stats Cards */}
             <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
-              <div className="card p-6">
+              <div className="rounded-lg p-6 bg-white border border-neutral-200">
                 <div className="flex items-center justify-between">
                   <div>
-                    <p className="text-sm text-neutral-600">Total Projects</p>
-                    <p className="text-2xl font-bold text-neutral-900 mt-1">{totalProjects}</p>
+                    <p className="text-sm text-neutral-600 font-light">Total Projects</p>
+                    <p className="text-2xl text-neutral-900 mt-1 tracking-tight">{totalProjects}</p>
                   </div>
                   <div className="w-12 h-12 rounded-lg bg-primary-50 flex items-center justify-center">
                     <svg className="w-6 h-6 text-primary-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -104,11 +104,11 @@ export default async function ProjectsPage() {
                 </div>
               </div>
 
-              <div className="card p-6">
+              <div className="rounded-lg p-6 bg-white border border-neutral-200">
                 <div className="flex items-center justify-between">
                   <div>
-                    <p className="text-sm text-neutral-600">Active</p>
-                    <p className="text-2xl font-bold text-neutral-900 mt-1">{activeProjects}</p>
+                    <p className="text-sm text-neutral-600 font-light">Active</p>
+                    <p className="text-2xl text-neutral-900 mt-1 tracking-tight">{activeProjects}</p>
                   </div>
                   <div className="w-12 h-12 rounded-lg bg-blue-50 flex items-center justify-center">
                     <svg className="w-6 h-6 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -118,11 +118,11 @@ export default async function ProjectsPage() {
                 </div>
               </div>
 
-              <div className="card p-6">
+              <div className="rounded-lg p-6 bg-white border border-neutral-200">
                 <div className="flex items-center justify-between">
                   <div>
-                    <p className="text-sm text-neutral-600">Delayed</p>
-                    <p className="text-2xl font-bold text-amber-600 mt-1">{delayedProjects}</p>
+                    <p className="text-sm text-neutral-600 font-light">Delayed</p>
+                    <p className="text-2xl text-amber-600 mt-1 tracking-tight">{delayedProjects}</p>
                   </div>
                   <div className="w-12 h-12 rounded-lg bg-amber-50 flex items-center justify-center">
                     <svg className="w-6 h-6 text-amber-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -132,11 +132,11 @@ export default async function ProjectsPage() {
                 </div>
               </div>
 
-              <div className="card p-6">
+              <div className="rounded-lg p-6 bg-white border border-neutral-200">
                 <div className="flex items-center justify-between">
                   <div>
-                    <p className="text-sm text-neutral-600">Total Budget</p>
-                    <p className="text-2xl font-bold text-green-600 mt-1">
+                    <p className="text-sm text-neutral-600 font-light">Total Budget</p>
+                    <p className="text-2xl text-green-600 mt-1 tracking-tight">
                       £{(totalBudget / 1000).toFixed(0)}k
                     </p>
                   </div>
@@ -154,24 +154,24 @@ export default async function ProjectsPage() {
           </>
         ) : (
           /* Empty State */
-          <div className="card p-12">
+          <div className="rounded-lg p-12 bg-white border border-neutral-200">
             <div className="text-center">
               <div className="w-16 h-16 rounded-full bg-primary-50 flex items-center justify-center mx-auto mb-4">
                 <svg className="w-8 h-8 text-primary-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
                 </svg>
               </div>
-              <h3 className="text-lg font-semibold text-neutral-900 mb-2">
+              <h3 className="text-lg text-neutral-900 mb-2 tracking-tight">
                 No projects yet
               </h3>
-              <p className="text-neutral-600 mb-6 max-w-md mx-auto">
+              <p className="text-neutral-600 mb-6 max-w-md mx-auto font-light">
                 Get started by creating your first construction project. Track subcontractors, manage compliance, and monitor project progress all in one place.
               </p>
               <Link
                 href="/dashboard/projects/new"
-                className="btn btn-primary btn-md inline-flex items-center"
+                className="btn btn-primary btn-thin inline-flex items-center"
               >
-                <svg className="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <svg className="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 4v16m8-8H4" />
                 </svg>
                 Create Your First Project

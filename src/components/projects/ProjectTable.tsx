@@ -180,7 +180,7 @@ export default function ProjectTable({ initialData }: ProjectTableProps) {
   return (
     <div className="space-y-4">
       {/* Search and Filters */}
-      <div className="card p-4">
+      <div className="rounded-lg p-4 bg-white border border-neutral-200">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
           {/* Search */}
           <div className="md:col-span-2">
@@ -247,19 +247,19 @@ export default function ProjectTable({ initialData }: ProjectTableProps) {
           </div>
         </div>
 
-        <div className="mt-3 text-sm text-neutral-600">
+        <div className="mt-3 text-sm text-neutral-600 font-light">
           Showing {filteredData.length} of {projects.length} projects
         </div>
       </div>
 
       {/* Table */}
-      <div className="card overflow-hidden">
+      <div className="rounded-lg overflow-hidden bg-white border border-neutral-200">
         <div className="overflow-x-auto">
           <table className="w-full">
             <thead className="bg-neutral-50 border-b border-neutral-200">
               <tr>
                 <th
-                  className="px-6 py-3 text-left text-xs font-medium text-neutral-600 uppercase tracking-wider cursor-pointer hover:bg-neutral-100"
+                  className="px-6 py-3 text-left text-xs font-light text-neutral-600 uppercase tracking-wider cursor-pointer hover:bg-neutral-100"
                   onClick={() => handleSort('name')}
                 >
                   <div className="flex items-center gap-2">
@@ -271,22 +271,22 @@ export default function ProjectTable({ initialData }: ProjectTableProps) {
                     )}
                   </div>
                 </th>
-                <th className="px-6 py-3 text-left text-xs font-medium text-neutral-600 uppercase tracking-wider">
+                <th className="px-6 py-3 text-left text-xs font-light text-neutral-600 uppercase tracking-wider">
                   Client & Location
                 </th>
-                <th className="px-6 py-3 text-left text-xs font-medium text-neutral-600 uppercase tracking-wider">
+                <th className="px-6 py-3 text-left text-xs font-light text-neutral-600 uppercase tracking-wider">
                   Status
                 </th>
-                <th className="px-6 py-3 text-left text-xs font-medium text-neutral-600 uppercase tracking-wider">
+                <th className="px-6 py-3 text-left text-xs font-light text-neutral-600 uppercase tracking-wider">
                   Budget & Cost
                 </th>
-                <th className="px-6 py-3 text-left text-xs font-medium text-neutral-600 uppercase tracking-wider">
+                <th className="px-6 py-3 text-left text-xs font-light text-neutral-600 uppercase tracking-wider">
                   Dates
                 </th>
-                <th className="px-6 py-3 text-left text-xs font-medium text-neutral-600 uppercase tracking-wider">
+                <th className="px-6 py-3 text-left text-xs font-light text-neutral-600 uppercase tracking-wider">
                   Resources
                 </th>
-                <th className="px-6 py-3 text-right text-xs font-medium text-neutral-600 uppercase tracking-wider">
+                <th className="px-6 py-3 text-right text-xs font-light text-neutral-600 uppercase tracking-wider">
                   Actions
                 </th>
               </tr>

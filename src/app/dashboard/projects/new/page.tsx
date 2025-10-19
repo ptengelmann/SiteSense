@@ -129,24 +129,24 @@ export default function NewProjectPage() {
         {/* Header */}
         <div className="flex items-center justify-between">
           <div>
-            <h1 className="text-3xl font-bold text-neutral-900">Create New Project</h1>
-            <p className="text-neutral-600 mt-1">
+            <h1 className="text-3xl text-neutral-900 tracking-tight">Create New Project</h1>
+            <p className="text-neutral-600 mt-1 font-light">
               Add a new construction project with full UK compliance tracking
             </p>
           </div>
-          <Link href="/dashboard/projects" className="btn btn-secondary btn-md">
+          <Link href="/dashboard/projects" className="btn btn-secondary btn-thin">
             Cancel
           </Link>
         </div>
 
         {/* Progress Steps */}
-        <div className="card p-6">
+        <div className="rounded-lg p-6 bg-white border border-neutral-200">
           <div className="flex items-center justify-between">
             {steps.map((step, index) => (
               <div key={step.number} className="flex items-center flex-1">
                 <div className="flex items-center">
                   <div
-                    className={`w-10 h-10 rounded-full flex items-center justify-center font-semibold ${
+                    className={`w-10 h-10 rounded-full flex items-center justify-center font-medium ${
                       currentStep >= step.number
                         ? 'bg-primary-600 text-white'
                         : 'bg-neutral-200 text-neutral-600'
@@ -156,13 +156,13 @@ export default function NewProjectPage() {
                   </div>
                   <div className="ml-3">
                     <div
-                      className={`text-sm font-medium ${
+                      className={`text-sm font-light ${
                         currentStep >= step.number ? 'text-neutral-900' : 'text-neutral-500'
                       }`}
                     >
                       {step.title}
                     </div>
-                    <div className="text-xs text-neutral-500">{step.description}</div>
+                    <div className="text-xs text-neutral-500 font-light">{step.description}</div>
                   </div>
                 </div>
                 {index < steps.length - 1 && (
@@ -186,11 +186,11 @@ export default function NewProjectPage() {
 
         {/* Form */}
         <form onSubmit={handleSubmit}>
-          <div className="card p-8">
+          <div className="rounded-lg p-8 bg-white border border-neutral-200">
             {/* Step 1: Basic Details */}
             {currentStep === 1 && (
               <div className="space-y-6">
-                <h2 className="text-xl font-semibold text-neutral-900">Project Information</h2>
+                <h2 className="text-xl text-neutral-900 tracking-tight">Project Information</h2>
 
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                   <div className="md:col-span-2">
@@ -291,10 +291,10 @@ export default function NewProjectPage() {
             {/* Step 2: Client & Location */}
             {currentStep === 2 && (
               <div className="space-y-6">
-                <h2 className="text-xl font-semibold text-neutral-900">Client & Site Information</h2>
+                <h2 className="text-xl text-neutral-900 tracking-tight">Client & Site Information</h2>
 
                 <div className="space-y-4">
-                  <h3 className="text-sm font-semibold text-neutral-700 uppercase">Client Details</h3>
+                  <h3 className="text-sm font-light text-neutral-700 uppercase">Client Details</h3>
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                     <div>
                       <label className="label">Client Name</label>
@@ -343,7 +343,7 @@ export default function NewProjectPage() {
                 </div>
 
                 <div className="space-y-4">
-                  <h3 className="text-sm font-semibold text-neutral-700 uppercase">Site Address</h3>
+                  <h3 className="text-sm font-light text-neutral-700 uppercase">Site Address</h3>
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                     <div className="md:col-span-2">
                       <label className="label">Address Line 1</label>
@@ -418,7 +418,7 @@ export default function NewProjectPage() {
             {/* Step 3: Contract & Budget */}
             {currentStep === 3 && (
               <div className="space-y-6">
-                <h2 className="text-xl font-semibold text-neutral-900">Contract & Budget</h2>
+                <h2 className="text-xl text-neutral-900 tracking-tight">Contract & Budget</h2>
 
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                   <div>
@@ -490,7 +490,7 @@ export default function NewProjectPage() {
             {/* Step 4: Health & Safety */}
             {currentStep === 4 && (
               <div className="space-y-6">
-                <h2 className="text-xl font-semibold text-neutral-900">Health & Safety (CDM 2015)</h2>
+                <h2 className="text-xl text-neutral-900 tracking-tight">Health & Safety (CDM 2015)</h2>
 
                 <div className="card p-4 bg-amber-50 border-amber-200">
                   <p className="text-sm text-amber-800">
@@ -560,10 +560,10 @@ export default function NewProjectPage() {
             {/* Step 5: Planning & Insurance */}
             {currentStep === 5 && (
               <div className="space-y-6">
-                <h2 className="text-xl font-semibold text-neutral-900">Planning & Insurance</h2>
+                <h2 className="text-xl text-neutral-900 tracking-tight">Planning & Insurance</h2>
 
                 <div className="space-y-4">
-                  <h3 className="text-sm font-semibold text-neutral-700 uppercase">Planning Permission</h3>
+                  <h3 className="text-sm font-light text-neutral-700 uppercase">Planning Permission</h3>
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                     <div>
                       <label className="label">Planning Permission Reference</label>
@@ -611,7 +611,7 @@ export default function NewProjectPage() {
                 </div>
 
                 <div className="space-y-4">
-                  <h3 className="text-sm font-semibold text-neutral-700 uppercase">Contract Works Insurance</h3>
+                  <h3 className="text-sm font-light text-neutral-700 uppercase">Contract Works Insurance</h3>
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                     <div>
                       <label className="label">Coverage Amount (£)</label>
@@ -667,21 +667,21 @@ export default function NewProjectPage() {
                 type="button"
                 onClick={prevStep}
                 disabled={currentStep === 1}
-                className="btn btn-secondary"
+                className="btn btn-secondary btn-thin"
               >
                 Previous
               </button>
 
-              <div className="text-sm text-neutral-600">
+              <div className="text-sm text-neutral-600 font-light">
                 Step {currentStep} of {steps.length}
               </div>
 
               {currentStep < steps.length ? (
-                <button type="button" onClick={nextStep} className="btn btn-primary">
+                <button type="button" onClick={nextStep} className="btn btn-primary btn-thin">
                   Next
                 </button>
               ) : (
-                <button type="submit" disabled={isSubmitting} className="btn btn-primary">
+                <button type="submit" disabled={isSubmitting} className="btn btn-primary btn-thin">
                   {isSubmitting ? 'Creating...' : 'Create Project'}
                 </button>
               )}
