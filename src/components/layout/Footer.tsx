@@ -4,26 +4,26 @@ export default function Footer() {
   const currentYear = new Date().getFullYear();
 
   return (
-    <footer className="border-t border-neutral-200 bg-neutral-50">
-      <div className="max-w-7xl mx-auto px-6 lg:px-8 py-12">
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
+    <footer className="border-t border-neutral-200 bg-white">
+      <div className="max-w-6xl mx-auto px-6 lg:px-8 py-12">
+        <div className="grid grid-cols-1 md:grid-cols-4 gap-12 mb-8">
           {/* Brand Column */}
           <div className="col-span-1 md:col-span-1">
-            <Link href="/" className="flex items-center space-x-2 mb-4">
-              <div className="w-8 h-8 rounded-lg gradient-blue flex items-center justify-center">
-                <span className="text-white font-bold text-sm">S</span>
+            <Link href="/" className="flex items-center gap-2 mb-3">
+              <div className="w-6 h-6 rounded-md gradient-red flex items-center justify-center">
+                <span className="text-white text-xs">S</span>
               </div>
-              <span className="text-lg font-semibold text-neutral-900">SiteSense</span>
+              <span className="text-base text-neutral-900">SiteSense</span>
             </Link>
-            <p className="text-sm text-neutral-600 mb-4">
+            <p className="text-sm text-neutral-600 mb-4 font-light leading-relaxed">
               AI-powered subcontractor payment automation for UK construction.
             </p>
-            <div className="flex items-center gap-3">
+            <div className="flex items-center gap-2">
               <a
                 href="https://twitter.com/sitesense"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="w-9 h-9 rounded-lg bg-neutral-200 hover:bg-primary-500 hover:text-white flex items-center justify-center transition-colors"
+                className="w-8 h-8 rounded-md bg-neutral-100 hover:bg-primary-50 hover:text-primary-500 flex items-center justify-center transition-colors text-neutral-600"
                 aria-label="Twitter"
               >
                 <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
@@ -34,7 +34,7 @@ export default function Footer() {
                 href="https://linkedin.com/company/sitesense"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="w-9 h-9 rounded-lg bg-neutral-200 hover:bg-primary-500 hover:text-white flex items-center justify-center transition-colors"
+                className="w-8 h-8 rounded-md bg-neutral-100 hover:bg-primary-50 hover:text-primary-500 flex items-center justify-center transition-colors text-neutral-600"
                 aria-label="LinkedIn"
               >
                 <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
@@ -46,25 +46,25 @@ export default function Footer() {
 
           {/* Product Column */}
           <div>
-            <h3 className="font-semibold text-neutral-900 mb-4">Product</h3>
-            <ul className="space-y-3">
+            <h3 className="text-xs text-neutral-500 tracking-wide mb-3">PRODUCT</h3>
+            <ul className="space-y-2.5">
               <li>
-                <Link href="/features" className="text-sm text-neutral-600 hover:text-primary-600 transition-colors">
+                <Link href="/features" className="text-sm text-neutral-600 hover:text-primary-500 transition-colors font-light">
                   Features
                 </Link>
               </li>
               <li>
-                <Link href="/how-it-works" className="text-sm text-neutral-600 hover:text-primary-600 transition-colors">
+                <Link href="/how-it-works" className="text-sm text-neutral-600 hover:text-primary-500 transition-colors font-light">
                   How It Works
                 </Link>
               </li>
               <li>
-                <Link href="/pricing" className="text-sm text-neutral-600 hover:text-primary-600 transition-colors">
+                <Link href="/pricing" className="text-sm text-neutral-600 hover:text-primary-500 transition-colors font-light">
                   Pricing
                 </Link>
               </li>
               <li>
-                <Link href="/about" className="text-sm text-neutral-600 hover:text-primary-600 transition-colors">
+                <Link href="/about" className="text-sm text-neutral-600 hover:text-primary-500 transition-colors font-light">
                   About Us
                 </Link>
               </li>
@@ -73,25 +73,25 @@ export default function Footer() {
 
           {/* Resources Column */}
           <div>
-            <h3 className="font-semibold text-neutral-900 mb-4">Resources</h3>
-            <ul className="space-y-3">
+            <h3 className="text-xs text-neutral-500 tracking-wide mb-3">RESOURCES</h3>
+            <ul className="space-y-2.5">
               <li>
-                <Link href="/contact" className="text-sm text-neutral-600 hover:text-primary-600 transition-colors">
+                <Link href="/contact" className="text-sm text-neutral-600 hover:text-primary-500 transition-colors font-light">
                   Contact Sales
                 </Link>
               </li>
               <li>
-                <a href="/dashboard" className="text-sm text-neutral-600 hover:text-primary-600 transition-colors">
+                <a href="/dashboard" className="text-sm text-neutral-600 hover:text-primary-500 transition-colors font-light">
                   Dashboard
                 </a>
               </li>
               <li>
-                <Link href="/login" className="text-sm text-neutral-600 hover:text-primary-600 transition-colors">
+                <Link href="/login" className="text-sm text-neutral-600 hover:text-primary-500 transition-colors font-light">
                   Sign In
                 </Link>
               </li>
               <li>
-                <Link href="/register" className="text-sm text-neutral-600 hover:text-primary-600 transition-colors">
+                <Link href="/register" className="text-sm text-neutral-600 hover:text-primary-500 transition-colors font-light">
                   Get Started
                 </Link>
               </li>
@@ -100,20 +100,20 @@ export default function Footer() {
 
           {/* Legal Column */}
           <div>
-            <h3 className="font-semibold text-neutral-900 mb-4">Legal</h3>
-            <ul className="space-y-3">
+            <h3 className="text-xs text-neutral-500 tracking-wide mb-3">LEGAL</h3>
+            <ul className="space-y-2.5">
               <li>
-                <Link href="/privacy" className="text-sm text-neutral-600 hover:text-primary-600 transition-colors">
+                <Link href="/privacy" className="text-sm text-neutral-600 hover:text-primary-500 transition-colors font-light">
                   Privacy Policy
                 </Link>
               </li>
               <li>
-                <Link href="/terms" className="text-sm text-neutral-600 hover:text-primary-600 transition-colors">
+                <Link href="/terms" className="text-sm text-neutral-600 hover:text-primary-500 transition-colors font-light">
                   Terms of Service
                 </Link>
               </li>
               <li>
-                <Link href="/contact" className="text-sm text-neutral-600 hover:text-primary-600 transition-colors">
+                <Link href="/contact" className="text-sm text-neutral-600 hover:text-primary-500 transition-colors font-light">
                   Support
                 </Link>
               </li>
@@ -124,20 +124,16 @@ export default function Footer() {
         {/* Bottom Bar */}
         <div className="pt-8 border-t border-neutral-200">
           <div className="flex flex-col md:flex-row items-center justify-between gap-4">
-            <p className="text-sm text-neutral-500">
+            <p className="text-xs text-neutral-500 font-light">
               © {currentYear} SiteSense. AI-powered payments for UK construction.
             </p>
-            <div className="flex items-center gap-6 text-sm text-neutral-500">
-              <span className="inline-flex items-center gap-2">
-                <svg className="w-4 h-4 text-green-500" fill="currentColor" viewBox="0 0 20 20">
-                  <path fillRule="evenodd" d="M5 9V7a5 5 0 0110 0v2a2 2 0 012 2v5a2 2 0 01-2 2H5a2 2 0 01-2-2v-5a2 2 0 012-2zm8-2v2H7V7a3 3 0 016 0z" clipRule="evenodd" />
-                </svg>
+            <div className="flex items-center gap-6 text-xs text-neutral-500">
+              <span className="inline-flex items-center gap-2 font-light">
+                <div className="w-1 h-1 rounded-full bg-primary-500"></div>
                 Bank-level security
               </span>
-              <span className="inline-flex items-center gap-2">
-                <svg className="w-4 h-4 text-blue-500" fill="currentColor" viewBox="0 0 20 20">
-                  <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
-                </svg>
+              <span className="inline-flex items-center gap-2 font-light">
+                <div className="w-1 h-1 rounded-full bg-primary-500"></div>
                 GDPR compliant
               </span>
             </div>

@@ -18,19 +18,19 @@ export default function Stats() {
     {
       number: '95%',
       label: 'AI extraction accuracy',
-      description: 'our AI powered invoice OCR',
+      description: 'Our AI powered invoice OCR',
     },
   ];
 
   return (
-    <section className="py-20 bg-primary-600">
-      <div className="max-w-7xl mx-auto px-6 lg:px-8">
+    <section className="py-16 bg-primary-50">
+      <div className="max-w-6xl mx-auto px-6 lg:px-8">
         {/* Header */}
-        <div className="text-center mb-16">
-          <h2 className="text-3xl lg:text-4xl font-bold text-white mb-4">
+        <div className="text-center mb-12">
+          <h2 className="text-4xl lg:text-5xl text-neutral-900 mb-4 tracking-tight">
             The numbers speak for themselves
           </h2>
-          <p className="text-lg text-primary-100 max-w-2xl mx-auto">
+          <p className="text-lg text-neutral-600 max-w-2xl mx-auto font-light">
             UK construction companies using SiteSense save thousands in admin costs and eliminate payment delays
           </p>
         </div>
@@ -39,32 +39,32 @@ export default function Stats() {
         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
           {stats.map((stat, index) => (
             <div key={index} className="text-center">
-              <div className="text-4xl lg:text-5xl font-bold text-white mb-2">{stat.number}</div>
-              <div className="text-lg font-semibold text-primary-100 mb-2">{stat.label}</div>
-              <div className="text-sm text-primary-200">{stat.description}</div>
+              <div className="text-3xl lg:text-4xl text-primary-500 mb-2 tracking-tight">{stat.number}</div>
+              <div className="text-base text-neutral-900 mb-1">{stat.label}</div>
+              <div className="text-sm text-neutral-600 font-light">{stat.description}</div>
             </div>
           ))}
         </div>
 
         {/* Bottom ROI Calculator */}
-        <div className="mt-16 bg-white/10 backdrop-blur-sm rounded-2xl border border-white/20 p-8">
+        <div className="mt-12 bg-white rounded-lg border border-neutral-200 p-6">
           <div className="text-center">
-            <h3 className="text-2xl font-bold text-white mb-4">Calculate Your Savings</h3>
+            <h3 className="text-lg text-neutral-900 mb-6">Calculate Your Savings</h3>
             <div className="grid md:grid-cols-3 gap-6 max-w-4xl mx-auto">
               <div>
-                <div className="text-sm text-primary-100 mb-2">Invoices per week</div>
-                <div className="text-3xl font-bold text-white">20</div>
+                <div className="text-xs text-neutral-500 mb-1 tracking-wide">Invoices per week</div>
+                <div className="text-2xl text-neutral-900">20</div>
               </div>
               <div>
-                <div className="text-sm text-primary-100 mb-2">Time saved per invoice</div>
-                <div className="text-3xl font-bold text-white">9.5 min</div>
+                <div className="text-xs text-neutral-500 mb-1 tracking-wide">Time saved per invoice</div>
+                <div className="text-2xl text-neutral-900">9.5 min</div>
               </div>
               <div>
-                <div className="text-sm text-primary-100 mb-2">Annual savings</div>
-                <div className="text-3xl font-bold text-green-300">£49,400</div>
+                <div className="text-xs text-neutral-500 mb-1 tracking-wide">Annual savings</div>
+                <div className="text-2xl text-primary-500">£49,400</div>
               </div>
             </div>
-            <p className="text-sm text-primary-200 mt-6">
+            <p className="text-xs text-neutral-500 mt-6 font-light">
               Based on 20 invoices/week × 9.5 min saved × £50/hour × 52 weeks
             </p>
           </div>

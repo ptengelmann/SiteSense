@@ -7,7 +7,7 @@ export default function Features() {
         </svg>
       ),
       title: 'AI Invoice OCR',
-      description: 'our AI extracts invoice numbers, dates, amounts, and line items with 95% accuracy. No manual typing.',
+      description: 'Our AI extracts invoice numbers, dates, amounts, and line items with 95% accuracy. No manual typing.',
       stats: '95% accuracy',
       available: true,
     },
@@ -103,52 +103,52 @@ export default function Features() {
   ];
 
   return (
-    <section id="features" className="py-20 bg-gradient-blue-subtle">
-      <div className="max-w-7xl mx-auto px-6 lg:px-8">
-        <div className="text-center mb-16">
-          <span className="inline-block px-4 py-1.5 rounded-full bg-primary-100 text-primary-700 text-sm font-medium mb-4">
-            Features
-          </span>
-          <h2 className="text-3xl lg:text-4xl font-bold text-neutral-900 mb-4">
+    <section id="features" className="py-16 bg-white">
+      <div className="max-w-6xl mx-auto px-6 lg:px-8">
+        <div className="text-center mb-12">
+          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-primary-200 bg-primary-50 mb-4">
+            <div className="w-1 h-1 rounded-full bg-primary-500"></div>
+            <span className="text-xs text-primary-700 tracking-wide">FEATURES</span>
+          </div>
+          <h2 className="text-4xl lg:text-5xl text-neutral-900 mb-4 tracking-tight">
             Everything you need to manage subcontractor payments
           </h2>
-          <p className="text-lg text-neutral-600 max-w-2xl mx-auto">
+          <p className="text-lg text-neutral-600 max-w-2xl mx-auto font-light">
             From AI invoice processing to HMRC compliance - all in one platform
           </p>
         </div>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
           {features.map((feature, index) => (
             <div
               key={index}
-              className={`card p-8 hover:scale-105 transition-transform duration-200 relative ${
+              className={`bg-white rounded-lg border border-neutral-200 p-6 transition-all duration-200 relative ${
                 !feature.available ? 'opacity-90' : ''
               }`}
             >
               {/* Coming Soon Badge */}
               {!feature.available && (
-                <div className="absolute top-4 right-4">
-                  <span className="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium bg-amber-100 text-amber-800 border border-amber-200">
+                <div className="absolute top-3 right-3">
+                  <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs bg-amber-50 text-amber-700 border border-amber-200">
+                    <div className="w-1 h-1 rounded-full bg-amber-500"></div>
                     {feature.comingSoon}
                   </span>
                 </div>
               )}
 
               {/* Icon */}
-              <div className={`w-12 h-12 rounded-xl ${feature.available ? 'gradient-blue' : 'bg-neutral-400'} flex items-center justify-center mb-5`}>
+              <div className={`w-10 h-10 rounded-md ${feature.available ? 'gradient-red' : 'bg-neutral-400'} flex items-center justify-center mb-4`}>
                 {feature.icon}
               </div>
 
               {/* Content */}
-              <h3 className="text-xl font-semibold text-neutral-900 mb-3">{feature.title}</h3>
-              <p className="text-neutral-600 leading-relaxed mb-4">{feature.description}</p>
+              <h3 className="text-lg text-neutral-900 mb-2">{feature.title}</h3>
+              <p className="text-sm text-neutral-600 leading-relaxed mb-3 font-light">{feature.description}</p>
 
               {/* Stats Badge */}
               {feature.stats && (
-                <div className="inline-flex items-center px-3 py-1 rounded-full bg-primary-50 text-primary-700 text-sm font-medium border border-primary-100">
-                  <svg className="w-4 h-4 mr-1.5" fill="currentColor" viewBox="0 0 20 20">
-                    <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
-                  </svg>
+                <div className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-primary-50 text-primary-700 text-xs border border-primary-200">
+                  <div className="w-1 h-1 rounded-full bg-primary-500"></div>
                   {feature.stats}
                 </div>
               )}
