@@ -99,8 +99,8 @@ export default function InvoiceActions({ invoice }: InvoiceActionsProps) {
   };
 
   return (
-    <div className="card p-6">
-      <h2 className="text-lg font-semibold text-neutral-900 mb-4">Actions</h2>
+    <div className="rounded-lg p-6 bg-white border border-neutral-200">
+      <h2 className="text-lg text-neutral-900 mb-4 tracking-tight">Actions</h2>
 
       {error && (
         <div className="mb-4 p-3 bg-red-50 border border-red-200 rounded text-red-700 text-sm">
@@ -182,7 +182,7 @@ export default function InvoiceActions({ invoice }: InvoiceActionsProps) {
         <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center p-4 z-50">
           <div className="bg-white rounded-lg max-w-md w-full p-6">
             <div className="flex items-center justify-between mb-4">
-              <h3 className="text-lg font-semibold text-neutral-900">Mark as Paid</h3>
+              <h3 className="text-lg text-neutral-900 tracking-tight">Mark as Paid</h3>
               <button
                 onClick={() => setShowPaymentModal(false)}
                 className="text-neutral-400 hover:text-neutral-600"
@@ -226,14 +226,14 @@ export default function InvoiceActions({ invoice }: InvoiceActionsProps) {
                 <button
                   type="button"
                   onClick={() => setShowPaymentModal(false)}
-                  className="btn btn-secondary"
+                  className="btn btn-secondary btn-thin"
                   disabled={isLoading}
                 >
                   Cancel
                 </button>
                 <button
                   type="submit"
-                  className="btn btn-primary"
+                  className="btn btn-primary btn-thin"
                   disabled={isLoading}
                 >
                   {isLoading ? 'Processing...' : 'Confirm Payment'}
