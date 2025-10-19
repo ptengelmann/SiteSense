@@ -91,10 +91,10 @@ export default function DashboardLayout({ children }: DashboardLayoutProps) {
 
               {/* Logo */}
               <Link href="/dashboard" className="flex items-center space-x-2">
-                <div className="w-8 h-8 rounded-lg gradient-blue flex items-center justify-center">
-                  <span className="text-white font-bold text-sm">S</span>
+                <div className="w-8 h-8 rounded-md gradient-red flex items-center justify-center">
+                  <span className="text-white font-medium text-sm">S</span>
                 </div>
-                <span className="text-xl font-semibold text-neutral-900 hidden sm:block">
+                <span className="text-xl text-neutral-900 hidden sm:block font-light">
                   SiteSense
                 </span>
               </Link>
@@ -104,20 +104,20 @@ export default function DashboardLayout({ children }: DashboardLayoutProps) {
             <div className="flex items-center space-x-4">
               {/* Company name */}
               <div className="hidden md:block text-right">
-                <p className="text-sm font-medium text-neutral-900">
+                <p className="text-sm text-neutral-900 font-light">
                   {session?.user.companyName}
                 </p>
-                <p className="text-xs text-neutral-500">{session?.user.role}</p>
+                <p className="text-xs text-neutral-500 font-light">{session?.user.role}</p>
               </div>
 
               {/* User menu */}
               <div className="relative flex items-center space-x-3">
-                <div className="w-10 h-10 rounded-full gradient-blue flex items-center justify-center text-white font-medium">
+                <div className="w-10 h-10 rounded-full gradient-red flex items-center justify-center text-white">
                   {session?.user.name?.[0]?.toUpperCase() || 'U'}
                 </div>
                 <button
                   onClick={() => signOut({ callbackUrl: '/login' })}
-                  className="hidden sm:inline-flex items-center px-4 py-2 text-sm font-medium text-neutral-700 hover:text-neutral-900 transition-colors"
+                  className="hidden sm:inline-flex items-center px-4 py-2 text-sm text-neutral-700 hover:text-neutral-900 transition-colors font-light"
                 >
                   Sign out
                 </button>
@@ -141,9 +141,9 @@ export default function DashboardLayout({ children }: DashboardLayoutProps) {
                 <Link
                   key={item.name}
                   href={item.href}
-                  className={`flex items-center space-x-3 px-4 py-3 rounded-lg text-sm font-medium transition-all ${
+                  className={`flex items-center space-x-3 px-4 py-3 rounded-lg text-sm transition-all font-light ${
                     isActive
-                      ? 'bg-primary-50 text-primary-600'
+                      ? 'bg-primary-50 text-primary-500'
                       : 'text-neutral-700 hover:bg-neutral-50 hover:text-neutral-900'
                   }`}
                 >
@@ -156,14 +156,14 @@ export default function DashboardLayout({ children }: DashboardLayoutProps) {
 
           {/* Trial badge */}
           <div className="p-4 m-4 bg-primary-50 border border-primary-200 rounded-lg">
-            <p className="text-xs font-semibold text-primary-900 mb-1">
-              Free Trial
+            <p className="text-xs text-primary-900 mb-1 font-light">
+              Early Access
             </p>
-            <p className="text-xs text-primary-700">
-              14 days remaining
+            <p className="text-xs text-primary-700 font-light">
+              100% free during beta
             </p>
-            <button className="btn btn-primary btn-sm w-full mt-3">
-              Upgrade Now
+            <button className="btn btn-primary btn-thin w-full mt-3 justify-center">
+              Give Feedback
             </button>
           </div>
         </aside>

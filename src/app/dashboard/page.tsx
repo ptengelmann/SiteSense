@@ -224,10 +224,10 @@ export default async function DashboardPage() {
       <div className="space-y-6">
         {/* Welcome Section */}
         <div>
-          <h1 className="text-3xl font-bold text-neutral-900">
+          <h1 className="text-3xl text-neutral-900 tracking-tight">
             Welcome back, {session.user.name?.split(' ')[0] || 'there'}
           </h1>
-          <p className="text-neutral-600 mt-1">
+          <p className="text-neutral-600 mt-1 font-light">
             Here's what's happening with your business today
           </p>
         </div>
@@ -235,81 +235,45 @@ export default async function DashboardPage() {
         {/* Financial Metrics */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
           {/* Pending Invoices */}
-          <div className="card p-6">
-            <div className="flex items-center justify-between">
-              <div>
-                <p className="text-sm text-neutral-600">Pending Invoices</p>
-                <p className="text-2xl font-bold text-neutral-900 mt-1">
-                  {formatCurrency(pendingInvoicesAmount)}
-                </p>
-              </div>
-              <div className="w-12 h-12 rounded-lg bg-amber-50 flex items-center justify-center">
-                <svg className="w-6 h-6 text-amber-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
-                </svg>
-              </div>
-            </div>
-            <div className="mt-3 text-xs text-neutral-600">
+          <div className="rounded-lg p-6 bg-white border border-neutral-200">
+            <p className="text-sm text-neutral-600 font-light">Pending Invoices</p>
+            <p className="text-2xl text-neutral-900 mt-2 tracking-tight">
+              {formatCurrency(pendingInvoicesAmount)}
+            </p>
+            <div className="mt-3 text-xs text-neutral-600 font-light">
               {pendingInvoicesCount} invoice{pendingInvoicesCount !== 1 ? 's' : ''} awaiting payment
             </div>
           </div>
 
           {/* Paid This Month */}
-          <div className="card p-6">
-            <div className="flex items-center justify-between">
-              <div>
-                <p className="text-sm text-neutral-600">Paid This Month</p>
-                <p className="text-2xl font-bold text-green-600 mt-1">
-                  {formatCurrency(paidThisMonthAmount)}
-                </p>
-              </div>
-              <div className="w-12 h-12 rounded-lg bg-green-50 flex items-center justify-center">
-                <svg className="w-6 h-6 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
-                </svg>
-              </div>
-            </div>
-            <div className="mt-3 text-xs text-neutral-600">
+          <div className="rounded-lg p-6 bg-white border border-neutral-200">
+            <p className="text-sm text-neutral-600 font-light">Paid This Month</p>
+            <p className="text-2xl text-primary-500 mt-2 tracking-tight">
+              {formatCurrency(paidThisMonthAmount)}
+            </p>
+            <div className="mt-3 text-xs text-neutral-600 font-light">
               {paidThisMonth.length} invoice{paidThisMonth.length !== 1 ? 's' : ''} paid
             </div>
           </div>
 
           {/* Pending Payments */}
-          <div className="card p-6">
-            <div className="flex items-center justify-between">
-              <div>
-                <p className="text-sm text-neutral-600">Pending Payments</p>
-                <p className="text-2xl font-bold text-blue-600 mt-1">
-                  {formatCurrency(pendingPaymentAmount)}
-                </p>
-              </div>
-              <div className="w-12 h-12 rounded-lg bg-blue-50 flex items-center justify-center">
-                <svg className="w-6 h-6 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3V8a3 3 0 00-3-3H6a3 3 0 00-3 3v8a3 3 0 003 3z" />
-                </svg>
-              </div>
-            </div>
-            <div className="mt-3 text-xs text-neutral-600">
+          <div className="rounded-lg p-6 bg-white border border-neutral-200">
+            <p className="text-sm text-neutral-600 font-light">Pending Payments</p>
+            <p className="text-2xl text-neutral-900 mt-2 tracking-tight">
+              {formatCurrency(pendingPaymentAmount)}
+            </p>
+            <div className="mt-3 text-xs text-neutral-600 font-light">
               {pendingPaymentRuns.length} payment run{pendingPaymentRuns.length !== 1 ? 's' : ''} ready
             </div>
           </div>
 
           {/* Total CIS Deductions */}
-          <div className="card p-6">
-            <div className="flex items-center justify-between">
-              <div>
-                <p className="text-sm text-neutral-600">Total CIS Deductions</p>
-                <p className="text-2xl font-bold text-neutral-900 mt-1">
-                  {formatCurrency(totalCisDeduction)}
-                </p>
-              </div>
-              <div className="w-12 h-12 rounded-lg bg-purple-50 flex items-center justify-center">
-                <svg className="w-6 h-6 text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 7h6m0 10v-3m-3 3h.01M9 17h.01M9 14h.01M12 14h.01M15 11h.01M12 11h.01M9 11h.01M7 21h10a2 2 0 002-2V5a2 2 0 00-2-2H7a2 2 0 00-2 2v14a2 2 0 002 2z" />
-                </svg>
-              </div>
-            </div>
-            <div className="mt-3 text-xs text-neutral-600">
+          <div className="rounded-lg p-6 bg-white border border-neutral-200">
+            <p className="text-sm text-neutral-600 font-light">Total CIS Deductions</p>
+            <p className="text-2xl text-neutral-900 mt-2 tracking-tight">
+              {formatCurrency(totalCisDeduction)}
+            </p>
+            <div className="mt-3 text-xs text-neutral-600 font-light">
               Lifetime deductions
             </div>
           </div>
@@ -317,8 +281,8 @@ export default async function DashboardPage() {
 
         {/* Risk Indicators */}
         {(overdueInvoices.length > 0 || expiringItems.length > 0 || subcontractorsMissingBank > 0 || projectsDelayed > 0) && (
-          <div className="card p-6 bg-red-50 border border-red-200">
-            <h2 className="text-lg font-semibold text-neutral-900 mb-4 flex items-center">
+          <div className="rounded-lg p-6 bg-red-50 border border-red-200">
+            <h2 className="text-lg text-neutral-900 mb-4 flex items-center tracking-tight">
               <svg className="w-5 h-5 text-red-600 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
               </svg>
@@ -327,26 +291,26 @@ export default async function DashboardPage() {
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
               {overdueInvoices.length > 0 && (
                 <Link href="/dashboard/invoices" className="p-4 bg-white rounded-lg border border-red-200 hover:border-red-300 transition-colors">
-                  <p className="text-2xl font-bold text-red-600">{overdueInvoices.length}</p>
-                  <p className="text-sm text-neutral-700 mt-1">Overdue Invoice{overdueInvoices.length !== 1 ? 's' : ''}</p>
+                  <p className="text-2xl text-red-600 tracking-tight">{overdueInvoices.length}</p>
+                  <p className="text-sm text-neutral-700 mt-1 font-light">Overdue Invoice{overdueInvoices.length !== 1 ? 's' : ''}</p>
                 </Link>
               )}
               {expiringItems.length > 0 && (
                 <Link href="/dashboard/subcontractors" className="p-4 bg-white rounded-lg border border-red-200 hover:border-red-300 transition-colors">
-                  <p className="text-2xl font-bold text-red-600">{expiringItems.length}</p>
-                  <p className="text-sm text-neutral-700 mt-1">Expiring Document{expiringItems.length !== 1 ? 's' : ''}</p>
+                  <p className="text-2xl text-red-600 tracking-tight">{expiringItems.length}</p>
+                  <p className="text-sm text-neutral-700 mt-1 font-light">Expiring Document{expiringItems.length !== 1 ? 's' : ''}</p>
                 </Link>
               )}
               {subcontractorsMissingBank > 0 && (
                 <Link href="/dashboard/subcontractors" className="p-4 bg-white rounded-lg border border-red-200 hover:border-red-300 transition-colors">
-                  <p className="text-2xl font-bold text-red-600">{subcontractorsMissingBank}</p>
-                  <p className="text-sm text-neutral-700 mt-1">Missing Bank Details</p>
+                  <p className="text-2xl text-red-600 tracking-tight">{subcontractorsMissingBank}</p>
+                  <p className="text-sm text-neutral-700 mt-1 font-light">Missing Bank Details</p>
                 </Link>
               )}
               {projectsDelayed > 0 && (
                 <Link href="/dashboard/projects" className="p-4 bg-white rounded-lg border border-red-200 hover:border-red-300 transition-colors">
-                  <p className="text-2xl font-bold text-red-600">{projectsDelayed}</p>
-                  <p className="text-sm text-neutral-700 mt-1">Delayed Project{projectsDelayed !== 1 ? 's' : ''}</p>
+                  <p className="text-2xl text-red-600 tracking-tight">{projectsDelayed}</p>
+                  <p className="text-sm text-neutral-700 mt-1 font-light">Delayed Project{projectsDelayed !== 1 ? 's' : ''}</p>
                 </Link>
               )}
             </div>
@@ -356,12 +320,12 @@ export default async function DashboardPage() {
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
           {/* Recent Activity */}
           <div className="lg:col-span-2">
-            <div className="card p-6">
-              <h2 className="text-xl font-semibold text-neutral-900 mb-4">
+            <div className="rounded-lg p-6 bg-white border border-neutral-200">
+              <h2 className="text-xl text-neutral-900 mb-4 tracking-tight">
                 Recent Activity
               </h2>
               {allActivity.length > 0 ? (
-                <div className="space-y-3">
+                <div className="space-y-2">
                   {allActivity.map((item) => (
                     <Link
                       key={`${item.type}-${item.id}`}
@@ -369,29 +333,29 @@ export default async function DashboardPage() {
                       className="flex items-center justify-between p-3 rounded-lg hover:bg-neutral-50 transition-colors"
                     >
                       <div className="flex items-center gap-3">
-                        <div className={`w-10 h-10 rounded-lg ${
-                          item.type === 'invoice' ? 'bg-blue-50' : 'bg-green-50'
+                        <div className={`w-10 h-10 rounded-md ${
+                          item.type === 'invoice' ? 'gradient-red' : 'bg-primary-100'
                         } flex items-center justify-center`}>
                           {item.type === 'invoice' ? (
-                            <svg className="w-5 h-5 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <svg className="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
                             </svg>
                           ) : (
-                            <svg className="w-5 h-5 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <svg className="w-5 h-5 text-primary-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3V8a3 3 0 00-3-3H6a3 3 0 00-3 3v8a3 3 0 003 3z" />
                             </svg>
                           )}
                         </div>
                         <div>
-                          <p className="font-medium text-neutral-900">{item.title}</p>
-                          <p className="text-sm text-neutral-600">{item.subtitle}</p>
+                          <p className="text-neutral-900 font-light">{item.title}</p>
+                          <p className="text-sm text-neutral-600 font-light">{item.subtitle}</p>
                         </div>
                       </div>
                       <div className="text-right">
                         <span className={`badge ${getStatusBadge(item.status)} badge-sm`}>
                           {item.status}
                         </span>
-                        <p className="text-sm text-neutral-600 mt-1">{formatDate(item.date)}</p>
+                        <p className="text-sm text-neutral-600 mt-1 font-light">{formatDate(item.date)}</p>
                       </div>
                     </Link>
                   ))}
@@ -411,8 +375,8 @@ export default async function DashboardPage() {
                       d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"
                     />
                   </svg>
-                  <p className="text-lg">No recent activity</p>
-                  <p className="text-sm mt-1">
+                  <p className="text-lg font-light">No recent activity</p>
+                  <p className="text-sm mt-1 font-light">
                     Start by adding subcontractors or creating a project
                   </p>
                 </div>
@@ -423,30 +387,30 @@ export default async function DashboardPage() {
           {/* Quick Actions & Stats */}
           <div className="space-y-6">
             {/* Quick Actions */}
-            <div className="card p-6">
-              <h2 className="text-xl font-semibold text-neutral-900 mb-4">
+            <div className="rounded-lg p-6 bg-white border border-neutral-200">
+              <h2 className="text-xl text-neutral-900 mb-4 tracking-tight">
                 Quick Actions
               </h2>
               <div className="space-y-2">
-                <Link href="/dashboard/invoices/new" className="btn btn-primary btn-sm w-full justify-start">
+                <Link href="/dashboard/invoices/new" className="btn btn-primary btn-thin w-full justify-start">
                   <svg className="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 4v16m8-8H4" />
                   </svg>
                   Create Invoice
                 </Link>
-                <Link href="/dashboard/payment-runs/new" className="btn btn-primary btn-sm w-full justify-start">
+                <Link href="/dashboard/payment-runs/new" className="btn btn-primary btn-thin w-full justify-start">
                   <svg className="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 4v16m8-8H4" />
                   </svg>
                   New Payment Run
                 </Link>
-                <Link href="/dashboard/subcontractors/new" className="btn btn-secondary btn-sm w-full justify-start">
+                <Link href="/dashboard/subcontractors/new" className="btn btn-secondary btn-thin w-full justify-start">
                   <svg className="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 4v16m8-8H4" />
                   </svg>
                   Add Subcontractor
                 </Link>
-                <Link href="/dashboard/projects/new" className="btn btn-secondary btn-sm w-full justify-start">
+                <Link href="/dashboard/projects/new" className="btn btn-secondary btn-thin w-full justify-start">
                   <svg className="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 4v16m8-8H4" />
                   </svg>
@@ -456,26 +420,26 @@ export default async function DashboardPage() {
             </div>
 
             {/* Quick Stats */}
-            <div className="card p-6">
-              <h2 className="text-xl font-semibold text-neutral-900 mb-4">
+            <div className="rounded-lg p-6 bg-white border border-neutral-200">
+              <h2 className="text-xl text-neutral-900 mb-4 tracking-tight">
                 Quick Stats
               </h2>
               <div className="space-y-4">
                 <div className="flex items-center justify-between">
-                  <span className="text-sm text-neutral-600">Active Subcontractors</span>
-                  <span className="font-semibold text-neutral-900">{activeSubcontractors} / {totalSubcontractors}</span>
+                  <span className="text-sm text-neutral-600 font-light">Active Subcontractors</span>
+                  <span className="text-neutral-900">{activeSubcontractors} / {totalSubcontractors}</span>
                 </div>
                 <div className="flex items-center justify-between">
-                  <span className="text-sm text-neutral-600">Active Projects</span>
-                  <span className="font-semibold text-neutral-900">{activeProjects}</span>
+                  <span className="text-sm text-neutral-600 font-light">Active Projects</span>
+                  <span className="text-neutral-900">{activeProjects}</span>
                 </div>
                 <div className="flex items-center justify-between">
-                  <span className="text-sm text-neutral-600">Total Invoices</span>
-                  <span className="font-semibold text-neutral-900">{invoicesData.length}</span>
+                  <span className="text-sm text-neutral-600 font-light">Total Invoices</span>
+                  <span className="text-neutral-900">{invoicesData.length}</span>
                 </div>
                 <div className="flex items-center justify-between">
-                  <span className="text-sm text-neutral-600">Payment Runs</span>
-                  <span className="font-semibold text-neutral-900">{paymentRunsData.length}</span>
+                  <span className="text-sm text-neutral-600 font-light">Payment Runs</span>
+                  <span className="text-neutral-900">{paymentRunsData.length}</span>
                 </div>
               </div>
             </div>
