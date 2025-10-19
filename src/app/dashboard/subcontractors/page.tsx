@@ -118,7 +118,7 @@ export default async function SubcontractorsPage() {
             <SubcontractorTable initialData={subcontractors} />
           </>
         ) : (
-          /* Empty State */}
+          /* Empty State */
           <div className="rounded-lg p-12 bg-white border border-neutral-200">
             <div className="text-center">
               <div className="w-16 h-16 rounded-full bg-primary-50 flex items-center justify-center mx-auto mb-4">

@@ -215,21 +215,21 @@ export default function NewSubcontractorPage() {
           </svg>
         </Link>
         <div>
-          <h1 className="text-3xl font-bold text-neutral-900">Add Subcontractor</h1>
-          <p className="text-neutral-600 mt-1">
+          <h1 className="text-3xl text-neutral-900 tracking-tight">Add Subcontractor</h1>
+          <p className="text-neutral-600 mt-1 font-light">
             Complete CIS-compliant onboarding with GDPR consent
           </p>
         </div>
       </div>
 
       {/* Progress Steps */}
-      <div className="card p-6">
+      <div className="rounded-lg p-6 bg-white border border-neutral-200">
         <div className="flex items-center justify-between">
           {steps.map((step, index) => (
             <div key={step.number} className="flex items-center flex-1">
               <div className="flex flex-col items-center flex-1">
                 <div
-                  className={`w-10 h-10 rounded-full flex items-center justify-center font-semibold transition-all ${
+                  className={`w-10 h-10 rounded-full flex items-center justify-center font-medium transition-all ${
                     step.number === currentStep
                       ? 'bg-primary-600 text-white'
                       : step.number < currentStep
@@ -246,10 +246,10 @@ export default function NewSubcontractorPage() {
                   )}
                 </div>
                 <div className="text-center mt-2 hidden md:block">
-                  <p className={`text-sm font-medium ${step.number === currentStep ? 'text-primary-600' : 'text-neutral-600'}`}>
+                  <p className={`text-sm font-light ${step.number === currentStep ? 'text-primary-600' : 'text-neutral-600'}`}>
                     {step.title}
                   </p>
-                  <p className="text-xs text-neutral-500">{step.description}</p>
+                  <p className="text-xs text-neutral-500 font-light">{step.description}</p>
                 </div>
               </div>
               {index < steps.length - 1 && (
@@ -262,12 +262,12 @@ export default function NewSubcontractorPage() {
 
       {/* Form */}
       <form onSubmit={handleSubmit}>
-        <div className="card p-8">
+        <div className="rounded-lg p-8 bg-white border border-neutral-200">
           {/* Step 1: Basic Details */}
           {currentStep === 1 && (
             <div className="space-y-6 animate-fade-in">
               <div>
-                <h2 className="text-xl font-semibold text-neutral-900 mb-4">Basic Company Information</h2>
+                <h2 className="text-xl text-neutral-900 mb-4 tracking-tight">Basic Company Information</h2>
 
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                   <div className="md:col-span-2">
@@ -430,7 +430,7 @@ export default function NewSubcontractorPage() {
               </div>
 
               <div>
-                <h3 className="text-lg font-semibold text-neutral-900 mb-4">Primary Contact</h3>
+                <h3 className="text-lg text-neutral-900 mb-4 tracking-tight">Primary Contact</h3>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                   <div>
                     <label htmlFor="contactName" className="block text-sm font-medium text-neutral-700 mb-2">
@@ -483,7 +483,7 @@ export default function NewSubcontractorPage() {
               </div>
 
               <div>
-                <h3 className="text-lg font-semibold text-neutral-900 mb-4">Emergency Contact</h3>
+                <h3 className="text-lg text-neutral-900 mb-4 tracking-tight">Emergency Contact</h3>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                   <div>
                     <label htmlFor="emergencyContactName" className="block text-sm font-medium text-neutral-700 mb-2">
@@ -518,7 +518,7 @@ export default function NewSubcontractorPage() {
               </div>
 
               <div>
-                <h3 className="text-lg font-semibold text-neutral-900 mb-4">Address</h3>
+                <h3 className="text-lg text-neutral-900 mb-4 tracking-tight">Address</h3>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                   <div className="md:col-span-2">
                     <label htmlFor="addressLine1" className="block text-sm font-medium text-neutral-700 mb-2">
@@ -589,8 +589,8 @@ export default function NewSubcontractorPage() {
             <div className="space-y-6 animate-fade-in">
               {/* CIS Section */}
               <div>
-                <h2 className="text-xl font-semibold text-neutral-900 mb-2">CIS Verification Status</h2>
-                <p className="text-neutral-600 mb-6">
+                <h2 className="text-xl text-neutral-900 mb-2 tracking-tight">CIS Verification Status</h2>
+                <p className="text-neutral-600 mb-6 font-light">
                   Construction Industry Scheme compliance tracking. This affects deduction rates on payments.
                 </p>
 
@@ -654,8 +654,8 @@ export default function NewSubcontractorPage() {
 
               {/* CSCS Section */}
               <div className="border-t pt-6">
-                <h2 className="text-xl font-semibold text-neutral-900 mb-2">CSCS Card & Qualifications</h2>
-                <p className="text-neutral-600 mb-6">
+                <h2 className="text-xl text-neutral-900 mb-2 tracking-tight">CSCS Card & Qualifications</h2>
+                <p className="text-neutral-600 mb-6 font-light">
                   Construction Skills Certification Scheme - required for most UK construction sites.
                 </p>
 
@@ -713,8 +713,8 @@ export default function NewSubcontractorPage() {
 
               {/* Health & Safety Accreditations */}
               <div className="border-t pt-6">
-                <h2 className="text-xl font-semibold text-neutral-900 mb-2">Health & Safety Accreditations</h2>
-                <p className="text-neutral-600 mb-6">
+                <h2 className="text-xl text-neutral-900 mb-2 tracking-tight">Health & Safety Accreditations</h2>
+                <p className="text-neutral-600 mb-6 font-light">
                   Track industry-standard health and safety certifications required by many contractors.
                 </p>
 
@@ -843,15 +843,15 @@ export default function NewSubcontractorPage() {
           {currentStep === 3 && (
             <div className="space-y-6 animate-fade-in">
               <div>
-                <h2 className="text-xl font-semibold text-neutral-900 mb-2">Insurance & Certifications</h2>
-                <p className="text-neutral-600 mb-6">
+                <h2 className="text-xl text-neutral-900 mb-2 tracking-tight">Insurance & Certifications</h2>
+                <p className="text-neutral-600 mb-6 font-light">
                   Track insurance expiry dates with automatic reminders at 30, 14, and 7 days before expiry.
                 </p>
 
                 <div className="space-y-6">
                   {/* Public Liability */}
                   <div className="p-6 bg-neutral-50 rounded-lg">
-                    <h3 className="font-semibold text-neutral-900 mb-4">Public Liability Insurance</h3>
+                    <h3 className="text-neutral-900 mb-4 tracking-tight">Public Liability Insurance</h3>
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                       <div>
                         <label htmlFor="publicLiabilityExpiresAt" className="block text-sm font-medium text-neutral-700 mb-2">
@@ -927,7 +927,7 @@ export default function NewSubcontractorPage() {
 
                   {/* Employers Liability */}
                   <div className="p-6 bg-neutral-50 rounded-lg">
-                    <h3 className="font-semibold text-neutral-900 mb-4">Employers' Liability Insurance</h3>
+                    <h3 className="text-neutral-900 mb-4 tracking-tight">Employers' Liability Insurance</h3>
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                       <div>
                         <label htmlFor="employersLiabilityExpiresAt" className="block text-sm font-medium text-neutral-700 mb-2">
@@ -989,7 +989,7 @@ export default function NewSubcontractorPage() {
 
                   {/* Professional Indemnity */}
                   <div className="p-6 bg-neutral-50 rounded-lg">
-                    <h3 className="font-semibold text-neutral-900 mb-4">Professional Indemnity Insurance</h3>
+                    <h3 className="text-neutral-900 mb-4 tracking-tight">Professional Indemnity Insurance</h3>
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                       <div>
                         <label htmlFor="professionalIndemnityExpiresAt" className="block text-sm font-medium text-neutral-700 mb-2">
@@ -1057,8 +1057,8 @@ export default function NewSubcontractorPage() {
           {currentStep === 4 && (
             <div className="space-y-6 animate-fade-in">
               <div>
-                <h2 className="text-xl font-semibold text-neutral-900 mb-2">Payment Configuration</h2>
-                <p className="text-neutral-600 mb-6">
+                <h2 className="text-xl text-neutral-900 mb-2 tracking-tight">Payment Configuration</h2>
+                <p className="text-neutral-600 mb-6 font-light">
                   Set payment terms, retention, and bank details for automated payment runs.
                 </p>
 
@@ -1120,7 +1120,7 @@ export default function NewSubcontractorPage() {
                   </div>
 
                   <div className="border-t pt-6">
-                    <h3 className="font-semibold text-neutral-900 mb-4">Bank Account Details</h3>
+                    <h3 className="text-neutral-900 mb-4 tracking-tight">Bank Account Details</h3>
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                       <div>
                         <label htmlFor="bankName" className="block text-sm font-medium text-neutral-700 mb-2">
@@ -1205,14 +1205,14 @@ export default function NewSubcontractorPage() {
           {currentStep === 5 && (
             <div className="space-y-6 animate-fade-in">
               <div>
-                <h2 className="text-xl font-semibold text-neutral-900 mb-2">GDPR Data Processing Consent</h2>
-                <p className="text-neutral-600 mb-6">
+                <h2 className="text-xl text-neutral-900 mb-2 tracking-tight">GDPR Data Processing Consent</h2>
+                <p className="text-neutral-600 mb-6 font-light">
                   Required under UK GDPR and Data Protection Act 2018
                 </p>
 
                 <div className="space-y-6">
                   <div className="p-6 bg-blue-50 border border-blue-200 rounded-lg">
-                    <h3 className="font-semibold text-blue-900 mb-3">What data we'll process:</h3>
+                    <h3 className="text-blue-900 mb-3 tracking-tight">What data we'll process:</h3>
                     <ul className="space-y-2 text-sm text-blue-800">
                       <li className="flex items-start gap-2">
                         <svg className="w-5 h-5 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -1248,7 +1248,7 @@ export default function NewSubcontractorPage() {
                   </div>
 
                   <div className="p-6 bg-neutral-50 rounded-lg">
-                    <h3 className="font-semibold text-neutral-900 mb-3">Your GDPR rights:</h3>
+                    <h3 className="text-neutral-900 mb-3 tracking-tight">Your GDPR rights:</h3>
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-3 text-sm text-neutral-700">
                       <div className="flex items-start gap-2">
                         <svg className="w-5 h-5 text-primary-600 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -1339,9 +1339,9 @@ export default function NewSubcontractorPage() {
               type="button"
               onClick={prevStep}
               disabled={currentStep === 1}
-              className={`btn btn-secondary btn-md ${currentStep === 1 ? 'opacity-50 cursor-not-allowed' : ''}`}
+              className={`btn btn-secondary btn-thin ${currentStep === 1 ? 'opacity-50 cursor-not-allowed' : ''}`}
             >
-              <svg className="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <svg className="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 19l-7-7m0 0l7-7m-7 7h18" />
               </svg>
               Previous
@@ -1351,10 +1351,10 @@ export default function NewSubcontractorPage() {
               <button
                 type="button"
                 onClick={nextStep}
-                className="btn btn-primary btn-md"
+                className="btn btn-primary btn-thin"
               >
                 Next Step
-                <svg className="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <svg className="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
                 </svg>
               </button>
@@ -1362,7 +1362,7 @@ export default function NewSubcontractorPage() {
               <button
                 type="submit"
                 disabled={loading || !formData.dataConsentGiven}
-                className="btn btn-primary btn-md"
+                className="btn btn-primary btn-thin"
               >
                 {loading ? 'Creating...' : 'Create Subcontractor'}
               </button>

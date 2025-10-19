@@ -116,11 +116,11 @@ export default function SubcontractorProfile({ subcontractor }: SubcontractorPro
   return (
     <div className="space-y-6">
       {/* Header Card */}
-      <div className="card p-6">
+      <div className="rounded-lg p-6 bg-white border border-neutral-200">
         <div className="flex items-start justify-between">
           <div className="flex-1">
             <div className="flex items-center gap-3 mb-2">
-              <h1 className="text-3xl font-bold text-neutral-900">{subcontractor.companyName}</h1>
+              <h1 className="text-3xl text-neutral-900 tracking-tight">{subcontractor.companyName}</h1>
               <span className={`px-3 py-1 text-sm font-medium rounded-lg ${
                 subcontractor.isActive
                   ? 'bg-green-100 text-green-700'
@@ -158,18 +158,18 @@ export default function SubcontractorProfile({ subcontractor }: SubcontractorPro
           <div className="flex gap-3">
             <Link
               href={`/dashboard/subcontractors/${subcontractor.id}/edit`}
-              className="btn btn-primary btn-md"
+              className="btn btn-primary btn-thin"
             >
-              <svg className="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <svg className="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z" />
               </svg>
               Edit
             </Link>
             <button
               onClick={handleExport}
-              className="btn btn-secondary btn-md"
+              className="btn btn-secondary btn-thin"
             >
-              <svg className="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <svg className="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
               </svg>
               Export Data
@@ -177,9 +177,9 @@ export default function SubcontractorProfile({ subcontractor }: SubcontractorPro
             <button
               onClick={handleDelete}
               disabled={isDeleting}
-              className="btn btn-secondary btn-md text-red-600 hover:text-red-700 hover:border-red-300"
+              className="btn btn-secondary btn-thin text-red-600 hover:text-red-700 hover:border-red-300"
             >
-              <svg className="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <svg className="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
               </svg>
               {isDeleting ? 'Deleting...' : 'Delete'}
@@ -190,27 +190,27 @@ export default function SubcontractorProfile({ subcontractor }: SubcontractorPro
         {/* Key Metrics */}
         <div className="grid grid-cols-1 md:grid-cols-4 gap-4 mt-6 pt-6 border-t">
           <div>
-            <div className="text-sm text-neutral-600 mb-1">Performance Score</div>
-            <div className="text-2xl font-bold text-neutral-900">{subcontractor.performanceScore.toFixed(1)}%</div>
+            <div className="text-sm text-neutral-600 mb-1 font-light">Performance Score</div>
+            <div className="text-2xl text-neutral-900 tracking-tight">{subcontractor.performanceScore.toFixed(1)}%</div>
           </div>
           <div>
-            <div className="text-sm text-neutral-600 mb-1">Total Paid</div>
-            <div className="text-2xl font-bold text-neutral-900">{formatCurrency(subcontractor.totalPaid)}</div>
-            <div className="text-xs text-neutral-500">{subcontractor.totalInvoices} invoices</div>
+            <div className="text-sm text-neutral-600 mb-1 font-light">Total Paid</div>
+            <div className="text-2xl text-neutral-900 tracking-tight">{formatCurrency(subcontractor.totalPaid)}</div>
+            <div className="text-xs text-neutral-500 font-light">{subcontractor.totalInvoices} invoices</div>
           </div>
           <div>
-            <div className="text-sm text-neutral-600 mb-1">CIS Status</div>
+            <div className="text-sm text-neutral-600 mb-1 font-light">CIS Status</div>
             <div className="mt-1">{getCISBadge(subcontractor.cisStatus)}</div>
           </div>
           <div>
-            <div className="text-sm text-neutral-600 mb-1">Risk Score</div>
+            <div className="text-sm text-neutral-600 mb-1 font-light">Risk Score</div>
             <div className="mt-1">{getRiskBadge(subcontractor.riskScore)}</div>
           </div>
         </div>
       </div>
 
       {/* Tabs */}
-      <div className="card">
+      <div className="rounded-lg bg-white border border-neutral-200">
         <div className="border-b border-neutral-200">
           <nav className="flex gap-8 px-6" aria-label="Tabs">
             {tabs.map((tab) => (
@@ -240,7 +240,7 @@ export default function SubcontractorProfile({ subcontractor }: SubcontractorPro
             <div className="space-y-6">
               {/* Company Details */}
               <div>
-                <h3 className="text-lg font-semibold text-neutral-900 mb-4">Company Details</h3>
+                <h3 className="text-lg text-neutral-900 mb-4 tracking-tight">Company Details</h3>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                   <div>
                     <label className="text-sm font-medium text-neutral-700">UTR (Unique Taxpayer Reference)</label>
@@ -268,7 +268,7 @@ export default function SubcontractorProfile({ subcontractor }: SubcontractorPro
               {/* Address */}
               {(subcontractor.addressLine1 || subcontractor.city) && (
                 <div>
-                  <h3 className="text-lg font-semibold text-neutral-900 mb-4">Address</h3>
+                  <h3 className="text-lg text-neutral-900 mb-4 tracking-tight">Address</h3>
                   <div className="text-neutral-900">
                     {subcontractor.addressLine1 && <p>{subcontractor.addressLine1}</p>}
                     {subcontractor.addressLine2 && <p>{subcontractor.addressLine2}</p>}
@@ -282,7 +282,7 @@ export default function SubcontractorProfile({ subcontractor }: SubcontractorPro
 
               {/* CIS Compliance */}
               <div>
-                <h3 className="text-lg font-semibold text-neutral-900 mb-4">CIS Compliance</h3>
+                <h3 className="text-lg text-neutral-900 mb-4 tracking-tight">CIS Compliance</h3>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                   <div>
                     <label className="text-sm font-medium text-neutral-700">CIS Status</label>
@@ -319,7 +319,7 @@ export default function SubcontractorProfile({ subcontractor }: SubcontractorPro
 
               {/* Insurance */}
               <div>
-                <h3 className="text-lg font-semibold text-neutral-900 mb-4">Insurance</h3>
+                <h3 className="text-lg text-neutral-900 mb-4 tracking-tight">Insurance</h3>
                 <div className="space-y-4">
                   <div className="p-4 bg-neutral-50 rounded-lg">
                     <div className="flex items-center justify-between">
@@ -397,7 +397,7 @@ export default function SubcontractorProfile({ subcontractor }: SubcontractorPro
 
               {/* Payment Terms */}
               <div>
-                <h3 className="text-lg font-semibold text-neutral-900 mb-4">Payment Terms</h3>
+                <h3 className="text-lg text-neutral-900 mb-4 tracking-tight">Payment Terms</h3>
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
                   <div>
                     <label className="text-sm font-medium text-neutral-700">Payment Terms</label>
@@ -419,7 +419,7 @@ export default function SubcontractorProfile({ subcontractor }: SubcontractorPro
               {/* Bank Details */}
               {subcontractor.bankName && (
                 <div>
-                  <h3 className="text-lg font-semibold text-neutral-900 mb-4">Bank Details</h3>
+                  <h3 className="text-lg text-neutral-900 mb-4 tracking-tight">Bank Details</h3>
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                     <div>
                       <label className="text-sm font-medium text-neutral-700">Bank Name</label>
@@ -450,8 +450,8 @@ export default function SubcontractorProfile({ subcontractor }: SubcontractorPro
               {/* Notes */}
               {subcontractor.notes && (
                 <div>
-                  <h3 className="text-lg font-semibold text-neutral-900 mb-4">Notes</h3>
-                  <p className="text-neutral-700 whitespace-pre-wrap">{subcontractor.notes}</p>
+                  <h3 className="text-lg text-neutral-900 mb-4 tracking-tight">Notes</h3>
+                  <p className="text-neutral-700 whitespace-pre-wrap font-light">{subcontractor.notes}</p>
                 </div>
               )}
             </div>

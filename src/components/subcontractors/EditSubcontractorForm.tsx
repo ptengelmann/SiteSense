@@ -215,13 +215,13 @@ export default function EditSubcontractorForm({ subcontractor }: EditSubcontract
   return (
     <div className="space-y-6">
       {/* Progress Steps */}
-      <div className="card p-6">
+      <div className="rounded-lg p-6 bg-white border border-neutral-200">
         <div className="flex items-center justify-between">
           {steps.map((step, index) => (
             <div key={step.number} className="flex items-center flex-1">
               <div className="flex flex-col items-center flex-1">
                 <div
-                  className={`w-10 h-10 rounded-full flex items-center justify-center font-semibold transition-all ${
+                  className={`w-10 h-10 rounded-full flex items-center justify-center font-medium transition-all ${
                     step.number === currentStep
                       ? 'bg-primary-600 text-white'
                       : step.number < currentStep
@@ -238,10 +238,10 @@ export default function EditSubcontractorForm({ subcontractor }: EditSubcontract
                   )}
                 </div>
                 <div className="text-center mt-2 hidden md:block">
-                  <p className={`text-sm font-medium ${step.number === currentStep ? 'text-primary-600' : 'text-neutral-600'}`}>
+                  <p className={`text-sm font-light ${step.number === currentStep ? 'text-primary-600' : 'text-neutral-600'}`}>
                     {step.title}
                   </p>
-                  <p className="text-xs text-neutral-500">{step.description}</p>
+                  <p className="text-xs text-neutral-500 font-light">{step.description}</p>
                 </div>
               </div>
               {index < steps.length - 1 && (
@@ -254,12 +254,12 @@ export default function EditSubcontractorForm({ subcontractor }: EditSubcontract
 
       {/* Form */}
       <form onSubmit={handleSubmit}>
-        <div className="card p-8">
+        <div className="rounded-lg p-8 bg-white border border-neutral-200">
           {/* Step 1: Basic Details */}
           {currentStep === 1 && (
             <div className="space-y-6 animate-fade-in">
               <div>
-                <h2 className="text-xl font-semibold text-neutral-900 mb-4">Basic Company Information</h2>
+                <h2 className="text-xl text-neutral-900 mb-4 tracking-tight">Basic Company Information</h2>
 
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                   <div className="md:col-span-2">
@@ -413,7 +413,7 @@ export default function EditSubcontractorForm({ subcontractor }: EditSubcontract
               </div>
 
               <div>
-                <h3 className="text-lg font-semibold text-neutral-900 mb-4">Primary Contact</h3>
+                <h3 className="text-lg text-neutral-900 mb-4 tracking-tight">Primary Contact</h3>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                   <div>
                     <label htmlFor="contactName" className="block text-sm font-medium text-neutral-700 mb-2">
@@ -463,7 +463,7 @@ export default function EditSubcontractorForm({ subcontractor }: EditSubcontract
               </div>
 
               <div>
-                <h3 className="text-lg font-semibold text-neutral-900 mb-4">Emergency Contact</h3>
+                <h3 className="text-lg text-neutral-900 mb-4 tracking-tight">Emergency Contact</h3>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                   <div>
                     <label htmlFor="emergencyContactName" className="block text-sm font-medium text-neutral-700 mb-2">
@@ -510,7 +510,7 @@ export default function EditSubcontractorForm({ subcontractor }: EditSubcontract
               </div>
 
               <div>
-                <h3 className="text-lg font-semibold text-neutral-900 mb-4">Address</h3>
+                <h3 className="text-lg text-neutral-900 mb-4 tracking-tight">Address</h3>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                   <div className="md:col-span-2">
                     <label htmlFor="addressLine1" className="block text-sm font-medium text-neutral-700 mb-2">
@@ -592,8 +592,8 @@ export default function EditSubcontractorForm({ subcontractor }: EditSubcontract
             <div className="space-y-6 animate-fade-in">
               {/* CIS Section */}
               <div>
-                <h2 className="text-xl font-semibold text-neutral-900 mb-2">CIS Verification Status</h2>
-                <p className="text-neutral-600 mb-6">
+                <h2 className="text-xl text-neutral-900 mb-2 tracking-tight">CIS Verification Status</h2>
+                <p className="text-neutral-600 mb-6 font-light">
                   Construction Industry Scheme compliance tracking.
                 </p>
 
@@ -637,8 +637,8 @@ export default function EditSubcontractorForm({ subcontractor }: EditSubcontract
 
               {/* CSCS Section */}
               <div className="border-t pt-6">
-                <h2 className="text-xl font-semibold text-neutral-900 mb-2">CSCS Card & Qualifications</h2>
-                <p className="text-neutral-600 mb-6">
+                <h2 className="text-xl text-neutral-900 mb-2 tracking-tight">CSCS Card & Qualifications</h2>
+                <p className="text-neutral-600 mb-6 font-light">
                   Construction Skills Certification Scheme - required for most UK construction sites.
                 </p>
 
@@ -695,8 +695,8 @@ export default function EditSubcontractorForm({ subcontractor }: EditSubcontract
 
               {/* Health & Safety Accreditations */}
               <div className="border-t pt-6">
-                <h2 className="text-xl font-semibold text-neutral-900 mb-2">Health & Safety Accreditations</h2>
-                <p className="text-neutral-600 mb-6">
+                <h2 className="text-xl text-neutral-900 mb-2 tracking-tight">Health & Safety Accreditations</h2>
+                <p className="text-neutral-600 mb-6 font-light">
                   Track industry-standard health and safety certifications.
                 </p>
 
@@ -824,15 +824,15 @@ export default function EditSubcontractorForm({ subcontractor }: EditSubcontract
           {currentStep === 3 && (
             <div className="space-y-6 animate-fade-in">
               <div>
-                <h2 className="text-xl font-semibold text-neutral-900 mb-2">Insurance & Certifications</h2>
-                <p className="text-neutral-600 mb-6">
+                <h2 className="text-xl text-neutral-900 mb-2 tracking-tight">Insurance & Certifications</h2>
+                <p className="text-neutral-600 mb-6 font-light">
                   Update insurance expiry dates and policy details.
                 </p>
 
                 <div className="space-y-6">
                   {/* Public Liability */}
                   <div className="p-6 bg-neutral-50 rounded-lg">
-                    <h3 className="font-semibold text-neutral-900 mb-4">Public Liability Insurance</h3>
+                    <h3 className="text-neutral-900 mb-4 tracking-tight">Public Liability Insurance</h3>
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                       <div>
                         <label htmlFor="publicLiabilityExpiresAt" className="block text-sm font-medium text-neutral-700 mb-2">
@@ -904,7 +904,7 @@ export default function EditSubcontractorForm({ subcontractor }: EditSubcontract
 
                   {/* Employers Liability */}
                   <div className="p-6 bg-neutral-50 rounded-lg">
-                    <h3 className="font-semibold text-neutral-900 mb-4">Employers' Liability Insurance</h3>
+                    <h3 className="text-neutral-900 mb-4 tracking-tight">Employers' Liability Insurance</h3>
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                       <div>
                         <label htmlFor="employersLiabilityExpiresAt" className="block text-sm font-medium text-neutral-700 mb-2">
@@ -963,7 +963,7 @@ export default function EditSubcontractorForm({ subcontractor }: EditSubcontract
 
                   {/* Professional Indemnity */}
                   <div className="p-6 bg-neutral-50 rounded-lg">
-                    <h3 className="font-semibold text-neutral-900 mb-4">Professional Indemnity Insurance</h3>
+                    <h3 className="text-neutral-900 mb-4 tracking-tight">Professional Indemnity Insurance</h3>
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                       <div>
                         <label htmlFor="professionalIndemnityExpiresAt" className="block text-sm font-medium text-neutral-700 mb-2">
@@ -1028,8 +1028,8 @@ export default function EditSubcontractorForm({ subcontractor }: EditSubcontract
           {currentStep === 4 && (
             <div className="space-y-6 animate-fade-in">
               <div>
-                <h2 className="text-xl font-semibold text-neutral-900 mb-2">Payment Configuration</h2>
-                <p className="text-neutral-600 mb-6">
+                <h2 className="text-xl text-neutral-900 mb-2 tracking-tight">Payment Configuration</h2>
+                <p className="text-neutral-600 mb-6 font-light">
                   Update payment terms and bank details.
                 </p>
 
@@ -1090,7 +1090,7 @@ export default function EditSubcontractorForm({ subcontractor }: EditSubcontract
                   </div>
 
                   <div className="border-t pt-6">
-                    <h3 className="font-semibold text-neutral-900 mb-4">Bank Account Details</h3>
+                    <h3 className="text-neutral-900 mb-4 tracking-tight">Bank Account Details</h3>
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                       <div>
                         <label htmlFor="bankName" className="block text-sm font-medium text-neutral-700 mb-2">
@@ -1186,9 +1186,9 @@ export default function EditSubcontractorForm({ subcontractor }: EditSubcontract
               type="button"
               onClick={prevStep}
               disabled={currentStep === 1}
-              className={`btn btn-secondary btn-md ${currentStep === 1 ? 'opacity-50 cursor-not-allowed' : ''}`}
+              className={`btn btn-secondary btn-thin ${currentStep === 1 ? 'opacity-50 cursor-not-allowed' : ''}`}
             >
-              <svg className="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <svg className="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 19l-7-7m0 0l7-7m-7 7h18" />
               </svg>
               Previous
@@ -1198,10 +1198,10 @@ export default function EditSubcontractorForm({ subcontractor }: EditSubcontract
               <button
                 type="button"
                 onClick={nextStep}
-                className="btn btn-primary btn-md"
+                className="btn btn-primary btn-thin"
               >
                 Next Step
-                <svg className="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <svg className="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
                 </svg>
               </button>
@@ -1209,7 +1209,7 @@ export default function EditSubcontractorForm({ subcontractor }: EditSubcontract
               <button
                 type="submit"
                 disabled={loading}
-                className="btn btn-primary btn-md"
+                className="btn btn-primary btn-thin"
               >
                 {loading ? 'Saving...' : 'Save Changes'}
               </button>

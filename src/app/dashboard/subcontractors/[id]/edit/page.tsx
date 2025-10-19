@@ -46,8 +46,8 @@ export default async function EditSubcontractorPage({ params }: PageProps) {
 
         {/* Header */}
         <div>
-          <h1 className="text-3xl font-bold text-neutral-900">Edit Subcontractor</h1>
-          <p className="text-neutral-600 mt-1">
+          <h1 className="text-3xl text-neutral-900 tracking-tight">Edit Subcontractor</h1>
+          <p className="text-neutral-600 mt-1 font-light">
             Update {subcontractor.companyName}'s information
           </p>
         </div>

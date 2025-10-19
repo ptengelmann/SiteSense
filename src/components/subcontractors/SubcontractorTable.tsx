@@ -150,7 +150,7 @@ export default function SubcontractorTable({ initialData }: SubcontractorTablePr
   return (
     <div className="space-y-4">
       {/* Search and Filters */}
-      <div className="card p-4">
+      <div className="rounded-lg p-4 bg-white border border-neutral-200">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
           {/* Search */}
           <div className="md:col-span-2">
@@ -207,19 +207,19 @@ export default function SubcontractorTable({ initialData }: SubcontractorTablePr
           </div>
         </div>
 
-        <div className="mt-3 text-sm text-neutral-600">
+        <div className="mt-3 text-sm text-neutral-600 font-light">
           Showing {filteredData.length} of {subcontractors.length} subcontractors
         </div>
       </div>
 
       {/* Table */}
-      <div className="card overflow-hidden">
+      <div className="rounded-lg overflow-hidden bg-white border border-neutral-200">
         <div className="overflow-x-auto">
           <table className="w-full">
             <thead className="bg-neutral-50 border-b border-neutral-200">
               <tr>
                 <th
-                  className="px-6 py-3 text-left text-xs font-medium text-neutral-600 uppercase tracking-wider cursor-pointer hover:bg-neutral-100"
+                  className="px-6 py-3 text-left text-xs font-light text-neutral-600 uppercase tracking-wider cursor-pointer hover:bg-neutral-100"
                   onClick={() => handleSort('companyName')}
                 >
                   <div className="flex items-center gap-2">
@@ -231,14 +231,14 @@ export default function SubcontractorTable({ initialData }: SubcontractorTablePr
                     )}
                   </div>
                 </th>
-                <th className="px-6 py-3 text-left text-xs font-medium text-neutral-600 uppercase tracking-wider">
+                <th className="px-6 py-3 text-left text-xs font-light text-neutral-600 uppercase tracking-wider">
                   Contact
                 </th>
-                <th className="px-6 py-3 text-left text-xs font-medium text-neutral-600 uppercase tracking-wider">
+                <th className="px-6 py-3 text-left text-xs font-light text-neutral-600 uppercase tracking-wider">
                   CIS Status
                 </th>
                 <th
-                  className="px-6 py-3 text-left text-xs font-medium text-neutral-600 uppercase tracking-wider cursor-pointer hover:bg-neutral-100"
+                  className="px-6 py-3 text-left text-xs font-light text-neutral-600 uppercase tracking-wider cursor-pointer hover:bg-neutral-100"
                   onClick={() => handleSort('performanceScore')}
                 >
                   <div className="flex items-center gap-2">
@@ -251,7 +251,7 @@ export default function SubcontractorTable({ initialData }: SubcontractorTablePr
                   </div>
                 </th>
                 <th
-                  className="px-6 py-3 text-left text-xs font-medium text-neutral-600 uppercase tracking-wider cursor-pointer hover:bg-neutral-100"
+                  className="px-6 py-3 text-left text-xs font-light text-neutral-600 uppercase tracking-wider cursor-pointer hover:bg-neutral-100"
                   onClick={() => handleSort('totalPaid')}
                 >
                   <div className="flex items-center gap-2">
@@ -263,10 +263,10 @@ export default function SubcontractorTable({ initialData }: SubcontractorTablePr
                     )}
                   </div>
                 </th>
-                <th className="px-6 py-3 text-left text-xs font-medium text-neutral-600 uppercase tracking-wider">
+                <th className="px-6 py-3 text-left text-xs font-light text-neutral-600 uppercase tracking-wider">
                   Status
                 </th>
-                <th className="px-6 py-3 text-right text-xs font-medium text-neutral-600 uppercase tracking-wider">
+                <th className="px-6 py-3 text-right text-xs font-light text-neutral-600 uppercase tracking-wider">
                   Actions
                 </th>
               </tr>
@@ -276,12 +276,12 @@ export default function SubcontractorTable({ initialData }: SubcontractorTablePr
                 <tr key={sub.id} className="hover:bg-neutral-50 transition-colors">
                   <td className="px-6 py-4 whitespace-nowrap">
                     <div>
-                      <div className="font-medium text-neutral-900">{sub.companyName}</div>
-                      <div className="text-sm text-neutral-500">UTR: {sub.utr}</div>
+                      <div className="text-neutral-900">{sub.companyName}</div>
+                      <div className="text-sm text-neutral-500 font-light">UTR: {sub.utr}</div>
                     </div>
                   </td>
                   <td className="px-6 py-4 whitespace-nowrap">
-                    <div className="text-sm">
+                    <div className="text-sm font-light">
                       {sub.contactName && <div className="text-neutral-900">{sub.contactName}</div>}
                       {sub.email && <div className="text-neutral-500">{sub.email}</div>}
                       {sub.phone && <div className="text-neutral-500">{sub.phone}</div>}
@@ -291,7 +291,7 @@ export default function SubcontractorTable({ initialData }: SubcontractorTablePr
                     <div className="space-y-1">
                       {getCISBadge(sub.cisStatus)}
                       {sub.cisVerificationExpiresAt && (
-                        <div className="text-xs text-neutral-500">
+                        <div className="text-xs text-neutral-500 font-light">
                           Expires: {new Date(sub.cisVerificationExpiresAt).toLocaleDateString('en-GB')}
                         </div>
                       )}
@@ -299,21 +299,21 @@ export default function SubcontractorTable({ initialData }: SubcontractorTablePr
                   </td>
                   <td className="px-6 py-4 whitespace-nowrap">
                     <div className="flex items-center gap-2">
-                      <div className="text-sm font-medium text-neutral-900">
+                      <div className="text-sm text-neutral-900">
                         {sub.performanceScore.toFixed(1)}%
                       </div>
                       {getRiskBadge(sub.riskScore)}
                     </div>
                     {isInsuranceExpired(sub.publicLiabilityExpiresAt) && (
-                      <div className="text-xs text-red-600 font-medium mt-1">⚠ Insurance Expired</div>
+                      <div className="text-xs text-red-600 font-light mt-1">⚠ Insurance Expired</div>
                     )}
                     {!isInsuranceExpired(sub.publicLiabilityExpiresAt) && isInsuranceExpiringSoon(sub.publicLiabilityExpiresAt) && (
-                      <div className="text-xs text-amber-600 font-medium mt-1">⚠ Insurance Expiring Soon</div>
+                      <div className="text-xs text-amber-600 font-light mt-1">⚠ Insurance Expiring Soon</div>
                     )}
                   </td>
                   <td className="px-6 py-4 whitespace-nowrap">
-                    <div className="text-sm">
-                      <div className="font-medium text-neutral-900">{formatCurrency(sub.totalPaid)}</div>
+                    <div className="text-sm font-light">
+                      <div className="text-neutral-900">{formatCurrency(sub.totalPaid)}</div>
                       <div className="text-neutral-500">{sub.totalInvoices} invoices</div>
                     </div>
                   </td>
@@ -326,11 +326,11 @@ export default function SubcontractorTable({ initialData }: SubcontractorTablePr
                       {sub.isActive ? 'Active' : 'Inactive'}
                     </span>
                   </td>
-                  <td className="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
+                  <td className="px-6 py-4 whitespace-nowrap text-right text-sm font-light">
                     <div className="flex items-center justify-end gap-2">
                       <Link
                         href={`/dashboard/subcontractors/${sub.id}`}
-                        className="text-primary-600 hover:text-primary-700"
+                        className="text-primary-500 hover:text-primary-600"
                       >
                         View
                       </Link>
