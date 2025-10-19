@@ -23,8 +23,8 @@ export default function RootLayout({
     "@context": "https://schema.org",
     "@type": "Organization",
     "name": "SiteSense",
-    "url": "https://sitesense.co.uk",
-    "logo": "https://sitesense.co.uk/logo.png",
+    "url": "https://site-sense.co.uk",
+    "logo": "https://site-sense.co.uk/logo.png",
     "description": "AI-powered subcontractor payment automation for UK construction",
     "address": {
       "@type": "PostalAddress",
@@ -33,7 +33,7 @@ export default function RootLayout({
     },
     "contactPoint": {
       "@type": "ContactPoint",
-      "email": "hello@sitesense.co.uk",
+      "email": "hello@site-sense.co.uk",
       "contactType": "Customer Service",
       "areaServed": "GB"
     }

@@ -7,6 +7,6 @@ export default function robots(): MetadataRoute.Robots {
       allow: '/',
       disallow: ['/dashboard/', '/api/', '/auth/'],
     },
-    sitemap: 'https://sitesense.co.uk/sitemap.xml',
+    sitemap: 'https://site-sense.co.uk/sitemap.xml',
   };
 }

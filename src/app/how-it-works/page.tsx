@@ -8,12 +8,12 @@ export const metadata: Metadata = {
   description: 'Learn how SiteSense processes UK construction invoices in 3 steps: Upload invoice → AI analyses & validates → Approve & pay. 50 seconds total vs 10 minutes manually.',
   keywords: 'invoice processing workflow, automated CIS calculation, AI invoice extraction, construction payment automation UK, how to process invoices, BACS payment process',
   alternates: {
-    canonical: 'https://sitesense.co.uk/how-it-works',
+    canonical: 'https://site-sense.co.uk/how-it-works',
   },
   openGraph: {
     title: 'How SiteSense Works - 3 Simple Steps to Process Invoices',
     description: 'From invoice to payment in 50 seconds. See how AI, CIS automation, and BACS integration work together for UK construction.',
-    url: 'https://sitesense.co.uk/how-it-works',
+    url: 'https://site-sense.co.uk/how-it-works',
     siteName: 'SiteSense',
     locale: 'en_GB',
     type: 'website',
@@ -49,7 +49,7 @@ export default function HowItWorksPage() {
             </svg>
           ),
           name: 'Email Forward',
-          desc: 'Forward invoices to invoices@sitesense.co.uk',
+          desc: 'Forward invoices to invoices@site-sense.co.uk',
         },
         {
           icon: (

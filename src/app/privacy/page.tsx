@@ -108,7 +108,7 @@ export default function PrivacyPage() {
                 <li><strong>Restrict:</strong> Restrict how we process your data</li>
               </ul>
               <p className="text-neutral-700 leading-relaxed mt-4">
-                To exercise these rights, contact us at <a href="mailto:privacy@sitesense.co.uk" className="text-primary-600 hover:underline">privacy@sitesense.co.uk</a>
+                To exercise these rights, contact us at <a href="mailto:privacy@site-sense.co.uk" className="text-primary-600 hover:underline">privacy@site-sense.co.uk</a>
               </p>
             </section>
 
@@ -153,7 +153,7 @@ export default function PrivacyPage() {
                 For questions about this Privacy Policy or your data:
               </p>
               <ul className="space-y-2 text-neutral-700">
-                <li><strong>Email:</strong> <a href="mailto:privacy@sitesense.co.uk" className="text-primary-600 hover:underline">privacy@sitesense.co.uk</a></li>
+                <li><strong>Email:</strong> <a href="mailto:privacy@site-sense.co.uk" className="text-primary-600 hover:underline">privacy@site-sense.co.uk</a></li>
                 <li><strong>Address:</strong> SiteSense, London, United Kingdom</li>
               </ul>
             </section>

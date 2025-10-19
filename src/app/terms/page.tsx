@@ -59,7 +59,7 @@ export default function TermsPage() {
 
               <h3 className="text-xl text-neutral-900 mb-3 tracking-tight">4.1 Subscription Fees</h3>
               <p className="text-neutral-700 leading-relaxed mb-4">
-                Pricing is available at <a href="/#pricing" className="text-primary-600 hover:underline">sitesense.co.uk/#pricing</a>. Fees are billed monthly or annually in advance. All fees are non-refundable except as required by law.
+                Pricing is available at <a href="/#pricing" className="text-primary-600 hover:underline">site-sense.co.uk/#pricing</a>. Fees are billed monthly or annually in advance. All fees are non-refundable except as required by law.
               </p>
 
               <h3 className="text-xl text-neutral-900 mb-3 tracking-tight">4.2 Free Trial</h3>
@@ -198,7 +198,7 @@ export default function TermsPage() {
                 For questions about these Terms:
               </p>
               <ul className="space-y-2 text-neutral-700">
-                <li><strong>Email:</strong> <a href="mailto:legal@sitesense.co.uk" className="text-primary-600 hover:underline">legal@sitesense.co.uk</a></li>
+                <li><strong>Email:</strong> <a href="mailto:legal@site-sense.co.uk" className="text-primary-600 hover:underline">legal@site-sense.co.uk</a></li>
                 <li><strong>Address:</strong> SiteSense, London, United Kingdom</li>
               </ul>
             </section>

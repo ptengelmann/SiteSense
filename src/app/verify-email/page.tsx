@@ -148,7 +148,7 @@ function VerifyEmailContent() {
           {/* Help Text */}
           <p className="text-center text-sm text-neutral-500 mt-6">
             Need help?{' '}
-            <a href="mailto:support@sitesense.co.uk" className="text-primary-600 hover:text-primary-700">
+            <a href="mailto:support@site-sense.co.uk" className="text-primary-600 hover:text-primary-700">
               Contact support
             </a>
           </p>

@@ -5,15 +5,15 @@ import Link from 'next/link';
 
 export const metadata: Metadata = {
   title: 'Contact Us | Get a Demo of UK Construction Invoice Software | SiteSense',
-  description: 'Contact SiteSense for a demo, support, or questions. Email: hello@sitesense.co.uk. Based in London, UK. Helping UK construction companies automate invoice processing.',
+  description: 'Contact SiteSense for a demo, support, or questions. Email: hello@site-sense.co.uk. Based in London, UK. Helping UK construction companies automate invoice processing.',
   keywords: 'contact construction software, SiteSense demo, invoice software support UK, construction payment platform contact, book demo CIS software',
   alternates: {
-    canonical: 'https://sitesense.co.uk/contact',
+    canonical: 'https://site-sense.co.uk/contact',
   },
   openGraph: {
     title: 'Contact SiteSense | Demo & Support for UK Construction Invoice Software',
     description: 'Get in touch for a demo or questions. We help UK construction firms process invoices 95% faster with AI automation.',
-    url: 'https://sitesense.co.uk/contact',
+    url: 'https://site-sense.co.uk/contact',
     siteName: 'SiteSense',
     locale: 'en_GB',
     type: 'website',
@@ -133,8 +133,8 @@ export default function ContactPage() {
                     </div>
                     <div>
                       <div className="text-neutral-900 mb-1 text-sm">Email</div>
-                      <a href="mailto:hello@sitesense.co.uk" className="text-primary-500 hover:underline font-light text-sm">
-                        hello@sitesense.co.uk
+                      <a href="mailto:hello@site-sense.co.uk" className="text-primary-500 hover:underline font-light text-sm">
+                        hello@site-sense.co.uk
                       </a>
                     </div>
                   </div>

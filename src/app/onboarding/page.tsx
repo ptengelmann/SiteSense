@@ -398,7 +398,7 @@ export default function OnboardingPage() {
 
             <p className="text-center text-sm text-neutral-500 mt-6">
               Need help? Check out our{' '}
-              <a href="mailto:support@sitesense.co.uk" className="text-primary-600 hover:text-primary-700">
+              <a href="mailto:support@site-sense.co.uk" className="text-primary-600 hover:text-primary-700">
                 support center
               </a>
             </p>

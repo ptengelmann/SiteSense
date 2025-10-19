@@ -8,12 +8,12 @@ export const metadata: Metadata = {
   description: 'Learn why we built SiteSense to solve the 83-day payment cycle in UK construction. AI-powered tools helping contractors cut payment times from 83 to 30 days.',
   keywords: 'construction payment crisis UK, late payments construction, subcontractor cash flow, construction invoice automation, UK CIS software company, about SiteSense',
   alternates: {
-    canonical: 'https://sitesense.co.uk/about',
+    canonical: 'https://site-sense.co.uk/about',
   },
   openGraph: {
     title: 'About SiteSense - Fixing the UK Construction Payment Crisis',
     description: 'We\'re on a mission to eliminate the 83-day payment wait in UK construction. Built by people who understand the industry\'s challenges.',
-    url: 'https://sitesense.co.uk/about',
+    url: 'https://site-sense.co.uk/about',
     siteName: 'SiteSense',
     locale: 'en_GB',
     type: 'website',
