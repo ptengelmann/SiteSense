@@ -13,6 +13,9 @@ export const metadata: Metadata = {
   title: 'SiteSense | AI-Powered Subcontractor Payment Software for UK Construction',
   description: 'Automate subcontractor invoices and CIS compliance for UK construction. AI-powered invoice processing in 30 seconds. Save £50k/year on admin costs. Free early access.',
   keywords: 'CIS compliance software, subcontractor payments UK, construction invoice software, HMRC CIS returns, subcontractor management, UK construction finance, invoice automation, BACS payments',
+  alternates: {
+    canonical: 'https://sitesense.co.uk',
+  },
   openGraph: {
     title: 'SiteSense - Automate Subcontractor Payments & CIS Compliance',
     description: 'AI-powered platform for UK construction. Process invoices 95% faster, prevent fraud, automate CIS deductions. Join construction companies saving £50k/year.',

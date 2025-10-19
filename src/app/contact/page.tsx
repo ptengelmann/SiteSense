@@ -7,6 +7,9 @@ export const metadata: Metadata = {
   title: 'Contact Us | Get a Demo of UK Construction Invoice Software | SiteSense',
   description: 'Contact SiteSense for a demo, support, or questions. Email: hello@sitesense.co.uk. Based in London, UK. Helping UK construction companies automate invoice processing.',
   keywords: 'contact construction software, SiteSense demo, invoice software support UK, construction payment platform contact, book demo CIS software',
+  alternates: {
+    canonical: 'https://sitesense.co.uk/contact',
+  },
   openGraph: {
     title: 'Contact SiteSense | Demo & Support for UK Construction Invoice Software',
     description: 'Get in touch for a demo or questions. We help UK construction firms process invoices 95% faster with AI automation.',
@@ -36,10 +39,10 @@ export default function ContactPage() {
               <span className="text-xs text-primary-700 tracking-wide">CONTACT US</span>
             </div>
             <h1 className="text-4xl lg:text-5xl text-neutral-900 mb-4 tracking-tight">
-              Get in touch
+              Contact SiteSense: Book Your UK Construction Software Demo
             </h1>
             <p className="text-lg text-neutral-600 font-light">
-              Want to see a demo? Have questions? We're here to help you automate your invoice processing.
+              Get a free demo of our AI-powered invoice automation platform. See how we help UK contractors process subcontractor payments 95% faster.
             </p>
           </div>
 

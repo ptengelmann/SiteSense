@@ -7,6 +7,9 @@ export const metadata: Metadata = {
   title: 'About SiteSense | Eliminating Late Payments in UK Construction',
   description: 'Learn why we built SiteSense to solve the 83-day payment cycle in UK construction. AI-powered tools helping contractors cut payment times from 83 to 30 days.',
   keywords: 'construction payment crisis UK, late payments construction, subcontractor cash flow, construction invoice automation, UK CIS software company, about SiteSense',
+  alternates: {
+    canonical: 'https://sitesense.co.uk/about',
+  },
   openGraph: {
     title: 'About SiteSense - Fixing the UK Construction Payment Crisis',
     description: 'We\'re on a mission to eliminate the 83-day payment wait in UK construction. Built by people who understand the industry\'s challenges.',
@@ -81,10 +84,10 @@ export default function AboutPage() {
             <span className="text-xs text-primary-700 tracking-wide">ABOUT US</span>
           </div>
           <h1 className="text-4xl lg:text-5xl text-neutral-900 mb-4 tracking-tight">
-            We're fixing broken payments in UK construction
+            About SiteSense: Fixing the UK Construction Payment Crisis
           </h1>
           <p className="text-lg text-neutral-600 font-light">
-            Building AI-powered tools to help construction finance teams process invoices faster and pay subcontractors on time.
+            We're building AI-powered invoice automation to cut payment times from 83 days to 30 days and help UK contractors process subcontractor payments faster.
           </p>
         </div>
       </section>
@@ -320,20 +323,20 @@ export default function AboutPage() {
       <section className="py-16 bg-primary-50">
         <div className="max-w-4xl mx-auto px-6 lg:px-8 text-center">
           <h2 className="text-3xl lg:text-4xl text-neutral-900 mb-4 tracking-tight">
-            Join us in fixing construction payments
+            Be part of the solution
           </h2>
           <p className="text-lg text-neutral-600 mb-8 font-light">
-            Help us eliminate the 83-day payment cycle. Start free early access today.
+            Early users help shape the product. Join now while it's 100% free and become part of the movement to fix UK construction payments.
           </p>
           <div className="flex flex-col sm:flex-row items-center justify-center gap-3">
             <Link href="/register" className="btn btn-primary btn-md">
-              Join Early Access
+              Become an Early Adopter
               <svg className="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
               </svg>
             </Link>
-            <Link href="/contact" className="btn btn-secondary btn-md">
-              Contact Us
+            <Link href="/how-it-works" className="btn btn-secondary btn-md">
+              See How It Works
             </Link>
           </div>
         </div>

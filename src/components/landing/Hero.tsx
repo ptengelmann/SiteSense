@@ -14,13 +14,13 @@ export default function Hero() {
 
         {/* Heading */}
         <h1 className="text-5xl lg:text-7xl text-center text-neutral-900 mb-6 tracking-tight leading-tight">
-          Process invoices in<br />
-          <span className="text-primary-500">30 seconds</span>, not 10 minutes
+          UK Construction Invoice Software:<br />
+          Process in <span className="text-primary-500">30 seconds</span>, not 10 minutes
         </h1>
 
         {/* Subheading */}
         <p className="text-lg lg:text-xl text-center text-neutral-600 max-w-2xl mx-auto mb-10 leading-relaxed font-light">
-          AI-powered subcontractor payment platform for UK construction. Auto-extract invoice data, detect fraud, and automate CIS compliance.
+          AI-powered subcontractor payment automation for UK construction. Automatically extract invoice data, detect fraud before you pay, and ensure HMRC CIS compliance.
         </p>
 
         {/* CTA Buttons */}

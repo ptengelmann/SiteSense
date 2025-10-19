@@ -7,6 +7,9 @@ export const metadata: Metadata = {
   title: 'Pricing | Free Early Access to Construction Invoice Software | SiteSense',
   description: 'SiteSense is 100% free during early access. Get AI invoice processing, CIS compliance automation, and fraud detection at no cost. No credit card required. UK construction.',
   keywords: 'free construction invoice software, CIS software pricing, subcontractor payment software cost, early access construction tech UK, free invoice automation',
+  alternates: {
+    canonical: 'https://sitesense.co.uk/pricing',
+  },
   openGraph: {
     title: 'Free Early Access Pricing for UK Construction Companies',
     description: 'Join now and get lifetime access to core features. AI invoice processing, CIS automation, fraud detection - all free during early access.',
@@ -23,30 +26,6 @@ export const metadata: Metadata = {
 };
 
 export default function PricingPage() {
-  const workingFeatures = [
-    'AI-powered invoice OCR (PDF & image upload)',
-    'Automated fraud detection (duplicates, pricing anomalies)',
-    'CIS deduction calculations (0%, 20%, 30%)',
-    'Subcontractor management',
-    'Project tracking & budget monitoring',
-    'Payment run creation',
-    'BACS file export',
-    'Invoice status tracking',
-    'Dashboard & basic reporting',
-    'Email support',
-  ];
-
-  const comingSoonFeatures = [
-    'Auto-approval workflows',
-    'Multi-user accounts & permissions',
-    'Compliance alerts (insurance/CIS expiry)',
-    'Advanced analytics & reports',
-    'API access',
-    'Xero & QuickBooks integration',
-    'Email-to-invoice import',
-    'Mobile app',
-  ];
-
   const faqs = [
     {
       question: 'Is this really free?',
@@ -74,8 +53,49 @@ export default function PricingPage() {
     },
   ];
 
+  const faqSchema = {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": faqs.map(faq => ({
+      "@type": "Question",
+      "name": faq.question,
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": faq.answer
+      }
+    }))
+  };
+
+  const workingFeatures = [
+    'AI-powered invoice OCR (PDF & image upload)',
+    'Automated fraud detection (duplicates, pricing anomalies)',
+    'CIS deduction calculations (0%, 20%, 30%)',
+    'Subcontractor management',
+    'Project tracking & budget monitoring',
+    'Payment run creation',
+    'BACS file export',
+    'Invoice status tracking',
+    'Dashboard & basic reporting',
+    'Email support',
+  ];
+
+  const comingSoonFeatures = [
+    'Auto-approval workflows',
+    'Multi-user accounts & permissions',
+    'Compliance alerts (insurance/CIS expiry)',
+    'Advanced analytics & reports',
+    'API access',
+    'Xero & QuickBooks integration',
+    'Email-to-invoice import',
+    'Mobile app',
+  ];
+
   return (
     <div className="min-h-screen bg-white">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
+      />
       <Navbar />
 
       {/* Hero */}
@@ -86,10 +106,10 @@ export default function PricingPage() {
             <span className="text-xs text-primary-700 tracking-wide">FREE EARLY ACCESS</span>
           </div>
           <h1 className="text-4xl lg:text-5xl text-neutral-900 mb-4 tracking-tight">
-            Free during early access
+            UK Construction Invoice Software Pricing: Free During Early Access
           </h1>
           <p className="text-lg text-neutral-600 mb-8 font-light">
-            Join now and get lifetime access to core features. Help us build the future of construction payments.
+            Get AI invoice OCR, CIS compliance automation, and fraud detection at no cost. Join now and lock in lifetime pricing for early adopters.
           </p>
           <div className="flex flex-wrap items-center justify-center gap-6 text-sm text-neutral-600">
             <div className="flex items-center gap-2">
@@ -233,17 +253,22 @@ export default function PricingPage() {
       <section className="py-16 bg-primary-50">
         <div className="max-w-4xl mx-auto px-6 lg:px-8 text-center">
           <h2 className="text-3xl lg:text-4xl text-neutral-900 mb-4 tracking-tight">
-            Ready to automate your subcontractor payments?
+            Lock in lifetime pricing as an early adopter
           </h2>
           <p className="text-lg text-neutral-600 mb-8 font-light">
-            Join UK contractors saving hours every week on invoice processing. Free during early access.
+            Join now while it's 100% free. When we launch paid plans, you'll get special lifetime pricing. No credit card required.
           </p>
-          <Link href="/register" className="btn btn-primary btn-md">
-            Join Early Access
-            <svg className="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
-            </svg>
-          </Link>
+          <div className="flex items-center justify-center gap-3">
+            <Link href="/register" className="btn btn-primary btn-md">
+              Claim Early Access Now
+              <svg className="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
+              </svg>
+            </Link>
+            <Link href="/features" className="btn btn-secondary btn-md">
+              See What's Included
+            </Link>
+          </div>
         </div>
       </section>
 

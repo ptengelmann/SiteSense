@@ -7,6 +7,9 @@ export const metadata: Metadata = {
   title: 'Features | AI Invoice OCR, CIS Compliance & Fraud Detection | SiteSense',
   description: 'Discover SiteSense features: AI invoice OCR (95% accuracy), automated CIS calculations, fraud detection, BACS payment runs, and HMRC-ready reports for UK construction.',
   keywords: 'AI invoice OCR, CIS deduction calculator, construction fraud detection, BACS payment software, HMRC CIS returns, subcontractor compliance UK, invoice automation features',
+  alternates: {
+    canonical: 'https://sitesense.co.uk/features',
+  },
   openGraph: {
     title: 'Complete Subcontractor Payment Features for UK Construction',
     description: 'AI-powered invoice processing, CIS compliance automation, fraud detection, and BACS payments. Everything UK construction firms need in one platform.',
@@ -174,10 +177,10 @@ export default function FeaturesPage() {
             <span className="text-xs text-primary-700 tracking-wide">FEATURES</span>
           </div>
           <h1 className="text-4xl lg:text-5xl text-neutral-900 mb-4 tracking-tight">
-            Everything you need to automate subcontractor payments
+            Complete Subcontractor Payment Features for UK Construction Firms
           </h1>
           <p className="text-lg text-neutral-600 mb-8 font-light">
-            From AI invoice processing to HMRC compliance - all in one platform built specifically for UK construction.
+            AI invoice OCR, automated CIS compliance, fraud detection, and BACS exports - everything in one platform built specifically for UK construction.
           </p>
           <div className="flex items-center justify-center gap-3">
             <Link href="/register" className="btn btn-primary btn-md">
@@ -250,17 +253,22 @@ export default function FeaturesPage() {
       <section className="py-16 bg-primary-50">
         <div className="max-w-4xl mx-auto px-6 lg:px-8 text-center">
           <h2 className="text-3xl lg:text-4xl text-neutral-900 mb-4 tracking-tight">
-            Ready to save £50k/year in admin costs?
+            Start automating your subcontractor payments today
           </h2>
           <p className="text-lg text-neutral-600 mb-8 font-light">
-            Start your 14-day free trial. No credit card required.
+            Get AI invoice OCR, CIS automation, and fraud detection free during early access. Lock in lifetime pricing now.
           </p>
-          <Link href="/register" className="btn btn-primary btn-md">
-            Join Early Access
-            <svg className="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
-            </svg>
-          </Link>
+          <div className="flex items-center justify-center gap-3">
+            <Link href="/register" className="btn btn-primary btn-md">
+              Start Free Early Access
+              <svg className="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
+              </svg>
+            </Link>
+            <Link href="/pricing" className="btn btn-secondary btn-md">
+              View Pricing
+            </Link>
+          </div>
         </div>
       </section>
 

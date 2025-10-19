@@ -7,6 +7,9 @@ export const metadata: Metadata = {
   title: 'How It Works | 3-Step Subcontractor Invoice Processing | SiteSense',
   description: 'Learn how SiteSense processes UK construction invoices in 3 steps: Upload invoice → AI analyses & validates → Approve & pay. 50 seconds total vs 10 minutes manually.',
   keywords: 'invoice processing workflow, automated CIS calculation, AI invoice extraction, construction payment automation UK, how to process invoices, BACS payment process',
+  alternates: {
+    canonical: 'https://sitesense.co.uk/how-it-works',
+  },
   openGraph: {
     title: 'How SiteSense Works - 3 Simple Steps to Process Invoices',
     description: 'From invoice to payment in 50 seconds. See how AI, CIS automation, and BACS integration work together for UK construction.',
@@ -169,10 +172,10 @@ export default function HowItWorksPage() {
             <span className="text-xs text-primary-700 tracking-wide">HOW IT WORKS</span>
           </div>
           <h1 className="text-4xl lg:text-5xl text-neutral-900 mb-4 tracking-tight">
-            From invoice to payment in 3 simple steps
+            How UK Construction Invoice Automation Works: 3 Simple Steps
           </h1>
           <p className="text-lg text-neutral-600 mb-8 font-light">
-            No complex setup. No training required. Start processing invoices in minutes - not weeks.
+            Upload invoices, AI extracts data and calculates CIS deductions, approve and export BACS payments. No training required.
           </p>
           <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary-100 text-primary-700 text-sm border border-primary-200">
             <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -297,17 +300,17 @@ export default function HowItWorksPage() {
       <section className="py-16 bg-white">
         <div className="max-w-4xl mx-auto px-6 lg:px-8 text-center">
           <h2 className="text-3xl lg:text-4xl text-neutral-900 mb-4 tracking-tight">
-            Ready to automate your invoice processing?
+            See it in action with a free demo
           </h2>
           <p className="text-lg text-neutral-600 mb-8 font-light">
-            Start your 14-day free trial. No credit card required.
+            Watch how we process a real construction invoice in 30 seconds. Or start using it today - completely free during early access.
           </p>
           <div className="flex items-center justify-center gap-3">
             <Link href="/register" className="btn btn-primary btn-md">
-              Join Early Access
+              Start Processing Invoices Free
             </Link>
-            <Link href="/features" className="btn btn-secondary btn-md">
-              See All Features
+            <Link href="/contact" className="btn btn-secondary btn-md">
+              Book a Demo
             </Link>
           </div>
         </div>
