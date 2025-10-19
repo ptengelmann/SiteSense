@@ -155,17 +155,17 @@ export default async function ProjectDetailPage({ params }: { params: { id: stri
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
                 </svg>
               </Link>
-              <h1 className="text-3xl font-bold text-neutral-900">{project.name}</h1>
+              <h1 className="text-3xl text-neutral-900 tracking-tight">{project.name}</h1>
               {getStatusBadge(project.status)}
             </div>
             {project.projectNumber && (
-              <p className="text-neutral-600 mt-1">Project #{project.projectNumber}</p>
+              <p className="text-neutral-600 mt-1 font-light">Project #{project.projectNumber}</p>
             )}
           </div>
           <div className="flex gap-2">
             <Link
               href={`/dashboard/projects/${project.id}/edit`}
-              className="btn btn-secondary btn-md"
+              className="btn btn-secondary btn-thin"
             >
               Edit Project
             </Link>
@@ -174,7 +174,7 @@ export default async function ProjectDetailPage({ params }: { params: { id: stri
 
         {/* Overview Cards */}
         <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
-          <div className="card p-6">
+          <div className="rounded-lg p-6 bg-white border border-neutral-200">
             <div className="flex items-center justify-between">
               <div>
                 <p className="text-sm text-neutral-600">Budget</p>
@@ -195,7 +195,7 @@ export default async function ProjectDetailPage({ params }: { params: { id: stri
             </div>
           </div>
 
-          <div className="card p-6">
+          <div className="rounded-lg p-6 bg-white border border-neutral-200">
             <div className="flex items-center justify-between">
               <div>
                 <p className="text-sm text-neutral-600">Subcontractors</p>
@@ -214,7 +214,7 @@ export default async function ProjectDetailPage({ params }: { params: { id: stri
             </div>
           </div>
 
-          <div className="card p-6">
+          <div className="rounded-lg p-6 bg-white border border-neutral-200">
             <div className="flex items-center justify-between">
               <div>
                 <p className="text-sm text-neutral-600">Invoices</p>
@@ -233,7 +233,7 @@ export default async function ProjectDetailPage({ params }: { params: { id: stri
             </div>
           </div>
 
-          <div className="card p-6">
+          <div className="rounded-lg p-6 bg-white border border-neutral-200">
             <div className="flex items-center justify-between">
               <div>
                 <p className="text-sm text-neutral-600">Schedule</p>
@@ -260,8 +260,8 @@ export default async function ProjectDetailPage({ params }: { params: { id: stri
           {/* Left Column - Details */}
           <div className="lg:col-span-2 space-y-6">
             {/* Project Details */}
-            <div className="card p-6">
-              <h2 className="text-lg font-semibold text-neutral-900 mb-4">Project Details</h2>
+            <div className="rounded-lg p-6 bg-white border border-neutral-200">
+              <h2 className="text-lg text-neutral-900 mb-4 tracking-tight">Project Details</h2>
               <div className="grid grid-cols-2 gap-4 text-sm">
                 {project.projectType && (
                   <div>
@@ -298,8 +298,8 @@ export default async function ProjectDetailPage({ params }: { params: { id: stri
             </div>
 
             {/* Client & Location */}
-            <div className="card p-6">
-              <h2 className="text-lg font-semibold text-neutral-900 mb-4">Client & Location</h2>
+            <div className="rounded-lg p-6 bg-white border border-neutral-200">
+              <h2 className="text-lg text-neutral-900 mb-4 tracking-tight">Client & Location</h2>
               <div className="space-y-4">
                 {(project.clientName || project.clientCompany) && (
                   <div>
@@ -328,9 +328,9 @@ export default async function ProjectDetailPage({ params }: { params: { id: stri
             </div>
 
             {/* Assigned Subcontractors */}
-            <div className="card p-6">
+            <div className="rounded-lg p-6 bg-white border border-neutral-200">
               <div className="flex items-center justify-between mb-4">
-                <h2 className="text-lg font-semibold text-neutral-900">Assigned Subcontractors</h2>
+                <h2 className="text-lg text-neutral-900 tracking-tight">Assigned Subcontractors</h2>
                 <AssignSubcontractorModal projectId={project.id} />
               </div>
 
@@ -385,8 +385,8 @@ export default async function ProjectDetailPage({ params }: { params: { id: stri
           <div className="space-y-6">
             {/* Health & Safety */}
             {(project.principalContractor || project.principalDesigner || project.f10NotificationNumber) && (
-              <div className="card p-6">
-                <h2 className="text-lg font-semibold text-neutral-900 mb-4">Health & Safety</h2>
+              <div className="rounded-lg p-6 bg-white border border-neutral-200">
+                <h2 className="text-lg text-neutral-900 mb-4 tracking-tight">Health & Safety</h2>
                 <div className="space-y-3 text-sm">
                   {project.principalContractor && (
                     <div>
@@ -420,8 +420,8 @@ export default async function ProjectDetailPage({ params }: { params: { id: stri
 
             {/* Planning & Building Control */}
             {(project.planningPermissionRef || project.buildingControlRef) && (
-              <div className="card p-6">
-                <h2 className="text-lg font-semibold text-neutral-900 mb-4">Planning & Building Control</h2>
+              <div className="rounded-lg p-6 bg-white border border-neutral-200">
+                <h2 className="text-lg text-neutral-900 mb-4 tracking-tight">Planning & Building Control</h2>
                 <div className="space-y-3 text-sm">
                   {project.planningPermissionRef && (
                     <div>
@@ -447,8 +447,8 @@ export default async function ProjectDetailPage({ params }: { params: { id: stri
 
             {/* Recent Invoices */}
             {project.invoices.length > 0 && (
-              <div className="card p-6">
-                <h2 className="text-lg font-semibold text-neutral-900 mb-4">Recent Invoices</h2>
+              <div className="rounded-lg p-6 bg-white border border-neutral-200">
+                <h2 className="text-lg text-neutral-900 mb-4 tracking-tight">Recent Invoices</h2>
                 <div className="space-y-3">
                   {project.invoices.slice(0, 5).map((invoice) => (
                     <Link
