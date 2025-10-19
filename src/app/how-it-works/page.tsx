@@ -1,6 +1,26 @@
+import { Metadata } from 'next';
 import Navbar from '@/components/layout/Navbar';
 import Footer from '@/components/layout/Footer';
 import Link from 'next/link';
+
+export const metadata: Metadata = {
+  title: 'How It Works | 3-Step Subcontractor Invoice Processing | SiteSense',
+  description: 'Learn how SiteSense processes UK construction invoices in 3 steps: Upload invoice → AI analyses & validates → Approve & pay. 50 seconds total vs 10 minutes manually.',
+  keywords: 'invoice processing workflow, automated CIS calculation, AI invoice extraction, construction payment automation UK, how to process invoices, BACS payment process',
+  openGraph: {
+    title: 'How SiteSense Works - 3 Simple Steps to Process Invoices',
+    description: 'From invoice to payment in 50 seconds. See how AI, CIS automation, and BACS integration work together for UK construction.',
+    url: 'https://sitesense.co.uk/how-it-works',
+    siteName: 'SiteSense',
+    locale: 'en_GB',
+    type: 'website',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'How SiteSense Processes Construction Invoices',
+    description: 'Upload → AI analysis → Approve & pay. 50 seconds vs 10 minutes manually. No training required.',
+  },
+};
 
 export default function HowItWorksPage() {
   const steps = [

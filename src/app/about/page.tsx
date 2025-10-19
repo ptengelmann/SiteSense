@@ -1,6 +1,26 @@
+import { Metadata } from 'next';
 import Navbar from '@/components/layout/Navbar';
 import Footer from '@/components/layout/Footer';
 import Link from 'next/link';
+
+export const metadata: Metadata = {
+  title: 'About SiteSense | Eliminating Late Payments in UK Construction',
+  description: 'Learn why we built SiteSense to solve the 83-day payment cycle in UK construction. AI-powered tools helping contractors cut payment times from 83 to 30 days.',
+  keywords: 'construction payment crisis UK, late payments construction, subcontractor cash flow, construction invoice automation, UK CIS software company, about SiteSense',
+  openGraph: {
+    title: 'About SiteSense - Fixing the UK Construction Payment Crisis',
+    description: 'We\'re on a mission to eliminate the 83-day payment wait in UK construction. Built by people who understand the industry\'s challenges.',
+    url: 'https://sitesense.co.uk/about',
+    siteName: 'SiteSense',
+    locale: 'en_GB',
+    type: 'website',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'About SiteSense - Built to Fix Construction Payments',
+    description: '83 days to get paid is unacceptable in 2025. We\'re using AI to cut that to 30 days for UK construction.',
+  },
+};
 
 export default function AboutPage() {
   const values = [

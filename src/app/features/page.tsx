@@ -1,6 +1,26 @@
+import { Metadata } from 'next';
 import Navbar from '@/components/layout/Navbar';
 import Footer from '@/components/layout/Footer';
 import Link from 'next/link';
+
+export const metadata: Metadata = {
+  title: 'Features | AI Invoice OCR, CIS Compliance & Fraud Detection | SiteSense',
+  description: 'Discover SiteSense features: AI invoice OCR (95% accuracy), automated CIS calculations, fraud detection, BACS payment runs, and HMRC-ready reports for UK construction.',
+  keywords: 'AI invoice OCR, CIS deduction calculator, construction fraud detection, BACS payment software, HMRC CIS returns, subcontractor compliance UK, invoice automation features',
+  openGraph: {
+    title: 'Complete Subcontractor Payment Features for UK Construction',
+    description: 'AI-powered invoice processing, CIS compliance automation, fraud detection, and BACS payments. Everything UK construction firms need in one platform.',
+    url: 'https://sitesense.co.uk/features',
+    siteName: 'SiteSense',
+    locale: 'en_GB',
+    type: 'website',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'SiteSense Features - Complete Construction Payment Automation',
+    description: '95% OCR accuracy, automated CIS, fraud detection, BACS exports. Built specifically for UK construction.',
+  },
+};
 
 export default function FeaturesPage() {
   const features = [

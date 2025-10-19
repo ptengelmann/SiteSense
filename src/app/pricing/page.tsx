@@ -1,6 +1,26 @@
+import { Metadata } from 'next';
 import Navbar from '@/components/layout/Navbar';
 import Footer from '@/components/layout/Footer';
 import Link from 'next/link';
+
+export const metadata: Metadata = {
+  title: 'Pricing | Free Early Access to Construction Invoice Software | SiteSense',
+  description: 'SiteSense is 100% free during early access. Get AI invoice processing, CIS compliance automation, and fraud detection at no cost. No credit card required. UK construction.',
+  keywords: 'free construction invoice software, CIS software pricing, subcontractor payment software cost, early access construction tech UK, free invoice automation',
+  openGraph: {
+    title: 'Free Early Access Pricing for UK Construction Companies',
+    description: 'Join now and get lifetime access to core features. AI invoice processing, CIS automation, fraud detection - all free during early access.',
+    url: 'https://sitesense.co.uk/pricing',
+    siteName: 'SiteSense',
+    locale: 'en_GB',
+    type: 'website',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'SiteSense Pricing - 100% Free During Early Access',
+    description: 'Get complete construction invoice automation free. No credit card, no hidden fees, no time limit.',
+  },
+};
 
 export default function PricingPage() {
   const workingFeatures = [
